@@ -175,10 +175,11 @@ body{
 #img-box{
     display: flex;
     align-items: center;
+    text-align: center;
 }
 
 #img-box img{
-    width: 100%;
+    width: 80%;
 
 }
 
