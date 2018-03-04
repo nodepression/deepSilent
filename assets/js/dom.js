@@ -38,7 +38,7 @@ const dom1=` <div id="dowebok">
                 </div>
 
                 <div class="real-area">
-                    <video  id="testVideo" controls="controls" width="50%">
+                    <video  id="testVideo" controls="controls">
                         <source src="assets/video/test.mp4" type="video/mp4">
                     </video>
                 </div>
