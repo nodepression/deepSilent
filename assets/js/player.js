@@ -10,10 +10,11 @@ function bindPage3() {
     $("#videoFile").change(function (file) {
         if(file.target.files[0]!=undefined){
             $("body").append(file.target.files[0]);
-            console.log(file.target.files[0].name);
+
             var fileName = file.target.files[0].name;
-            var attr = fileName.substr(fileName.indexOf('.')+1);
-            if(attr.toLowerCase() !=('mp4'&&'avi'&&'rmvb'&&'3gp'&&'mkv'&&'wmv'&&'vob'&&'flv'&&'swf'&&'mov'&&'mpg')){
+            var attr = fileName.substr(fileName.indexOf('.')+1).toLowerCase();
+            console.log(attr);
+            if(attr !='mp4'&&attr !='avi'&&attr !='rmvb'&&attr !='3gp'&&attr !='mkv'&&attr !='wmv'&&attr !='vob'&&attr !='flv'&&attr !='swf'&&attr !='mov'&&attr !='mpg'){
                 alert('格式不支持')
             }else{
                 var url = window.URL.createObjectURL(file.target.files[0]);
