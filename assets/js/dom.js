@@ -4,12 +4,13 @@
 
 
 const dom0 = ` <div id="dowebok">
-                <div class="covervid-wrapper section">
-                    <video class="covervid-video" loop="loop" data-autoplay width="100%" >
-                        <source src="assets/video/test.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>`
+            <div class="section">
+                <video id="video1" class=" covervid-wrapper covervid-video" loop="loop" data-autoplay width="100%" >
+                    <source src="assets/video/test.mp4" type="video/mp4">
+                </video>
+                <div class="btn-box" id="know-btn"> <div class="btn-inner" >了解一下</div> </div>
+            </div>
+        </div>`
 
 
 
@@ -49,11 +50,12 @@ const dom1=` <div id="dowebok">
 const dom2 = `<div id="dowebok">
                 <div class="section">
                 <div class="am-g two-boxes" >
-                    <div class="am-u-sm-6 video-box">视频</div>
+                    <div class="am-u-sm-6 video-box"><div>视频区</div><video id="player"  autoplay src="">视频区</video></div>
                     <div class="am-u-sm-6 video-box">文字（唇语翻译结果）</div>
                 </div>
                 <div class="bottom-options ">
-                    <div class="btn-box"> <div class="btn-inner">选择视频</div> </div>
+                    <div class="btn-box" id="video-btn" > <div class="btn-inner">选择视频</div> </div>
+                    <input type="file" id="videoFile" style="display:none">
                     <div class="btn-box"> <div class="btn-inner">开始测试</div> </div>
                     <div class="starrr"></div>
                     <div class="btn-box"> <div class="btn-inner">打分反馈</div> </div>
@@ -86,11 +88,11 @@ const dom2 = `<div id="dowebok">
 const dom3 = `<div id="dowebok">
                <div class="section">
                 <div class="am-g two-boxes" >
-                    <div class="am-u-sm-6 video-box">视频22222</div>
+                    <div class="am-u-sm-6 video-box"><div>摄像区</div><video id="camera" style="width: 100%;margin-top: 5vh;"  autoplay src="">视频</video></div>
                     <div class="am-u-sm-6 video-box">文字（唇语翻译结果）</div>
                 </div>
                 <div class="bottom-options ">
-                    <div class="btn-box"> <div class="btn-inner">开始摄像</div> </div>
+                    <div class="btn-box" id="camera-btn"> <div class="btn-inner">开启摄像头</div> </div>
                     <div class="btn-box"> <div class="btn-inner">开始测试</div> </div>
                     <div class="starrr"></div>
                     <div class="btn-box"> <div class="btn-inner">打分反馈</div> </div>

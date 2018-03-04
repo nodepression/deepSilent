@@ -184,3 +184,9 @@ body{
     height: fit-content;
 
 }
+
+#know-btn{
+    position: fixed;
+    bottom:3rem;
+    z-index: 111111;
+}
