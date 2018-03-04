@@ -39,10 +39,16 @@ const dom1 = ` <div id="dowebok">
                             <span><input class="speed" type="radio" name="vehicle" value="1.5" />1.5 </span>
                             <span><input class="speed" type="radio" name="vehicle" value="2.0" />2.0 </span>
                         </div>
-                    </div>
-                    <div class="real-area">
+
+                        <div class="real-area">
+
+                        <video  id="testVideo" controls="controls" width="50%">
+                            <source src="assets/video/test.mp4" type="video/mp4">
+                        </video>
+                        </div>
 
                     </div>
+                    
                 </div>
 
 
