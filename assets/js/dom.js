@@ -61,6 +61,9 @@ const dom1=` <div id="dowebok">
                     <div class="am-u-sm-4"><img src="assets/img/a.png" alt=""></div>
 
                 </div>
+                <div class="btn-box" id="try2">
+                    <div class="btn-inner">试一试</div>
+                </div>
             </div>
         </div>`
 
