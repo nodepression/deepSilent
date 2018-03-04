@@ -1,0 +1,186 @@
+/* Write your styles */
+
+
+body{
+    background-color: #1bbc9b;
+    color: white;
+}
+
+.section {
+    text-align: center;
+    font: 2rem "Microsoft Yahei";
+    color: #fff;
+}
+
+.btn-inner{
+    color: #fff;
+    text-align: center;
+    border: rgba(255,255,255,0.3) 2px solid;
+    /*display: inline-block;*/
+    font-size: 1.4rem;
+    margin:2px;
+    font-weight: bold;
+    line-height: 2.2rem;
+    padding:0.8rem 1.5rem;
+}
+
+.btn-inner:hover{
+    animation: .8s btnhover forwards linear;
+
+}
+
+@keyframes btnhover {
+    0%{
+        color: #fff;
+        border: rgba(255,255,255,0.3) 2px solid;
+        background-color: transparent;
+    }
+    80%{
+        border: rgba(255,255,255,0.8) 2px solid;
+        font-size: 1.47rem;
+    }
+    100%{
+        border: rgba(255,255,255,1) 2px solid;
+        background-color: white;
+        color: black;
+        font-size: 1.5rem;
+    }
+
+}
+
+.btn-box{
+    padding: 2px;
+    background-color: transparent;
+    display: inline-block;
+    border:rgba(255,255,255,0.2) 2px solid;
+    cursor: pointer;
+}
+
+.btn-box:hover{
+
+    animation: 1s btnborder ease forwards;
+}
+@keyframes btnborder {
+    80%{
+        border:rgba(255,255,255,0.8) 2px solid;
+    }
+    100%{
+        border:rgba(255,255,255,1) 2px solid;
+    }
+}
+
+
+.my-nav{
+    z-index:11111;
+    position: absolute;
+    top:2rem;
+    width: 100%;
+    text-align: center;
+    display: flex;
+}
+
+.my-nav>ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    margin: 0 auto;
+    width: 80%;
+    height: 2rem;
+    padding: 0;
+}
+
+.my-nav>ul>li{
+    cursor: pointer;
+    transition: .5s linear;
+    box-sizing: border-box;
+    height: 2rem;
+    color: rgba(255,255,255,0.6);
+}
+
+.my-nav>ul>li:hover{
+    color: #ffffff;
+    border-bottom: rgba(255,255,255,1) 2px solid;
+}
+
+.my-nav>ul>li.active{
+    color: #fff;
+    border-bottom: rgba(255,255,255,1) 2px solid;
+}
+
+
+.two-boxes{
+    height: 55vh;
+
+}
+.video-box{
+    height: 55vh;
+}
+
+
+.bottom-options {
+    margin-top: 10vh;
+}
+
+.long-words-box{
+
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 4vh;
+    line-height: 2.2rem;
+    border: 1px solid white;
+    -webkit-font-smoothing: subpixel-antialiased; -moz-osx-font-smoothing: auto;
+    text-align: left;
+    padding: 0 1rem;
+}
+
+#word2{
+    width: 80%;
+    margin: 0 auto;
+    line-height: 2.2rem;
+    border: 1px solid white;
+    -webkit-font-smoothing: subpixel-antialiased; -moz-osx-font-smoothing: auto
+}
+
+
+
+.covervid-wrapper {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 100;
+}
+.side-title{
+    text-align: left;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.video-area{
+    width:80%;
+    margin: 20px auto;
+    height: 60vh;
+
+    border: 1px solid white;
+}
+
+#img-box{
+    display: flex;
+    align-items: center;
+}
+
+#img-box img{
+    width: 100%;
+
+}
+
+#img-box>div{
+    height: fit-content;
+
+}
