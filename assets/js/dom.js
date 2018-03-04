@@ -102,7 +102,7 @@ const dom2 = `<div id="dowebok">
 const dom3 = `<div id="dowebok">
                <div class="section">
                 <div class="am-g two-boxes" >
-                    <div class="am-u-sm-6 video-box"><div>摄像区</div><video id="camera" style="width: 100%;margin-top: 5vh;"  autoplay src="">视频</video></div>
+                    <div class="am-u-sm-6 video-box"><div>摄像区</div><video id="camera"   autoplay src="">视频</video></div>
                     <div class="am-u-sm-6 video-box">文字（唇语翻译结果）</div>
                 </div>
                 <div class="bottom-options ">

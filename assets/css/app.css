@@ -86,7 +86,8 @@ body{
     list-style: none;
     margin: 0 auto;
     width: 80%;
-    height: 2rem;
+    height: 4rem;
+    line-height: 3rem;
     padding: 0;
 }
 
@@ -94,7 +95,8 @@ body{
     cursor: pointer;
     transition: .5s linear;
     box-sizing: border-box;
-    height: 2rem;
+    height: 3rem;
+    line-height: 3rem;
     color: rgba(255,255,255,0.6);
 }
 
@@ -189,4 +191,12 @@ body{
     position: fixed;
     bottom:3rem;
     z-index: 111111;
+}
+
+#camera{
+    /*width: 100%;*/
+    margin-top: 5vh;
+    max-height: 40vh;
+    max-width: 100%;
+
 }

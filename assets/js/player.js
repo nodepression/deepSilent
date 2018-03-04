@@ -13,7 +13,7 @@ function bindPage3() {
             console.log(file.target.files[0].name);
             var fileName = file.target.files[0].name;
             var attr = fileName.substr(fileName.indexOf('.')+1);
-            if(attr.toLowerCase() !==('mp4'||'avi'||'rmvb'||'3gp'||'mkv'||'wmv'||'vob'||'flv'||'swf'||'mov'||'mpg')){
+            if(attr.toLowerCase() !=('mp4'&&'avi'&&'rmvb'&&'3gp'&&'mkv'&&'wmv'&&'vob'&&'flv'&&'swf'&&'mov'&&'mpg')){
                 alert('格式不支持')
             }else{
                 var url = window.URL.createObjectURL(file.target.files[0]);
