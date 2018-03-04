@@ -111,7 +111,7 @@ function switchPages(lastIndex,nextIndex) {
 
 
           }else if(pageIndex===1){
-
+            
           }else if(pageIndex===2){
             bindPage3();
           }else if(pageIndex===3){
@@ -173,6 +173,10 @@ function buildFullpage() {
         }else if(nextIndex==2){
           $('.side-title').animateCss('bounceInLeft');
           $('.btn-box').animateCss('bounceInUp');
+
+          $('.speed').click(function(){
+            setSpeed();
+          })
 
         }else if(nextIndex===3){
           $('.side-title').animateCss('bounceInLeft');
