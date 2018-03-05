@@ -80,15 +80,34 @@ const dom1=` <div id="dowebok">
 const dom2 = `<div id="dowebok">
                 <div class="section">
                 <div class="am-g two-boxes" >
-                    <div class="am-u-sm-6 video-box"><div>视频区</div><video id="player"  autoplay src="">视频区</video></div>
-                    <div class="am-u-sm-6 video-box"><div>文字（唇语翻译结果）</div><div id="col-chart"></div></div>
+                    <div class="am-u-sm-6 video-box">
+                        <div class="am-panel am-panel-primary v-box">
+                            <div class="am-panel-hd">视频区</div>
+                            <div class="am-panel-bd">
+                            <video id="player"  autoplay src="">视频区</video>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-6 video-box">
+                        <div class="am-panel am-panel-primary v-box">
+                            <div class="am-panel-hd">结果</div>
+                            <div class="am-panel-bd" style="height:100%">
+                            <div id="col-chart"></div>
+                            </div>
+                        </div>
+                        
+                    </div>
                 </div>
                 <div class="bottom-options ">
-                    <div class="btn-box" id="video-btn" > <div class="btn-inner">选择视频</div> </div>
-                    <input type="file" id="videoFile" style="display:none">
-                    <div class="btn-box"> <div class="btn-inner">开始测试</div> </div>
-                    <div class="starrr"></div>
-                    <div class="btn-box"> <div class="btn-inner">打分反馈</div> </div>
+                    <div>
+                        <div class="btn-box" id="video-btn" > <div class="btn-inner">选择视频</div> </div>
+                        <input type="file" id="videoFile" style="display:none">
+                        <div class="btn-box"> <div class="btn-inner" id="startTest">开始测试</div> </div>
+                    </div>
+                    <div>
+                        <div class="starrr"></div>
+                        <div class="btn-box"> <div class="btn-inner">打分反馈</div> </div>
+                    </div>
                 </div>
 
 

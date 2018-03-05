@@ -2,18 +2,18 @@
 
 
 body{
-    background-color: #1bbc9b;
-    color: white;
+    background-color: #f8fdfd;
+    color: black;
 }
 
 .section {
     text-align: center;
     font: 2rem "Microsoft Yahei";
-    color: #fff;
+    color: black;
 }
 
 .btn-inner{
-    color: #fff;
+    color: black;
     text-align: center;
     border: rgba(255,255,255,0.3) 2px solid;
     /*display: inline-block;*/
@@ -41,7 +41,7 @@ body{
     }
     100%{
         border: rgba(255,255,255,1) 2px solid;
-        background-color: white;
+        background-color: rgba(225, 246, 247,1);
         color: black;
         font-size: 1.5rem;
     }
@@ -52,7 +52,7 @@ body{
     padding: 2px;
     background-color: transparent;
     display: inline-block;
-    border:rgba(255,255,255,0.2) 2px solid;
+    border:rgba(225, 246, 247,0.2) 2px solid;
     cursor: pointer;
 }
 
@@ -62,10 +62,10 @@ body{
 }
 @keyframes btnborder {
     80%{
-        border:rgba(255,255,255,0.8) 2px solid;
+        border:rgba(225, 246, 247,0.8) 2px solid;
     }
     100%{
-        border:rgba(255,255,255,1) 2px solid;
+        border:rgba(225, 246, 247,0.8) 2px solid;
     }
 }
 
@@ -97,17 +97,17 @@ body{
     box-sizing: border-box;
     height: 3rem;
     line-height: 3rem;
-    color: rgba(255,255,255,0.6);
+    color: rgba(0,0,0,0.6);
 }
 
 .my-nav>ul>li:hover{
-    color: #ffffff;
-    border-bottom: rgba(255,255,255,1) 2px solid;
+    color: #000000;
+    border-bottom: rgba(0,0,0,1) 2px solid;
 }
 
 .my-nav>ul>li.active{
-    color: #fff;
-    border-bottom: rgba(255,255,255,1) 2px solid;
+    color: rgb(0, 0, 0);
+    border-bottom: rgba(0,0,0,1) 2px solid;
 }
 
 
@@ -122,6 +122,8 @@ body{
 
 .bottom-options {
     margin-top: 10vh;
+    display: flex;
+    justify-content: space-around;
 }
 
 .long-words-box{
@@ -192,6 +194,10 @@ body{
     position: fixed;
     bottom:3rem;
     z-index: 111111;
+    
+}
+#know-btn .btn-inner{
+    color: #fff;
 }
 
 #camera{
@@ -214,4 +220,17 @@ body{
 #col-chart{
     height: 100%;
     width: 100%;
+}
+
+.v-box{
+    height: inherit;
+    width: 90%;
+    margin: 0 auto;
+    border: white;
+    box-shadow: 3px 3px 6px 3px #e0e0e0;
+}
+
+.v-box .am-panel-hd{
+    background-color: #e1f5f8;
+    border: 0px;
 }

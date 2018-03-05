@@ -168,7 +168,7 @@ function buildFullpage() {
   })
   //注册page
   $('#dowebok').fullpage({
-    sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
+    sectionsColor: ['#f8fdfd', '#e0f5f8', '#d2ebff', '#88fdef'],
     onLeave:function (index,nextIndex,direction) {
 
       if(pageIndex==1){

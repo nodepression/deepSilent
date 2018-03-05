@@ -26,7 +26,10 @@ function bindPage3() {
                     window.URL.revokeObjectURL(src);
 
                 };
-                initchart();
+                $('#startTest').click(function(){
+                    initchart();
+                })
+                
                 $("#player").css({ "width": "100%", "height": "100%" }).attr('controls',"controls");
             }
         }
@@ -63,3 +66,6 @@ function startCamera() {
         alert("没有userMedia API")
     }
 }
+
+
+
