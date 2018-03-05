@@ -11,3 +11,28 @@
     max-height: 55vh;
     
 }
+
+/* 以下是第四页部分的css */
+._buttons{
+    text-align:left;
+    margin-left: 5vw;
+
+}
+#initial-video{
+    height: 50vh;
+    width: 40vw;
+}
+#initial-video{
+    float: left;
+    margin-left: 5vw;
+    height: 50vh;
+    width: 40vw;
+    display: none;
+}
+
+#processed-video{
+    float: right;
+    margin-right: 5vw;
+    height: 50vh;
+    width: 40vw;
+}

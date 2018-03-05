@@ -54,6 +54,7 @@ body{
     display: inline-block;
     border:rgba(225, 246, 247,0.2) 2px solid;
     cursor: pointer;
+    margin-left: 0px;
 }
 
 .btn-box:hover{

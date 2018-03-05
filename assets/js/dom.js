@@ -136,37 +136,63 @@ const dom2 = `<div id="dowebok">
 
 const dom3 = `<div id="dowebok">
                <div class="section">
-                <div class="am-g two-boxes" >
-                    <div class="am-u-sm-6 video-box"><div>摄像区</div><video id="camera"   autoplay src="">视频</video></div>
-                    <div class="am-u-sm-6 video-box">文字（唇语翻译结果）</div>
-                </div>
-                <div class="bottom-options ">
-                    <div class="btn-box" id="camera-btn"> <div class="btn-inner">开启摄像头</div> </div>
-                    <div class="btn-box"> <div class="btn-inner">开始测试</div> </div>
-                    <div class="starrr"></div>
-                    <div class="btn-box"> <div class="btn-inner">打分反馈</div> </div>
-                </div>
+                    <div class="am-g two-boxes" >
+                        <div class="am-u-sm-6 video-box"><div>摄像区</div><video id="camera"   autoplay src="">视频</video></div>
+                        <div class="am-u-sm-6 video-box">文字（唇语翻译结果）</div>
+                    </div>
+                    <div class="bottom-options ">
+                        <div class="btn-box" id="camera-btn"> <div class="btn-inner">开启摄像头</div> </div>
+                        <div class="btn-box"> <div class="btn-inner">开始测试</div> </div>
+                        <div class="starrr"></div>
+                        <div class="btn-box"> <div class="btn-inner">打分反馈</div> </div>
+                    </div>
 
 
-            </div>
-            <div class="section">
-                <div class="am-g two-boxes" style="height: 30vh">
-                    <div class="am-u-sm-6" id="pic1-left">图片</div>
-                    <div class="am-u-sm-6 " id="pic2-right">高光图</div>
                 </div>
-                <div class="long-words-box" id="word1">
-                    111111111
+                <div class="section">
+                    <div class="am-g two-boxes" style="height: 30vh">
+                        <div class="am-u-sm-6" id="pic1-left">图片</div>
+                        <div class="am-u-sm-6 " id="pic2-right">高光图</div>
+                    </div>
+                    <div class="long-words-box" id="word1">
+                        111111111
+                    </div>
+                    <!--<div class="slide"><h3>第二屏的第一屏</h3></div>-->
+                    <!--<div class="slide"><h3>第二屏的第二屏</h3></div>-->
+                    <!--<div class="slide"><h3>第二屏的第三屏</h3></div>-->
                 </div>
-                <!--<div class="slide"><h3>第二屏的第一屏</h3></div>-->
-                <!--<div class="slide"><h3>第二屏的第二屏</h3></div>-->
-                <!--<div class="slide"><h3>第二屏的第三屏</h3></div>-->
-            </div>
-            <div class="section">
-                <div class="am-g two-boxes" style="height: 30vh">
-                    <div class="am-u-sm-6" id="pic3-left">图片</div>
-                    <div class="am-u-sm-6"><div id="word2">介绍介绍2222222222222</div> </div>
+                <div class="section">
+                    <div class="am-g two-boxes" style="height: 30vh">
+                        <div class="am-u-sm-6" id="pic3-left">图片</div>
+                        <div class="am-u-sm-6"><div id="word2">介绍介绍2222222222222</div> </div>
+
+                    </div>
+                </div>
+                <div class="section">
+
+
+                    <div class="bottom-options">
+                        <div class="_buttons">
+                            <div class="btn-box" id="video-btn" > 
+                                <div class="btn-inner">选择视频</div> 
+                            </div>
+
+                            <div class="btn-box"> 
+                                <div class="btn-inner">上传视频</div> 
+                            </div>
+
+                            <div class="btn-box"> 
+                                <div class="btn-inner">开始处理</div> 
+                            </div>
+                        </div>
+
+                        <input type="file" id="initial-video">
+
+                        <video id="processed-video">
+                            <source src="assets/video/test.mp4" type="video/mp4">
+                        </video>
+                        
+                    </div>
 
                 </div>
-            </div>
-            <div class="section"></div>
-            </div>`
+        </div>`
