@@ -26,7 +26,7 @@ function bindPage3() {
                     window.URL.revokeObjectURL(src);
 
                 };
-
+                initchart();
                 $("#player").css({ "width": "100%", "height": "100%" }).attr('controls',"controls");
             }
         }

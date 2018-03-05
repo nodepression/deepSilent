@@ -208,3 +208,10 @@ body{
 #try2{
     margin-top:10vh; 
 }
+
+
+
+#col-chart{
+    height: 100%;
+    width: 100%;
+}

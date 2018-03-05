@@ -108,13 +108,19 @@ function switchPages(lastIndex,nextIndex) {
             });
           }
           videoPlay();
-
+          $('header').css('display','none');
+          $('#know-btn').click(function(){
+            document.getElementById('nav-bar').children[0].children[1].click();
+          })
 
           }else if(pageIndex===1){
-            
+            $('header').css('display','block');
           }else if(pageIndex===2){
+            $('header').css('display','block');
+            
             bindPage3();
           }else if(pageIndex===3){
+            $('header').css('display','block');
             bindPage4();
           }
         }
@@ -136,7 +142,9 @@ $(function(){
     });
   }
   videoPlay();
-
+  $('#know-btn').click(function(){
+    document.getElementById('nav-bar').children[0].children[1].click();
+  })
 });
 
 

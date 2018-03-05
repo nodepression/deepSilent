@@ -1,7 +1,15 @@
 /**
  * Created by weng on 2018/3/3.
  */
-
+const header=`<header class="my-nav" id="nav-bar">
+<ul>
+    <li class="active">111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>444</li>
+    <!--<li>333</li>-->
+</ul>
+</header>`
 
 const dom0 = ` <div id="dowebok">
             <div class="section">
@@ -73,7 +81,7 @@ const dom2 = `<div id="dowebok">
                 <div class="section">
                 <div class="am-g two-boxes" >
                     <div class="am-u-sm-6 video-box"><div>视频区</div><video id="player"  autoplay src="">视频区</video></div>
-                    <div class="am-u-sm-6 video-box">文字（唇语翻译结果）</div>
+                    <div class="am-u-sm-6 video-box"><div>文字（唇语翻译结果）</div><div id="col-chart"></div></div>
                 </div>
                 <div class="bottom-options ">
                     <div class="btn-box" id="video-btn" > <div class="btn-inner">选择视频</div> </div>
