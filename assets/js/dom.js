@@ -151,29 +151,29 @@ const dom3 = `<div id="dowebok">
                 </div>
                 <div class="section">
 
-                                    <div class="am-g two-boxes" >
-                                        <div class="am-u-sm-6 video-box">
-                                            <div>视频区</div>
-                                            <video id="player"  autoplay src="">视频区</video>
-                                        </div>
-                                        <div class="am-u-sm-6 video-box">
-                                            <div>文字（唇语翻译结果）</div>
-                                        <div id="col-chart"></div></div>
-                                    </div>
 
-                                    <div class="bottom-options ">
-                                        <div class="btn-box" id="video-btn" > 
-                                            <div class="btn-inner">选择视频</div> 
-                                        </div>
-                                        <input type="file" id="videoFile" style="display:none">
-                                        <div class="btn-box"> 
-                                            <div class="btn-inner">开始测试</div> 
-                                        </div>
-                                        <div class="starrr"></div>
-                                        <div class="btn-box">
-                                            <div class="btn-inner">打分反馈</div>
-                                        </div>
-                                    </div>
+                    <div class="bottom-options">
+                        <div class="_buttons">
+                            <div class="btn-box" id="video-btn" > 
+                                <div class="btn-inner">选择视频</div> 
+                            </div>
+
+                            <div class="btn-box"> 
+                                <div class="btn-inner">上传视频</div> 
+                            </div>
+
+                            <div class="btn-box"> 
+                                <div class="btn-inner">开始处理</div> 
+                            </div>
+                        </div>
+
+                        <input type="file" id="initial-video">
+
+                        <video id="processed-video">
+                            <source src="assets/video/test.mp4" type="video/mp4">
+                        </video>
+                        
+                    </div>
 
                 </div>
         </div>`
