@@ -89,7 +89,7 @@ const dom4 = `<div id="dowebok">
                             </div>
                         </div>
                     </div>
-                    <div class="am-u-sm-6 video-box">
+                    <div class="am-u-sm-6 video-box" id="toScreen">
                         <div class="am-panel am-panel-primary v-box">
                             <div class="am-panel-hd">结果</div>
                             <div class="am-panel-bd" style="height:100%">
@@ -108,6 +108,7 @@ const dom4 = `<div id="dowebok">
                     <div>
                         <div class="starrr"></div>
                         <div class="btn-box"> <div class="btn-inner">打分反馈</div> </div>
+                        <div class="btn-box"> <div class="btn-inner"><a id="down_button">下载</a></div> </div>
                     </div>
                 </div>
 

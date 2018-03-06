@@ -8,3 +8,11 @@ function setSpeed() {
         }
     });
 }
+
+
+function getScreen(){
+            var canvas = $("canvas")[0];
+            $('#down_button').attr('href', canvas.toDataURL());
+            $('#down_button').attr('download', 'score.png');
+            var html_canvas = canvas.toDataURL();
+}

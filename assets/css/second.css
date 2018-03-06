@@ -39,4 +39,6 @@
 }
 ._nav{
     background-color: #89cff0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #888888
 }

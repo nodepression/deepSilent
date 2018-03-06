@@ -121,7 +121,6 @@ function switchPages(lastIndex,nextIndex) {
             $('header').css('display','block');
           }else if(pageIndex===4){
             $('header').css('display','block');
-            
             bindPage3();
           }else if(pageIndex===5){
             $('header').css('display','block');
@@ -220,11 +219,6 @@ function buildFullpage() {
           $left.animateCss('bounceInLeft')
           $right.animateCss('bounceInRight')
         }
-
-
-
-
-
 
       }
 
