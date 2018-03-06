@@ -152,7 +152,7 @@ const dom4 = `<div id="dowebok">
                         <div class="am-panel am-panel-primary v-box">
                             <div class="am-panel-hd">视频区</div>
                             <div class="am-panel-bd" style="padding:0">
-                            <video id="player"  autoplay src="">视频区</video>
+                            <video id="player"  autoplay src="assets/video/test.mp4">视频区</video>
                             </div>
                         </div>
                     </div>
@@ -261,7 +261,7 @@ const dom5 = `<div id="dowebok">
                             <div class="am-panel am-panel-primary v-box">
                                 <div class="am-panel-hd">视频区</div>
                                 <div class="am-panel-bd" style="padding:0">
-                                    <video id="player1"  src="">视频区</video>
+                                    <video id="player1"  src="assets/video/test.mp4">视频区</video>
                                 </div>
                             </div>
                         </div>
