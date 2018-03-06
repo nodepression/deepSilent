@@ -54,7 +54,8 @@ function initchart(){
             if(attr !='mp4'&&attr !='avi'&&attr !='rmvb'&&attr !='3gp'&&attr !='mkv'&&attr !='wmv'&&attr !='vob'&&attr !='flv'&&attr !='swf'&&attr !='mov'&&attr !='mpg'){
                 alert('格式不支持')
             }else{
-                document.getElementById('dropList').innerHTML+=`<li><a href="javascript:bindeAnalyse()">${fileName}</a></li>`
+                document.getElementById('dropList').innerHTML+=`<li><a href="javascript:bindeAnalyse()">${fileName}</a></li>`;
+                console.log(document.getElementById('dropList').innerHTML)
             }
         }
     });

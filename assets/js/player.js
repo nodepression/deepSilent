@@ -28,9 +28,10 @@ function bindPage3() {
                 };
                 $('#startTest').click(function(){
                     initchart();
+                    setTimeout(function(){getScreen()},1000);
                 })
                 
-                $("#player").css({ "width": "100%", "height": "100%" }).attr('controls',"controls");
+                $("#player").attr('controls',"controls");
             }
         }
 
@@ -101,7 +102,7 @@ function bindPage5(){
                     synVideo()
 
                 })
-                $("#player1").css({ "width": "100%", "height": "100%" }).attr('controls',"controls");
+                $("#player1").attr('controls',"controls");
                 
             }
         }

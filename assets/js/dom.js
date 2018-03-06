@@ -151,7 +151,7 @@ const dom4 = `<div id="dowebok">
                     <div class="am-u-sm-6 video-box">
                         <div class="am-panel am-panel-primary v-box">
                             <div class="am-panel-hd">视频区</div>
-                            <div class="am-panel-bd">
+                            <div class="am-panel-bd" style="padding:0">
                             <video id="player"  autoplay src="">视频区</video>
                             </div>
                         </div>
@@ -260,7 +260,7 @@ const dom5 = `<div id="dowebok">
                         <div class="am-u-sm-6 video-box">
                             <div class="am-panel am-panel-primary v-box">
                                 <div class="am-panel-hd">视频区</div>
-                                <div class="am-panel-bd">
+                                <div class="am-panel-bd" style="padding:0">
                                     <video id="player1"  src="">视频区</video>
                                 </div>
                             </div>
@@ -268,7 +268,7 @@ const dom5 = `<div id="dowebok">
                         <div class="am-u-sm-6 video-box">
                             <div class="am-panel am-panel-primary v-box">
                                 <div class="am-panel-hd">结果</div>
-                                <div class="am-panel-bd" style="height:100%;width:100%;max-width:100%;max-height:100%">
+                                <div class="am-panel-bd" style="padding:0" style="height:100%;width:100%;max-width:100%;max-height:100%">
                                     <video id="processed-video" src=""></video>
                                 </div>
                             </div> 
