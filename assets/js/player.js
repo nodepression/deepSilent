@@ -127,9 +127,5 @@ function synVideo(){
          })
     })
        
-
-
-
-
 }
 

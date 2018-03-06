@@ -24,6 +24,73 @@ const dom0 = ` <div id="dowebok">
 
 const dom3=` <div id="dowebok">
             <div class="section">
+            <div class="top-btn">
+                    <div class="am-dropdown" data-am-dropdown>
+                        <button class="am-btn am-btn-default am-dropdown-toggle" data-am-dropdown-toggle>选择视频 <span class="am-icon-caret-down"></span></button>
+                        <ul class="am-dropdown-content" id="dropList">
+                          
+                        </ul>
+                      </div>
+                      <button type="button" class="am-btn am-btn-default" id="upvideo">上传视频</button>
+                      <input type="file" id="videoFile0" style="display:none">
+                      <button type="button" class="am-btn am-btn-default" id="analyse">开始分析</button>
+                </div>
+                <div class="am-g two-boxes two-charts" >
+                    <div class="am-u-sm-6 video-box">
+                        <div class="am-panel am-panel-primary v-box">
+                            <div class="am-panel-hd">折线图</div>
+                            <div class="am-panel-bd" id="line-chart" style="height:100%">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-6 video-box">
+                        <div class="am-panel am-panel-primary v-box">
+                            <div class="am-panel-hd">柱状图</div>
+                            <div class="am-panel-bd" id="c-chart" style="height:100%">
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="am-g two-boxes two-charts" >
+                    <div class="am-u-sm-6 video-box">
+                        <div class="am-panel am-panel-primary v-box">
+                            <div class="am-panel-hd">饼图图</div>
+                            <div class="am-panel-bd" style="height:100%" id="pin-chart">
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-6 video-box">
+                        <div class="am-panel am-panel-primary v-box flex-box">
+                            <div class="am-panel-hd">表格</div>
+                            <div class="am-panel-bd tc" style="height:100%">
+                            <div id="table-chart">
+                                <table class="am-table am-table-bordered am-table-radius am-table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>时间</th>
+                                            <th>事件描述</th>
+                                            <th>可能性</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> </td>
+                                            <td> </td>
+                                            <td> </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="section">
                     <h2 class="side-title">摘要</h2>
                     <h2 class="content-title">摘要</h2>
                     <div class="long-words-box" id="word1">
