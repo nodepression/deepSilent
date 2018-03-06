@@ -119,6 +119,7 @@ function switchPages(lastIndex,nextIndex) {
 
           }else if(pageIndex===3){
             $('header').css('display','block');
+            init4Chart();
           }else if(pageIndex===4){
             $('header').css('display','block');
             
@@ -150,6 +151,7 @@ $(function(){
   $('#know-btn').click(function(){
     document.getElementById('nav-bar').children[0].children[3].click();
   })
+  
 });
 
 

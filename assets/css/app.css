@@ -236,3 +236,31 @@ body{
     background-color: #e1f5f8;
     border: 0px;
 }
+
+.two-charts .video-box{
+    height: 40vh;
+}
+.two-charts{
+    height: 42vh;
+}
+
+.tc{
+    
+    overflow: scroll;
+    font-size: 1.3rem;
+}
+.am-panel-bd{
+    flex: 1;
+}
+.flex-box,.am-panel{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.top-btn{
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    margin-left: 5%;
+}
