@@ -26,18 +26,17 @@ function bindPage3() {
                     window.URL.revokeObjectURL(src);
 
                 };
-                $('#startTest').click(function(){
-                    initchart();
-                    setTimeout(function(){getScreen()},1000);
-                })
+                
                 
                 $("#player").attr('controls',"controls");
             }
         }
-
-
-
     });
+    $('#startTest').click(function(){
+        initchart();
+        setTimeout(function(){getScreen()},1000);
+    })
+
 }
 
 
@@ -97,19 +96,18 @@ function bindPage5(){
                     window.URL.revokeObjectURL(src);
 
                 };
-                $('#startTest').click(function(){
-                    $('#processed-video').attr('src','assets/video/test.mp4');
-                    synVideo()
-
-                })
+                
                 $("#player1").attr('controls',"controls");
                 
             }
         }
 
-
-
     });
+    $('#startTest').click(function(){
+        $('#processed-video').attr('src','assets/video/test.mp4');
+        synVideo()
+
+    })
 }
 
 function synVideo(){
@@ -127,6 +125,10 @@ function synVideo(){
              processv.play();
          })
     })
+    if(v1.currentTime!=0){
+        processv.currentTime=v1.currentTime;
+        processv.play();
+    }
        
 }
 
