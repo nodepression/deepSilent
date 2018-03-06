@@ -86,7 +86,7 @@ body{
     align-items: center;
     list-style: none;
     margin: 0 auto;
-    width: 80%;
+    width: 90%;
     height: 4rem;
     line-height: 3rem;
     padding: 0;
@@ -150,17 +150,18 @@ body{
 
 
 .covervid-wrapper {
-    margin: 0;
-    padding: 0;
     position: fixed;
+    top: 0;
     right: 0;
+    left: 0;
     bottom: 0;
     min-width: 100%;
+    max-width: 100%;
     min-height: 100%;
     width: auto;
     height: auto;
-    z-index: 100;
 }
+
 .side-title{
     text-align: left;
     width: 80%;
