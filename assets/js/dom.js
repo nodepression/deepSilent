@@ -171,28 +171,41 @@ const dom3 = `<div id="dowebok">
                 <div class="section">
 
 
-                    <div class="bottom-options">
+                    <div class="bottom-options" style="justify-content: left;">
                         <div class="_buttons">
                             <div class="btn-box" id="video-btn" > 
                                 <div class="btn-inner">选择视频</div> 
                             </div>
-
-                            <div class="btn-box"> 
+                            <input type="file" id="videoFile" style="display:none">
+                            <div class="btn-box" > 
                                 <div class="btn-inner">上传视频</div> 
                             </div>
 
-                            <div class="btn-box"> 
+                            <div class="btn-box" id="startTest"> 
                                 <div class="btn-inner">开始处理</div> 
                             </div>
+                           
                         </div>
-
-                        <input type="file" id="initial-video">
-
-                        <video id="processed-video">
-                            <source src="assets/video/test.mp4" type="video/mp4">
-                        </video>
-                        
                     </div>
-
+                    <div class="am-g two-boxes" >
+                        <div class="am-u-sm-6 video-box">
+                            <div class="am-panel am-panel-primary v-box">
+                                <div class="am-panel-hd">视频区</div>
+                                <div class="am-panel-bd">
+                                <video id="player"  autoplay src="">视频区</video>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-u-sm-6 video-box">
+                            <div class="am-panel am-panel-primary v-box">
+                                <div class="am-panel-hd">结果</div>
+                                <div class="am-panel-bd" style="height:100%">
+                                    <video id="processed-video">
+                                        <source id="p-video" src="" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
                 </div>
         </div>`

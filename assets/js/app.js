@@ -122,6 +122,7 @@ function switchPages(lastIndex,nextIndex) {
           }else if(pageIndex===3){
             $('header').css('display','block');
             bindPage4();
+            bindPage5()
           }
         }
 

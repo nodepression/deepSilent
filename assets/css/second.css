@@ -31,8 +31,9 @@
 }
 
 #processed-video{
-    float: right;
+    /* float: right;
     margin-right: 5vw;
     height: 50vh;
-    width: 40vw;
+    width: 40vw; */
+    width: 100%;
 }
