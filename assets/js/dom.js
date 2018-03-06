@@ -25,7 +25,7 @@ const dom0 = ` <div id="dowebok">
 const dom3=` <div id="dowebok">
             <div class="section">
             <div class="top-btn">
-                    <div class="am-dropdown" data-am-dropdown>
+                    <div class="am-dropdown" id="chose-btn" data-am-dropdown>
                         <button class="am-btn am-btn-default am-dropdown-toggle" data-am-dropdown-toggle>选择视频 <span class="am-icon-caret-down"></span></button>
                         <ul class="am-dropdown-content" id="dropList">
                           

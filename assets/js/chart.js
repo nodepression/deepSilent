@@ -41,6 +41,9 @@ function initchart(){
  * 绑定
  * 
  */
+    $('#chose-btn').click(function () {
+        $('#chose-btn').dropdown('toggle')
+      })
     $("#upvideo").click(function () {
         $("#videoFile0").click();
     })
@@ -59,6 +62,7 @@ function initchart(){
             }
         }
     });
+
     if(arguments.length==0){
         initLinechart([]);
         initc_chart([]);
