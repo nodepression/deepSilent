@@ -24,10 +24,14 @@
 
       bar[i].addEventListener('click',(function(i){
         console.log(i);
+        if(i==1||i==2){
 
-        return ()=>switchPages(window.pageIndex,i)
-
-
+        }else{
+          
+            return ()=>switchPages(window.pageIndex,i)
+          
+        }
+        
       })(i));
 
     }
@@ -110,16 +114,16 @@ function switchPages(lastIndex,nextIndex) {
           videoPlay();
           $('header').css('display','none');
           $('#know-btn').click(function(){
-            document.getElementById('nav-bar').children[0].children[1].click();
+            document.getElementById('nav-bar').children[0].children[3].click();
           })
 
-          }else if(pageIndex===1){
+          }else if(pageIndex===3){
             $('header').css('display','block');
-          }else if(pageIndex===2){
+          }else if(pageIndex===4){
             $('header').css('display','block');
             
             bindPage3();
-          }else if(pageIndex===3){
+          }else if(pageIndex===5){
             $('header').css('display','block');
             bindPage4();
             bindPage5()
@@ -144,7 +148,7 @@ $(function(){
   }
   videoPlay();
   $('#know-btn').click(function(){
-    document.getElementById('nav-bar').children[0].children[1].click();
+    document.getElementById('nav-bar').children[0].children[3].click();
   })
 });
 

@@ -4,3 +4,4 @@ node_modules/
 *.mp4
 /assets/video/
 .history/
+.Ds_Store
