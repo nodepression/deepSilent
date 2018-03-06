@@ -192,7 +192,7 @@ const dom3 = `<div id="dowebok">
                             <div class="am-panel am-panel-primary v-box">
                                 <div class="am-panel-hd">视频区</div>
                                 <div class="am-panel-bd">
-                                <video id="player"  autoplay src="">视频区</video>
+                                    <video id="player"  autoplay src="">视频区</video>
                                 </div>
                             </div>
                         </div>
