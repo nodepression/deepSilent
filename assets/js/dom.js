@@ -22,7 +22,7 @@ const dom0 = ` <div id="dowebok">
 
 
 
-const dom3=` <div id="dowebok">
+const dom5=` <div id="dowebok">
             <div class="section">
             <div class="top-btn">
                     <div class="am-dropdown" id="chose-btn" data-am-dropdown>
@@ -145,9 +145,9 @@ const dom3=` <div id="dowebok">
 
 
 
-const dom4 = `<div id="dowebok">
+const dom3 = `<div id="dowebok">
                 <div class="section">
-                <div class="am-g two-boxes" >
+                <div class="am-g two-boxes" style="margin-top: 5rem;">
                     <div class="am-u-sm-6 video-box">
                         <div class="am-panel am-panel-primary v-box">
                             <div class="am-panel-hd">视频区</div>
@@ -174,7 +174,7 @@ const dom4 = `<div id="dowebok">
                     </div>
                     <div>
                         <div class="starrr"></div>
-                        <div class="btn-box"> <div class="btn-inner">打分反馈</div> </div>
+                        <div class="btn-box" id="score-btn"> <div class="btn-inner">打分反馈</div> </div>
                         <div class="btn-box"> <div class="btn-inner"><a id="down_button">下载</a></div> </div>
                     </div>
                 </div>
@@ -203,44 +203,9 @@ const dom4 = `<div id="dowebok">
             </div>`
 
 
-const dom5 = `<div id="dowebok">
-               <div class="section">
-                    <div class="am-g two-boxes" >
-                        <div class="am-u-sm-6 video-box"><div>摄像区</div><video id="camera"   autoplay src="">视频</video></div>
-                        <div class="am-u-sm-6 video-box">文字（唇语翻译结果）</div>
-                    </div>
-                    <div class="bottom-options ">
-                        <div class="btn-box" id="camera-btn"> <div class="btn-inner">开启摄像头</div> </div>
-                        <div class="btn-box"> <div class="btn-inner">开始测试</div> </div>
-                        <div class="starrr"></div>
-                        <div class="btn-box"> <div class="btn-inner">打分反馈</div> </div>
-                    </div>
-
-
-                </div>
-                <div class="section">
-                    <div class="am-g two-boxes" style="height: 30vh">
-                        <div class="am-u-sm-6" id="pic1-left">图片</div>
-                        <div class="am-u-sm-6 " id="pic2-right">高光图</div>
-                    </div>
-                    <div class="long-words-box" id="word1">
-                        111111111
-                    </div>
-                    <!--<div class="slide"><h3>第二屏的第一屏</h3></div>-->
-                    <!--<div class="slide"><h3>第二屏的第二屏</h3></div>-->
-                    <!--<div class="slide"><h3>第二屏的第三屏</h3></div>-->
-                </div>
-                <div class="section">
-                    <div class="am-g two-boxes" style="height: 30vh">
-                        <div class="am-u-sm-6" id="pic3-left">图片</div>
-                        <div class="am-u-sm-6"><div id="word2">介绍介绍2222222222222</div> </div>
-
-                    </div>
-                </div>
-                <div class="section">
-
-
-                    <div class="bottom-options" style="justify-content: left;">
+const dom4 = `<div id="dowebok">
+                 <div class="section">
+                    <div class="bottom-options" style="justify-content: left;margin-top:0">
                         <div class="_buttons">
                             <div class="btn-box" id="video-btn" > 
                                 <div class="btn-inner">选择视频</div> 
@@ -275,4 +240,36 @@ const dom5 = `<div id="dowebok">
                         </div>
                     </div>
                 </div>
+               <!--<div class="section">-->
+                    <!--<div class="am-g two-boxes" >-->
+                        <!--<div class="am-u-sm-6 video-box"><div>摄像区</div><video id="camera"   autoplay src="">视频</video></div>-->
+                        <!--<div class="am-u-sm-6 video-box">文字（唇语翻译结果）</div>-->
+                    <!--</div>-->
+                    <!--<div class="bottom-options ">-->
+                        <!--<div class="btn-box" id="camera-btn"> <div class="btn-inner">开启摄像头</div> </div>-->
+                        <!--<div class="btn-box"> <div class="btn-inner">开始测试</div> </div>-->
+                        <!--<div class="starrr"></div>-->
+                        <!--<div class="btn-box"> <div class="btn-inner">打分反馈</div> </div>-->
+                    <!--</div>-->
+
+
+                <!--</div>-->
+                <div class="section">
+                    <div class="am-g two-boxes" style="height: 30vh">
+                        <div class="am-u-sm-6" id="pic1-left">图片</div>
+                        <div class="am-u-sm-6 " id="pic2-right">高光图</div>
+                    </div>
+                    <div class="long-words-box" id="word1">
+                        111111111
+                    </div>
+
+                </div>
+                <div class="section">
+                    <div class="am-g two-boxes" style="height: 30vh">
+                        <div class="am-u-sm-6" id="pic3-left">图片</div>
+                        <div class="am-u-sm-6"><div id="word2">介绍介绍2222222222222</div> </div>
+
+                    </div>
+                </div>
+               
         </div>`

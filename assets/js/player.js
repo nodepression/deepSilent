@@ -37,6 +37,15 @@ function bindPage3() {
         setTimeout(function(){getScreen()},1000);
     })
 
+    $('#score-btn').click(function(){
+        if(window.score===null){
+
+        }else{
+            alert('您的打分是：'+window.score)
+        }
+        
+    })
+
 }
 
 

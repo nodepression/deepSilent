@@ -117,13 +117,13 @@ function switchPages(lastIndex,nextIndex) {
             document.getElementById('nav-bar').children[0].children[3].click();
           })
 
-          }else if(pageIndex===3){
+          }else if(pageIndex===5){
             $('header').css('display','block');
             init4Chart();
-          }else if(pageIndex===4){
+          }else if(pageIndex===3){
             $('header').css('display','block');
             bindPage3();
-          }else if(pageIndex===5){
+          }else if(pageIndex===4){
             $('header').css('display','block');
             bindPage4();
             bindPage5()
@@ -166,10 +166,11 @@ $(function(){
  * *********************/
 
 function buildFullpage() {
+  window.score=null;
   //注册打分工具
   $('.starrr').starrr({
     change: function(e, value){
-      alert('new rating is ' + value)
+      window.score=value;
     }
   })
   //注册page
