@@ -6,7 +6,7 @@ function bindPage3() {
         $("#videoFile").click();
 
     })
-
+    initchart();
     $("#videoFile").change(function (file) {
         if(file.target.files[0]!=undefined){
             $("body").append(file.target.files[0]);
@@ -33,8 +33,14 @@ function bindPage3() {
         }
     });
     $('#startTest').click(function(){
+<<<<<<< HEAD
         initchart();
         setTimeout(function(){getScreen(0,"score.png")},1000);
+=======
+        new Toast().showMsg('请稍等...',2000);
+        setTimeout(function(){getScreen()},2000);
+        setTimeout(function(){initchart(true)},2000);
+>>>>>>> 487dc0db27016fa9c1e6905a64dc706ec8056847
     })
 
     $('#score-btn').click(function(){
@@ -122,8 +128,12 @@ function bindPage5(){
 
     });
     $('#startTest').click(function(){
-        $('#processed-video').attr('src','assets/video/test.mp4');
-        synVideo()
+        new Toast().showMsg('请稍等...',2000);
+        setTimeout(function(){
+            $('#processed-video').attr('src','assets/video/test.mp4');
+            synVideo();
+        },2000)
+        
 
     })
 }

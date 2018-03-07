@@ -1,6 +1,10 @@
 
 function initchart(){
-    console.log('init')
+    // console.log('init')
+    var data0= [5, 20, 36, 10, 10, 20];
+    if(arguments.length==0){
+        data0=[];
+    }
     var colChart = echarts.init(document.getElementById('col-chart'));
     var option = {
         title: {
@@ -17,7 +21,7 @@ function initchart(){
         series: [{
             name: '销量',
             type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
+            data: data0
         }]
     }
     
@@ -92,7 +96,12 @@ function bindeAnalyse(){
         {value:1548, name:'搜索引擎'}
     ];
     var data4=[['2/12','111','111'],['2/12','111','111'],['2/12','111','111']];
-    init4Chart(data1,data2,data3,data4)
+
+    new Toast().showMsg('请稍等...',2000);
+    setTimeout(function(){
+        init4Chart(data1,data2,data3,data4)
+    },2000)
+    
     })
 }
 
