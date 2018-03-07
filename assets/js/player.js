@@ -6,7 +6,7 @@ function bindPage3() {
         $("#videoFile").click();
 
     })
-
+    initchart();
     $("#videoFile").change(function (file) {
         if(file.target.files[0]!=undefined){
             $("body").append(file.target.files[0]);
@@ -33,8 +33,9 @@ function bindPage3() {
         }
     });
     $('#startTest').click(function(){
-        initchart();
-        setTimeout(function(){getScreen()},1000);
+        new Toast().showMsg('请稍等...',2000);
+        setTimeout(function(){getScreen()},2000);
+        setTimeout(function(){initchart(true)},2000);
     })
 
     $('#score-btn').click(function(){
@@ -122,8 +123,12 @@ function bindPage5(){
 
     });
     $('#startTest').click(function(){
-        $('#processed-video').attr('src','assets/video/test.mp4');
-        synVideo()
+        new Toast().showMsg('请稍等...',2000);
+        setTimeout(function(){
+            $('#processed-video').attr('src','assets/video/test.mp4');
+            synVideo();
+        },2000)
+        
 
     })
 }

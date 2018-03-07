@@ -229,7 +229,7 @@ body{
     width: 90%;
     margin: 0 auto;
     border: white;
-    box-shadow: 3px 3px 6px 3px #e0e0e0;
+    box-shadow: 3px 3px 10px 5px #e0e0e0;
 }
 
 .v-box .am-panel-hd{
