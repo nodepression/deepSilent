@@ -34,6 +34,7 @@ const dom5=` <div id="dowebok">
                       <button type="button" class="am-btn am-btn-default" id="upvideo">上传视频</button>
                       <input type="file" id="videoFile0" style="display:none">
                       <button type="button" class="am-btn am-btn-default" id="analyse">开始分析</button>
+                      <button type="button" class="am-btn am-btn-default"><a id="down_button">下载</a></button>
                 </div>
                 <div class="am-g two-boxes two-charts" >
                     <div class="am-u-sm-6 video-box">
@@ -55,14 +56,14 @@ const dom5=` <div id="dowebok">
                 <div class="am-g two-boxes two-charts" >
                     <div class="am-u-sm-6 video-box">
                         <div class="am-panel am-panel-primary v-box">
-                            <div class="am-panel-hd">饼图图</div>
+                            <div class="am-panel-hd">饼状图</div>
                             <div class="am-panel-bd" style="height:100%" id="pin-chart">
                             
                             </div>
                         </div>
                     </div>
                     <div class="am-u-sm-6 video-box">
-                        <div class="am-panel am-panel-primary v-box flex-box">
+                        <div class="am-panel am-panel-primary v-box flex-box" id="_table">
                             <div class="am-panel-hd">表格</div>
                             <div class="am-panel-bd tc" style="height:100%">
                             <div id="table-chart">
@@ -156,17 +157,17 @@ const dom3 = `<div id="dowebok">
             </div>
             <div class="section">
                 <div class="am-g two-boxes" style="height: 30vh">
-                    <div class="am-u-sm-6" id="pic1-left">图片</div>
-                    <div class="am-u-sm-6 " id="pic2-right">高光图</div>
-                </div>
-                <div class="long-words-box" id="word1">
-                    111111111
-                </div>
-            </div>
-            <div class="section">
-                <div class="am-g two-boxes" style="height: 30vh">
-                    <div class="am-u-sm-6" id="pic3-left">图片</div>
-                    <div class="am-u-sm-6"><div id="word2">介绍介绍2222222222222</div> </div>
+                    <div class="am-u-sm-6" id="pic3-left"><img src="assets/img/model.png" ></div>
+                    <div class="am-u-sm-6">
+                        <div id="word2">
+                            Complete pipeline for multi-captioning videos with event descriptions. 
+                            We first extract C3d features from the input video frames. These frames
+                            are fed into our proposal network at varying stride to predict both short
+                            as well as long events. Each proposal with it's start and end time and its
+                            hidden representation is inputted into the captioning module, which uses context
+                            from neighboring events to generate each event description.
+                        </div> 
+                    </div>
 
                 </div>
             </div>
@@ -230,23 +231,28 @@ const dom4 = `<div id="dowebok">
                 <!--</div>-->
                 <div class="section">
                     <div class="am-g two-boxes" style="height: 30vh">
-                        <div class="am-u-sm-6" id="pic1-left">图片</div>
-                        <div class="am-u-sm-6 " id="pic2-right">高光图</div>
-                    </div>
-                    <div class="long-words-box" id="word1">
-                        111111111
-                    </div>
+                        <div class="am-u-sm-6" id="pic3-left"><img src="assets/img/dataset.png"></div>
+                        <div class="am-u-sm-6">
+                            <div id="word2">
+                                The ActivityNet Captions dataset connects videos to a series of 
+                                temporally annotated sentence descriptions. Each sentence covers 
+                                an unique segment of the video, describing multiple events that 
+                                occur. These events may occur over very long or short periods of 
+                                time and are not limited in any capacity, allowing them to co-occur. 
+                                On average, each of the 20k videos contains 3.65 temporally localized 
+                                sentences, resulting in a total of 100k sentences. We find that the number 
+                                of sentences per video follows a relatively normal distribution. Furthermore, 
+                                as the video duration increases, the number of sentences also increases. Each 
+                                sentence has an average length of 13.48 words, which is also normally distributed. 
+                                You can find more details of the dataset under the ActivityNet Captions Dataset section, 
+                                and under supplementary materials in the paper.
+                            </div> 
+                        </div>
 
+                    </div>
                 </div>
                 <div class="section">
-                    <div class="am-g two-boxes" style="height: 30vh">
-                        <div class="am-u-sm-6" id="pic3-left">图片</div>
-                        <div class="am-u-sm-6"><div id="word2">介绍介绍2222222222222</div> </div>
-
-                    </div>
-                </div>
-                <div class="section">
-                <h2 class="side-title">功能1 识别</h2>
+                <h2 class="side-title">识别</h2>
 
                 <div class="video-area">
                 <div class="change-speed">

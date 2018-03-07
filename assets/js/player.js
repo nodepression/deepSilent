@@ -34,7 +34,7 @@ function bindPage3() {
     });
     $('#startTest').click(function(){
         new Toast().showMsg('请稍等...',2000);
-        setTimeout(function(){getScreen()},2000);
+        setTimeout(function(){getScreen(0,"得分")},2000);
         setTimeout(function(){initchart(true)},2000);
     })
 

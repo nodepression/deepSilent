@@ -120,13 +120,19 @@ function switchPages(lastIndex,nextIndex) {
           }else if(pageIndex===5){
             $('header').css('display','block');
             init4Chart();
+
           }else if(pageIndex===3){
             $('header').css('display','block');
             bindPage3();
           }else if(pageIndex===4){
             $('header').css('display','block');
             bindPage4();
-            bindPage5()
+            bindPage5();
+
+            $('.speed').click(function(){
+              setSpeed();
+            })
+  
           }
         }
 
@@ -192,9 +198,6 @@ function buildFullpage() {
           $('.side-title').animateCss('bounceInLeft');
           $('.btn-box').animateCss('bounceInUp');
 
-          $('.speed').click(function(){
-            setSpeed();
-          })
 
         }else if(nextIndex===3){
           $('.side-title').animateCss('bounceInLeft');

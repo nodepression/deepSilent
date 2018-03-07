@@ -42,3 +42,7 @@
     border-radius: 5px;
     box-shadow: 2px 2px 2px #888888
 }
+
+#word2,#word1{
+    text-align: left;
+}
