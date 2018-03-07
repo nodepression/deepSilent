@@ -101,31 +101,6 @@ const dom5=` <div id="dowebok">
                     </div>
             </div>
             <div class="section">
-                <h2 class="side-title">功能1 识别</h2>
-
-                <div class="video-area">
-                <div class="change-speed">
-                    <span>速度调整: </span>
-                    <span><input class="speed" type="radio" name="vehicle" value="0.5" />0.5 </span>
-                    <span><input class="speed" type="radio" name="vehicle" value="1.0" checked="checked" />1.0 </span>
-                    <span><input class="speed" type="radio" name="vehicle" value="1.5" />1.5 </span>
-                    <span><input class="speed" type="radio" name="vehicle" value="2.0" />2.0 </span>
-                </div>
-
-                <div class="real-area">
-                    <video  id="testVideo" controls="controls">
-                        <source src="assets/video/test.mp4" type="video/mp4">
-                    </video>
-                </div>
-                </div>
-
-                <div class="btn-box">
-                    <div class="btn-inner">试一试</div>
-                </div>
-                
-            </div>
-
-            <div class="section">
                 <h2 class="side-title" style="margin-bottom: 10px;width: 90%">功能2 生成</h2>
 
                 <div class="am-g two-boxes" style="height: 30vh" id="img-box">
@@ -189,9 +164,6 @@ const dom3 = `<div id="dowebok">
                 <div class="long-words-box" id="word1">
                     111111111
                 </div>
-                <!--<div class="slide"><h3>第二屏的第一屏</h3></div>-->
-                <!--<div class="slide"><h3>第二屏的第二屏</h3></div>-->
-                <!--<div class="slide"><h3>第二屏的第三屏</h3></div>-->
             </div>
             <div class="section">
                 <div class="am-g two-boxes" style="height: 30vh">
@@ -205,7 +177,7 @@ const dom3 = `<div id="dowebok">
 
 const dom4 = `<div id="dowebok">
                  <div class="section">
-                    <div class="bottom-options" style="justify-content: left;margin-top:0">
+                    <div class="bottom-options" style="justify-content: space-between;margin-top:0">
                         <div class="_buttons">
                             <div class="btn-box" id="video-btn" > 
                                 <div class="btn-inner">选择视频</div> 
@@ -219,6 +191,10 @@ const dom4 = `<div id="dowebok">
                                 <div class="btn-inner">开始处理</div> 
                             </div>
                            
+                        </div>
+                        <div style="margin-right:12%">
+                            <div class="starrr s2"></div>
+                            <div class="btn-box" id="score-btn"> <div class="btn-inner">打分反馈</div> </div>
                         </div>
                     </div>
                     <div class="am-g two-boxes" >
@@ -271,5 +247,29 @@ const dom4 = `<div id="dowebok">
 
                     </div>
                 </div>
+                <div class="section">
+                <h2 class="side-title">功能1 识别</h2>
+
+                <div class="video-area">
+                <div class="change-speed">
+                    <span>速度调整: </span>
+                    <span><input class="speed" type="radio" name="vehicle" value="0.5" />0.5 </span>
+                    <span><input class="speed" type="radio" name="vehicle" value="1.0" checked="checked" />1.0 </span>
+                    <span><input class="speed" type="radio" name="vehicle" value="1.5" />1.5 </span>
+                    <span><input class="speed" type="radio" name="vehicle" value="2.0" />2.0 </span>
+                </div>
+
+                <div class="real-area">
+                    <video  id="testVideo" controls="controls">
+                        <source src="assets/video/test.mp4" type="video/mp4">
+                    </video>
+                </div>
+                </div>
+
+                <div class="btn-box">
+                    <div class="btn-inner">试一试</div>
+                </div>
+                
+            </div>
                
         </div>`

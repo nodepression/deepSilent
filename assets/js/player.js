@@ -38,10 +38,10 @@ function bindPage3() {
     })
 
     $('#score-btn').click(function(){
-        if(window.score===null){
+        if(window.score1===null){
 
         }else{
-            alert('您的打分是：'+window.score)
+            alert('您的打分是：'+window.score1)
         }
         
     })
@@ -58,6 +58,15 @@ function hasUserMedia() {
 function bindPage4() {
     $('#camera-btn').click(function () {
         startCamera();
+    })
+
+    $('#score-btn').click(function(){
+        if(window.score1===null){
+
+        }else{
+            alert('您的打分是：'+window.score1)
+        }
+        
     })
 }
 function startCamera() {

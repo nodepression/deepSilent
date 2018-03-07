@@ -166,13 +166,15 @@ $(function(){
  * *********************/
 
 function buildFullpage() {
-  window.score=null;
+  window.score1=null;
   //注册打分工具
   $('.starrr').starrr({
     change: function(e, value){
-      window.score=value;
+      console.log('111')
+      window.score1=value;
     }
   })
+  
   //注册page
   $('#dowebok').fullpage({
     sectionsColor: ['#f8fdfd', '#e0f5f8', '#d2ebff', '#88fdef'],
