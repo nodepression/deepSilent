@@ -176,7 +176,7 @@ const dom3 = `<div id="dowebok">
 
 const dom4 = `<div id="dowebok">
                  <div class="section">
-                    <div class="bottom-options" style="justify-content: space-between;margin-top:0">
+                    <div class="bottom-options" style="justify-content: space-between;margin-top:0;margin-bottom:3vh">
                         <div class="_buttons">
                             <div class="btn-box" id="video-btn" > 
                                 <div class="btn-inner">选择视频</div> 

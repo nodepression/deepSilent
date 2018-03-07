@@ -241,7 +241,7 @@ body{
     height: 50vh;
 }
 .two-charts{
-    height: 40vh;
+    height: 55vh;
 }
 
 .tc{
@@ -260,10 +260,10 @@ body{
 
 .top-btn{
     font-size: 0.7rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     text-align: left;
     margin-left: 4%;
-    margin-top: 12vh;
+    margin-top: 14vh;
 }
 
 
