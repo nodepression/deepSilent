@@ -103,11 +103,7 @@ function bindeAnalyse(){
     },2000)
 
     setTimeout(function(){
-        getScreen(0,"折线图");
-        getScreen(1,"柱状图");
-        getScreen(2,"饼状图");
         getScreen2();
-        alert("haha");
       },2000);
     
     })

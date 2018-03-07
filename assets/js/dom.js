@@ -34,7 +34,10 @@ const dom5=` <div id="dowebok">
                       <button type="button" class="am-btn am-btn-default" id="upvideo">上传视频</button>
                       <input type="file" id="videoFile0" style="display:none">
                       <button type="button" class="am-btn am-btn-default" id="analyse">开始分析</button>
-                      <button type="button" class="am-btn am-btn-default"><a id="down_button">下载</a></button>
+                      <button type="button" class="am-btn am-btn-default"><a id="down_button0">下载</a></button>
+                      <button type="button" class="am-btn am-btn-default"><a id="down_button1" style="display:none;">下载</a></button>
+                      <button type="button" class="am-btn am-btn-default"><a id="down_button2" style="display:none;">下载</a></button>
+                      <button type="button" class="am-btn am-btn-default"><a id="down_button3" style="display:none;">下载</a></button>
                 </div>
                 <div class="am-g two-boxes two-charts" >
                     <div class="am-u-sm-6 video-box">
