@@ -178,6 +178,7 @@ function buildFullpage() {
   //注册page
   $('#dowebok').fullpage({
     sectionsColor: ['#f8fdfd', '#e0f5f8', '#d2ebff', '#88fdef'],
+    scrollOverflow:true,
     onLeave:function (index,nextIndex,direction) {
 
       if(pageIndex==1){
@@ -204,7 +205,6 @@ function buildFullpage() {
 
         }
       }else{
-
 
 
 
