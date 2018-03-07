@@ -15,7 +15,7 @@ body{
 .btn-inner{
     color: black;
     text-align: center;
-    border: rgba(255,255,255,0.3) 2px solid;
+    border: rgba(0,0,0,0.3) 2px solid;
     /*display: inline-block;*/
     font-size: 1.4rem;
     margin:2px;
@@ -32,15 +32,15 @@ body{
 @keyframes btnhover {
     0%{
         color: #fff;
-        border: rgba(255,255,255,0.3) 2px solid;
+        border: rgba(0,0,0,0.3) 2px solid;
         background-color: transparent;
     }
     80%{
-        border: rgba(255,255,255,0.8) 2px solid;
+        border: rgba(119, 119, 119, 0.8) 2px solid;
         font-size: 1.47rem;
     }
     100%{
-        border: rgba(255,255,255,1) 2px solid;
+        border: rgba(0,0,0,1) 2px solid;
         background-color: rgba(225, 246, 247,1);
         color: black;
         font-size: 1.5rem;
@@ -52,7 +52,7 @@ body{
     padding: 2px;
     background-color: transparent;
     display: inline-block;
-    border:rgba(225, 246, 247,0.2) 2px solid;
+    border:rgba(0, 0, 0,0.2) 2px solid;
     cursor: pointer;
     margin-left: 0px;
 }
@@ -63,10 +63,10 @@ body{
 }
 @keyframes btnborder {
     80%{
-        border:rgba(225, 246, 247,0.8) 2px solid;
+        border:rgba(0, 0, 0,0.8) 2px solid;
     }
     100%{
-        border:rgba(225, 246, 247,0.8) 2px solid;
+        border:rgba(0, 0, 0,0.8) 2px solid;
     }
 }
 
@@ -98,17 +98,17 @@ body{
     box-sizing: border-box;
     height: 3rem;
     line-height: 3rem;
-    color: rgba(0,0,0,0.6);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .my-nav>ul>li:hover{
-    color: #000000;
-    border-bottom: rgba(0,0,0,1) 2px solid;
+    color: #ffffff;
+    border-bottom: rgb(255, 255, 255) 2px solid;
 }
 
 .my-nav>ul>li.active{
-    color: rgb(0, 0, 0);
-    border-bottom: rgba(0,0,0,1) 2px solid;
+    color: rgb(255, 255, 255);
+    border-bottom: rgb(255, 255, 255) 2px solid;
 }
 
 
@@ -233,7 +233,7 @@ body{
 }
 
 .v-box .am-panel-hd{
-    background-color: #e1f5f8;
+    background-color: #f7eeee;
     border: 0px;
 }
 
