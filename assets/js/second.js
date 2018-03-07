@@ -10,9 +10,19 @@ function setSpeed() {
 }
 
 
-function getScreen(){
-            var canvas = $("canvas")[0];
+function getScreen(i,name){
+            var canvas = $("canvas")[i];
             $('#down_button').attr('href', canvas.toDataURL());
-            $('#down_button').attr('download', 'score.png');
+            $('#down_button').attr('download', name);
             var html_canvas = canvas.toDataURL();
+}
+
+function getScreen2(){
+    html2canvas($("#_table"), {
+        onrendered: function (canvas) {
+            $('#down_button').attr('href', canvas.toDataURL());
+            $('#down_button').attr('download', '表格');
+            var html_canvas = canvas.toDataURL();
+        }
+    });
 }

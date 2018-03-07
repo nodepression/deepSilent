@@ -34,7 +34,7 @@ function bindPage3() {
     });
     $('#startTest').click(function(){
         initchart();
-        setTimeout(function(){getScreen()},1000);
+        setTimeout(function(){getScreen(0,"score.png")},1000);
     })
 
     $('#score-btn').click(function(){

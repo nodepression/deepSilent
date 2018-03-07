@@ -143,7 +143,7 @@ body{
     width: 80%;
     margin: 0 auto;
     line-height: 2.2rem;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     -webkit-font-smoothing: subpixel-antialiased; -moz-osx-font-smoothing: auto
 }
 
