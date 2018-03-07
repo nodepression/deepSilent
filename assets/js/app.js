@@ -77,9 +77,10 @@
 
 /***
  * **
- * 给每一大页之间的跳转
- * 绑定事件
- * 在这里
+ * 点击导航栏
+ * 注册事件
+ * 事件
+ * 用的
  *
  * *********************/
 
@@ -165,9 +166,12 @@ $(function(){
 
 /***
  * **
- * 给每一小页
- * 添加  动画
- * 在这里添加
+ * 下面这个方法
+ * 是用来
+ * 绑定
+ * 动画用的
+ * 动画
+ * 动画
  *
  * *********************/
 
@@ -184,6 +188,7 @@ function buildFullpage() {
   //注册page
   $('#dowebok').fullpage({
     sectionsColor: ['#f8fdfd', '#e0f5f8', '#d2ebff', '#88fdef'],
+    scrollOverflow:true,
     onLeave:function (index,nextIndex,direction) {
 
       if(pageIndex==1){
@@ -210,15 +215,14 @@ function buildFullpage() {
 
 
 
-
         if(nextIndex==2){
-          var $pic_left = $('#pic1-left');
+          var $pic_left = $('#pic3-left');
           var $pic_right = $('#pic2-right');
-          var $word = $('#word1');
+          var $word = $('#word2');
 
           $pic_left.animateCss('bounceInLeft');
           $pic_right.animateCss('bounceInRight');
-          $word.animateCss('bounceInUp');
+          $word.animateCss('bounceInRight');
 
 
         }else if(nextIndex==3){
