@@ -104,7 +104,7 @@ function bindeAnalyse(){
 
     setTimeout(function(){
         getScreen2();
-      },2000);
+      },3000);
     
     })
 }
