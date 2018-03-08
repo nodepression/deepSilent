@@ -127,7 +127,7 @@ const dom3 = `<div id="dowebok">
                 <div class="am-g two-boxes" style="margin-top: 5rem;">
                     <div class="am-u-sm-6 video-box">
                         <div class="am-panel am-panel-primary v-box">
-                            <div class="am-panel-hd">视频区</div>
+                            <div class="am-panel-hd">视频区域</div>
                             <div class="am-panel-bd" style="padding:0">
                             <video id="player"  autoplay src="assets/video/test.mp4" controls="controls">视频区</video>
                             </div>
@@ -135,8 +135,8 @@ const dom3 = `<div id="dowebok">
                     </div>
                     <div class="am-u-sm-6 video-box" id="toScreen">
                         <div class="am-panel am-panel-primary v-box">
-                            <div class="am-panel-hd">结果</div>
-                            <div class="am-panel-bd" style="height:100%">
+                            <div class="am-panel-hd">分析结果</div>
+                            <div class="am-panel-bd" style="height:80%">
                             <div id="col-chart"></div>
                             </div>
                         </div>
@@ -158,7 +158,7 @@ const dom3 = `<div id="dowebok">
 
 
             </div>
-            <div class="section">
+            <div class="section" style="background-color: rgb(255, 255, 255);">
                 <div class="am-g two-boxes" style="height: 30vh">
                     <div class="am-u-sm-6" id="pic3-left"><img src="assets/img/model.png" ></div>
                     <div class="am-u-sm-6">
@@ -194,7 +194,7 @@ const dom4 = `<div id="dowebok">
                             </div>
                            
                         </div>
-                        <div style="margin-right:12%">
+                        <div style="margin-right:80px">
                             <div class="starrr s2"></div>
                             <div class="btn-box" id="score-btn"> <div class="btn-inner">打分反馈</div> </div>
                         </div>
@@ -202,7 +202,7 @@ const dom4 = `<div id="dowebok">
                     <div class="am-g two-boxes" >
                         <div class="am-u-sm-6 video-box">
                             <div class="am-panel am-panel-primary v-box">
-                                <div class="am-panel-hd">视频区</div>
+                                <div class="am-panel-hd">视频区域</div>
                                 <div class="am-panel-bd" style="padding:0">
                                     <video id="player1"  src="assets/video/test.mp4" controls="controls">视频区</video>
                                 </div>
@@ -210,7 +210,7 @@ const dom4 = `<div id="dowebok">
                         </div>
                         <div class="am-u-sm-6 video-box">
                             <div class="am-panel am-panel-primary v-box">
-                                <div class="am-panel-hd">结果</div>
+                                <div class="am-panel-hd">姿态标记</div>
                                 <div class="am-panel-bd" style="padding:0" style="height:100%;width:100%;max-width:100%;max-height:100%">
                                     <video id="processed-video" src=""></video>
                                 </div>
@@ -254,28 +254,26 @@ const dom4 = `<div id="dowebok">
 
                     </div>
                 </div>
-                <div class="section">
-                <h2 class="side-title">识别</h2>
+                <div class="section" style="background-color: white">
+                <h1 class="side-title" style="margin-top: 40px;">人体姿态估计</h1>
 
-                <div class="video-area">
-                <div class="change-speed">
-                    <span>速度调整: </span>
-                    <span><input class="speed" type="radio" name="vehicle" value="0.5" />0.5 </span>
-                    <span><input class="speed" type="radio" name="vehicle" value="1.0" checked="checked" />1.0 </span>
-                    <span><input class="speed" type="radio" name="vehicle" value="1.5" />1.5 </span>
-                    <span><input class="speed" type="radio" name="vehicle" value="2.0" />2.0 </span>
+                <div class="video-area" style="width: 1010px;height: 490px;">
+                <div class="change-speed" style="margin-bottom: 10px;">
+                    <span><b>速度调整: </b></span>
+                    <span><input class="speed" type="radio" name="vehicle" value="0.3" /><b>0.3 </b></span>
+                    <span><input class="speed" type="radio" name="vehicle" value="0.5" checked="checked" /><b>0.5 </b></span>
+                    <span><input class="speed" type="radio" name="vehicle" value="1.0" /><b>1.0 </b></span>
+                    <span><input class="speed" type="radio" name="vehicle" value="2.0" /><b>2.0 </b></span>
                 </div>
 
                 <div class="real-area">
                     <video  id="testVideo" controls="controls">
-                        <source src="assets/video/test.mp4" type="video/mp4">
+                        <source src="assets/video/steal.mp4" type="video/mp4">
                     </video>
                 </div>
                 </div>
 
-                <div class="btn-box">
-                    <div class="btn-inner">试一试</div>
-                </div>
+
                 
             </div>
                

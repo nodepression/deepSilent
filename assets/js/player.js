@@ -7,11 +7,12 @@ function bindPage3() {
 
     })
     initchart();
+    var fileName='demo.mp4';
     $("#videoFile").change(function (file) {
         if(file.target.files[0]!=undefined){
             $("body").append(file.target.files[0]);
 
-            var fileName = file.target.files[0].name;
+            fileName = file.target.files[0].name;
             var attr = fileName.substr(fileName.indexOf('.')+1).toLowerCase();
             console.log(attr);
             if(attr !='mp4'&&attr !='avi'&&attr !='rmvb'&&attr !='3gp'&&attr !='mkv'&&attr !='wmv'&&attr !='vob'&&attr !='flv'&&attr !='swf'&&attr !='mov'&&attr !='mpg'){
@@ -34,8 +35,8 @@ function bindPage3() {
     });
     $('#startTest').click(function(){
         new Toast().showMsg('请稍等...',2000);
-        setTimeout(function(){getScreen(0,"得分")},2000);
-        setTimeout(function(){initchart(true)},2000);
+        setTimeout(function(){getScreen(0,"得分")},3000);
+        setTimeout(function(){initchart(fileName,[0.02, 0.12, 0.05, 0.8, 0.01])},2000);
     })
 
     $('#score-btn').click(function(){
@@ -90,17 +91,18 @@ function startCamera() {
 
 
 //bind 视频事件
+//姿态标记页面
 function bindPage5(){
     $("#video-btn").click(function () {
         $("#videoFile").click();
 
     })
-
+    var fileName='demo.mp4';
     $("#videoFile").change(function (file) {
         if(file.target.files[0]!=undefined){
             $("body").append(file.target.files[0]);
 
-            var fileName = file.target.files[0].name;
+            fileName = file.target.files[0].name;
             var attr = fileName.substr(fileName.indexOf('.')+1).toLowerCase();
             console.log(attr);
             if(attr !='mp4'&&attr !='avi'&&attr !='rmvb'&&attr !='3gp'&&attr !='mkv'&&attr !='wmv'&&attr !='vob'&&attr !='flv'&&attr !='swf'&&attr !='mov'&&attr !='mpg'){
@@ -124,8 +126,9 @@ function bindPage5(){
     });
     $('#startTest').click(function(){
         new Toast().showMsg('请稍等...',2000);
+        console.log(fileName);
         setTimeout(function(){
-            $('#processed-video').attr('src','assets/video/test.mp4');
+            $('#processed-video').attr('src','assets/video/steal.mp4');
             synVideo();
         },2000)
         
@@ -155,3 +158,33 @@ function synVideo(){
        
 }
 
+
+function bindPage6(){
+    /***
+ * **
+ * 视频
+ * 绑定
+ * 
+ */
+    $('#chose-btn').click(function () {
+        $('#chose-btn').dropdown('toggle')
+      })
+    $("#upvideo").click(function () {
+        $("#videoFile0").click();
+    })
+    $("#videoFile0").change(function (file) {
+        if(file.target.files[0]!=undefined){
+            $("body").append(file.target.files[0]);
+
+            var fileName = file.target.files[0].name;
+            var attr = fileName.substr(fileName.indexOf('.')+1).toLowerCase();
+            console.log(attr);
+            if(attr !='mp4'&&attr !='avi'&&attr !='rmvb'&&attr !='3gp'&&attr !='mkv'&&attr !='wmv'&&attr !='vob'&&attr !='flv'&&attr !='swf'&&attr !='mov'&&attr !='mpg'){
+                alert('格式不支持')
+            }else{
+                document.getElementById('dropList').innerHTML+=`<li><a href="javascript:bindeAnalyse('${fileName}')">${fileName}</a></li>`;
+                console.log(document.getElementById('dropList').innerHTML)
+            }
+        }
+    });
+}

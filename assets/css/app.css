@@ -10,6 +10,7 @@ body{
     text-align: center;
     font: 2rem "Microsoft Yahei";
     color: black;
+    background-color: rgb(255, 255, 255);
 }
 
 .btn-inner{
@@ -173,7 +174,7 @@ body{
     margin: 20px auto;
     height: 60vh;
 
-    border: 1px solid white;
+    border: 5px solid black;
 }
 
 #img-box{
@@ -196,6 +197,7 @@ body{
     position: fixed;
     bottom:3rem;
     z-index: 111111;
+    right: 629px;
     
 }
 #know-btn .btn-inner{
@@ -233,7 +235,7 @@ body{
 }
 
 .v-box .am-panel-hd{
-    background-color: #f7eeee;
+    background-color: #f7d1d1;
     border: 0px;
 }
 

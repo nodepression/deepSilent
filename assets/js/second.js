@@ -48,7 +48,7 @@ function getScreen2(){
         }
     });
 
-
+    
     $('#down_button0')[0].onclick = function(){
         getAll();
     }

@@ -120,6 +120,7 @@ function switchPages(lastIndex,nextIndex) {
 
           }else if(pageIndex===5){
             $('header').css('display','block');
+            bindPage6();
             init4Chart();
 
           }else if(pageIndex===3){
@@ -187,7 +188,7 @@ function buildFullpage() {
   
   //注册page
   $('#dowebok').fullpage({
-    sectionsColor: ['#f8fdfd', '#e0f5f8', '#d2ebff', '#88fdef'],
+    sectionsColor: ['#f8fdfd', '#f8fdfd', '#f8fdfd', '#f8fdfd'],
     scrollOverflow:true,
     onLeave:function (index,nextIndex,direction) {
 

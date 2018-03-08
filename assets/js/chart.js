@@ -1,25 +1,25 @@
 
-function initchart(){
+function initchart(fileName,data0){
     // console.log('init')
-    var data0= [5, 20, 36, 10, 10, 20];
+    // var data0= [0.02, 0.12, 0.05, 0.8, 0.01];
     if(arguments.length==0){
         data0=[];
     }
     var colChart = echarts.init(document.getElementById('col-chart'));
     var option = {
         title: {
-            text: '唇语翻译结果'
+            text: '行为分析'
         },
         tooltip: {},
         legend: {
             data:['可能性']
         },
         xAxis: {
-            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            data: ["扒窃","抢劫","斗殴","救援","正常"]
         },
         yAxis: {},
         series: [{
-            name: '销量',
+            name: 'possiblity',
             type: 'bar',
             data: data0
         }]
@@ -33,40 +33,13 @@ function initchart(){
 
 
 /*******下面是page2
+ * 辅助功能
  * 4种图表
  */
 
 
  function init4Chart(data1,data2,data3,data4){
     
-/***
- * **
- * 视频
- * 绑定
- * 
- */
-    $('#chose-btn').click(function () {
-        $('#chose-btn').dropdown('toggle')
-      })
-    $("#upvideo").click(function () {
-        $("#videoFile0").click();
-    })
-    $("#videoFile0").change(function (file) {
-        if(file.target.files[0]!=undefined){
-            $("body").append(file.target.files[0]);
-
-            var fileName = file.target.files[0].name;
-            var attr = fileName.substr(fileName.indexOf('.')+1).toLowerCase();
-            console.log(attr);
-            if(attr !='mp4'&&attr !='avi'&&attr !='rmvb'&&attr !='3gp'&&attr !='mkv'&&attr !='wmv'&&attr !='vob'&&attr !='flv'&&attr !='swf'&&attr !='mov'&&attr !='mpg'){
-                alert('格式不支持')
-            }else{
-                document.getElementById('dropList').innerHTML+=`<li><a href="javascript:bindeAnalyse()">${fileName}</a></li>`;
-                console.log(document.getElementById('dropList').innerHTML)
-            }
-        }
-    });
-
     if(arguments.length==0){
         initLinechart([]);
         initc_chart([]);
@@ -84,22 +57,12 @@ function initchart(){
 
 
  /****分析按钮绑定 */
-function bindeAnalyse(){
+function bindeAnalyse(fileName){
     document.getElementById('analyse').addEventListener('click',function(){
-        var data1=[820, 932, 901, 934, 1290, 1330, 1320];
-    var data2=[5, 20, 36, 10, 10, 20];
-    var data3=[
-        {value:335, name:'直接访问'},
-        {value:310, name:'邮件营销'},
-        {value:234, name:'联盟广告'},
-        {value:135, name:'视频广告'},
-        {value:1548, name:'搜索引擎'}
-    ];
-    var data4=[['2/12','111','111'],['2/12','111','111'],['2/12','111','111']];
-
+    var d =get4data(fileName);
     new Toast().showMsg('请稍等...',2000);
     setTimeout(function(){
-        init4Chart(data1,data2,data3,data4)
+        init4Chart(d.data1,d.data2,d.data3,d.data4)
     },2000)
 
     setTimeout(function(){
@@ -109,16 +72,33 @@ function bindeAnalyse(){
     })
 }
 
+function get4data(fileName){
+
+    return{
+        data1:[5, 6, 3, 10, 9, 4, 5],
+        data2:[5, 0, 1, 2, 3],
+        data3:[
+            {value:5, name:'扒窃'},
+            {value:0, name:'抢劫'},
+            {value:1, name:'斗殴'},
+            {value:2, name:'救援'},
+            {value:3,name:'其他'}
+        ],
+        data4:[['02:33','其他','83.56%'],['05:12','扒窃','90.52%'],['07:12','扒窃','89.77%'],['20:33','斗殴','58.89%'],['23:12','其他','87.32%'],['29:42','扒窃','78.40%']]
+    } 
+
+}
+
 
  function initLinechart(data1){
     var lineChart = echarts.init(document.getElementById('line-chart'));
     var option ={
         title: {
-            text: '人流统计变化图  '
+            text: '人群流量变化  '
         },
         xAxis: {
             text:'时间节点',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: ['00:00', '05:00', '10:00', '15:00', '20:00', '25:00', '30:00']
         },
         tooltip: {},
         yAxis: {
@@ -139,14 +119,14 @@ function initc_chart(data2){
     var cChart = echarts.init(document.getElementById('c-chart'));
     var option = {
         title: {
-            text: '异常事件统计'
+            text: '事件统计'
         },
         tooltip: {},
         legend: {
             data:['次数']
         },
         xAxis: {
-            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            data: ["扒窃","抢劫","斗殴","救援","其他"]
         },
         yAxis: {},
         series: [{
@@ -163,8 +143,8 @@ function initPinchart(data3){
     var pinChart = echarts.init(document.getElementById('pin-chart'));
     option = {
         title : {
-            text: '异常事件占比',
-            subtext: '纯属虚构',
+            text: '事件分析',
+            subtext: '',
             x:'center'
         },
         tooltip : {
@@ -174,11 +154,11 @@ function initPinchart(data3){
         legend: {
             orient: 'vertical',
             left: 'left',
-            data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+            data: ['扒窃','抢劫','斗殴','救援','其他']
         },
         series : [
             {
-                name: '访问来源',
+                name: '事件',
                 type: 'pie',
                 radius : '55%',
                 center: ['50%', '60%'],
@@ -204,7 +184,7 @@ function filltable(data4) {
         model+=`<tr>
         <td>${item[0]} </td>
         <td>${item[1]} </td>
-        <td> ${item[2]}</td>
+        <td>${item[2]}</td>
             </tr>`
     })
     $('tbody').html(model);
