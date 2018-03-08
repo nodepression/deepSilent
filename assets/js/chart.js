@@ -67,8 +67,6 @@ function bindeAnalyse(fileName){
 
     setTimeout(function(){
         getScreen2();
-        getScreen2 = function(){
-        }
       },3000);
     
     })

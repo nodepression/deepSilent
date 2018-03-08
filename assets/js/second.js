@@ -33,9 +33,6 @@ function getScreen2(){
         var dom = "#down_button" + index;
         $(dom).attr('href',item.toDataURL());
         $(dom).attr('download', index);
-        if(index==0){
-            $(dom).attr('click',  getAll);
-        }
         var html_canvas = item.toDataURL();
     });
 
