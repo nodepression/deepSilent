@@ -127,8 +127,23 @@ function bindPage5(){
     $('#startTest').click(function(){
         new Toast().showMsg('请稍等...',2000);
         console.log(fileName);
+        var path;
+        switch(fileName){
+            case 'demo1.mp4':
+                path='assets/video/demo/demo1.mp4';
+                break;
+            case 'demo2.mp4':
+                path='assets/video/demo/demo2.mp4';
+                break;
+            case 'demo3.mp4':
+                path='assets/video/demo/demo3.mp4';
+                break;
+            default:
+                alert('请选择其他视频')
+                break;
+        }
         setTimeout(function(){
-            $('#processed-video').attr('src','assets/video/steal.mp4');
+            $('#processed-video').attr('src',path);
             synVideo();
         },2000)
         

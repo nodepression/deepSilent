@@ -185,9 +185,7 @@ const dom4 = `<div id="dowebok">
                                 <div class="btn-inner">选择视频</div> 
                             </div>
                             <input type="file" id="videoFile" style="display:none">
-                            <div class="btn-box" > 
-                                <div class="btn-inner">上传视频</div> 
-                            </div>
+
 
                             <div class="btn-box" id="startTest"> 
                                 <div class="btn-inner">开始处理</div> 
@@ -268,7 +266,7 @@ const dom4 = `<div id="dowebok">
 
                 <div class="real-area">
                     <video  id="testVideo" controls="controls">
-                        <source src="assets/video/steal.mp4" type="video/mp4">
+                        <source src="assets/video/demo/demo3.mp4" type="video/mp4">
                     </video>
                 </div>
                 </div>

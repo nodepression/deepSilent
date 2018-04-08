@@ -5,6 +5,20 @@ function initchart(fileName,data0){
     if(arguments.length==0){
         data0=[];
     }
+    switch(fileName){
+        case 'demo1.mp4':
+            data0= [0.80, 0.12, 0.05, 0.02, 0.01];
+            break;
+        case 'demo2.mp4':
+            data0= [0.02, 0.01, 0.13, 0.04, 0.81];
+            break;
+        case 'demo3.mp4':
+            data0= [0.74, 0.08, 0.05, 0.02, 0.11];
+            break;
+        default:
+            data0= [0.00, 0.00, 0.00, 0.00, 0.00];
+            break;
+    }
     var colChart = echarts.init(document.getElementById('col-chart'));
     var option = {
         title: {
@@ -61,6 +75,56 @@ function bindeAnalyse(fileName){
     document.getElementById('analyse').addEventListener('click',function(){
     var d =get4data(fileName);
     new Toast().showMsg('请稍等...',2000);
+    switch(fileName){
+        case 'demo1.mp4':
+            d.data1=[2, 2, 2, 2, 2, 2, 2];
+            d.data2=[2, 0, 0, 0, 1];
+            d.data3=[
+                {value:2, name:'扒窃'},
+                {value:0, name:'抢劫'},
+                {value:0, name:'斗殴'},
+                {value:0, name:'救援'},
+                {value:1,name:'其他'}
+            ];
+            d.data4=[['00:02','扒窃','90.52%'],['00:04','其他','83.56%'],['00:05','扒窃','90.52%']];
+            break;
+        case 'demo2.mp4':
+            d.data1=[2, 2, 2, 2, 2, 2, 2];
+            d.data2=[0, 0, 1, 1, 3];
+            d.data3=[
+                {value:0, name:'扒窃'},
+                {value:0, name:'抢劫'},
+                {value:1, name:'斗殴'},
+                {value:1, name:'救援'},
+                {value:3,name:'其他'}
+            ];
+            d.data4=[['00:00','救援','83.56%'],['00:03','斗殴','90.52%'],['00:05','其他','89.77%'],['00:07','其他','58.89%'],['00:09','其他','87.32%']];
+            break;
+        case 'demo3.mp4':
+            d.data1=[7, 5, 3];
+            d.data2=[2, 0, 0, 0, 1];
+            d.data3=[
+                {value:2, name:'扒窃'},
+                {value:0, name:'抢劫'},
+                {value:0, name:'斗殴'},
+                {value:0, name:'救援'},
+                {value:1,name:'其他'}
+            ];
+            d.data4=[['00:02','扒窃','93.13%'],['00:03','扒窃','92.37%'],['00:03','其他','79.98%']];
+            break;
+        default:
+            d.data1=[0, 0, 0, 0, 0, 0, 0];
+            d.data2=[0, 0, 0, 0, 0];
+            d.data3=[
+                {value:0, name:'扒窃'},
+                {value:0, name:'抢劫'},
+                {value:0, name:'斗殴'},
+                {value:0, name:'救援'},
+                {value:0,name:'其他'}
+            ];
+            // d.data4=[['02:33','其他','83.56%'],['05:12','扒窃','90.52%'],['07:12','扒窃','89.77%'],['20:33','斗殴','58.89%'],['23:12','其他','87.32%'],['29:42','扒窃','78.40%']];
+            break;
+    }
     setTimeout(function(){
         init4Chart(d.data1,d.data2,d.data3,d.data4)
     },2000)
@@ -75,16 +139,16 @@ function bindeAnalyse(fileName){
 function get4data(fileName){
 
     return{
-        data1:[5, 6, 3, 10, 9, 4, 5],
-        data2:[5, 0, 1, 2, 3],
-        data3:[
-            {value:5, name:'扒窃'},
-            {value:0, name:'抢劫'},
-            {value:1, name:'斗殴'},
-            {value:2, name:'救援'},
-            {value:3,name:'其他'}
-        ],
-        data4:[['02:33','其他','83.56%'],['05:12','扒窃','90.52%'],['07:12','扒窃','89.77%'],['20:33','斗殴','58.89%'],['23:12','其他','87.32%'],['29:42','扒窃','78.40%']]
+        // data1:[5, 6, 3, 10, 9, 4, 5],
+        // data2:[5, 0, 1, 2, 3],
+        // data3:[
+        //     {value:5, name:'扒窃'},
+        //     {value:0, name:'抢劫'},
+        //     {value:1, name:'斗殴'},
+        //     {value:2, name:'救援'},
+        //     {value:3,name:'其他'}
+        // ],
+        // data4:[['02:33','其他','83.56%'],['05:12','扒窃','90.52%'],['07:12','扒窃','89.77%'],['20:33','斗殴','58.89%'],['23:12','其他','87.32%'],['29:42','扒窃','78.40%']]
     } 
 
 }
@@ -98,7 +162,7 @@ function get4data(fileName){
         },
         xAxis: {
             text:'时间节点',
-            data: ['00:00', '05:00', '10:00', '15:00', '20:00', '25:00', '30:00']
+            data: ['01', '02', '03', '04', '05', '06', '07']
         },
         tooltip: {},
         yAxis: {
