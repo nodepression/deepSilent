@@ -8,6 +8,12 @@ var app = express();
 var server = require('http').createServer(app);
 var path = require("path");
 
+// app.get("/:key", (req, res) => {
+//     console.log(req.params.key);
+//     return res.sendStatus(400);
+//   });
+  
+//   app.listen(3000, () => console.log("> Ready to keylog at localhost:3000"));
 
 var WebSocketServer = require('ws').Server,
     wss = new WebSocketServer({ port: 8181 });
