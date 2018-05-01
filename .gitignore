@@ -5,4 +5,4 @@ node_modules/
 /assets/video/
 .history/
 .Ds_Store
-/assets/output/
+#/assets/output/
