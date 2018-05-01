@@ -20,6 +20,9 @@
   "dependencies": {
     "express": "^4.16.2",
     "websocket": "^1.0.25",
-    "ws": "^4.0.0"
+    "ws": "^4.0.0",
+    "js-yaml": "^3.11.0",
+    "socket.io": "^2.1.0",
+    "yamljs": "^0.3.0"
   }
 }
