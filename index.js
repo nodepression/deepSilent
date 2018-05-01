@@ -13,8 +13,7 @@ app.get('/', function(req, res){
 });
 
 var data = null;//需要实时传送的数据
-
-var filePath = path.resolve('./assets/yml');//数据保存的文件夹路径
+var filePath = path.resolve('./assets/output/yml');//数据保存的文件夹路径
 
 
 server.on('connection', function(socket){
