@@ -27,6 +27,7 @@
     
 </body>
 <script src="./jquery-3.3.1.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 <script src="assets/js/echarts.min.js"></script>
 <script src="assets/js/modules/observeChart.js"></script>
 <script>
@@ -37,7 +38,7 @@ function loadImg(index) {
       
     var img = new Image();
     var str = index.toString().padStart(12,'0');
-    var url = 'http://localhost:8080/assets/output/img/'+str+'_rendered.png';
+    var url = 'http://localhost:3000/assets/output/img/'+str+'_rendered.png';
     img.src=url;
     // console.log(url)
     img.onload=()=>{

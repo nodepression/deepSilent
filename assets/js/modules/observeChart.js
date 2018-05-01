@@ -1,32 +1,36 @@
 
 
-var ws = new WebSocket('ws://localhost:8181');
+// var ws = new WebSocket('ws://localhost:8181');
 
-ws.addEventListener("message", function (e) {
-    var json = JSON.parse(e.data);
-    console.log("接收到   ", json);
-    if(json.chart==0){
-        chartObj.chart0={data:json.data,time:json.time};
-    }
-
-
-
-})
-ws.addEventListener("error", function (e) {
-    ws.send(JSON.stringify({"event": 1}));//断开连接发送请求
-    console.log("ws error   ", (e));
-})
-ws.addEventListener("close", function (e) {
-     ws.send(JSON.stringify({"event": 1}));
-    console.log("ws close   ", e);
-
-});
-window.onunload=function () {
-    ws.send(JSON.stringify({"event": 1}));
-    console.log("web close   ",);
-}
+// ws.addEventListener("message", function (e) {
+//     var json = JSON.parse(e.data);
+//     console.log("接收到   ", json);
+//     if(json.chart==0){
+//         chartObj.chart0={data:json.data,time:json.time};
+//     }
 
 
+
+// })
+// ws.addEventListener("error", function (e) {
+//     ws.send(JSON.stringify({"event": 1}));//断开连接发送请求
+//     console.log("ws error   ", (e));
+// })
+// ws.addEventListener("close", function (e) {
+//      ws.send(JSON.stringify({"event": 1}));
+//     console.log("ws close   ", e);
+
+// });
+// window.onunload=function () {
+//     ws.send(JSON.stringify({"event": 1}));
+//     console.log("web close   ",);
+// }
+
+var client = io();
+            client.on('message', function (msg) {
+                // var json = JSON.parse(msg.data);
+                console.log(msg);
+            });
 
 /**只是简单的监听变量变化，
  * 没有递归，
