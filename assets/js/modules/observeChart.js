@@ -30,7 +30,7 @@ var client = io();
             client.on('message', function (msg) {
                 // var json = JSON.parse(msg.data);
                 // console.log(msg);
-                chartObj.chart0.data.push(msg.data[0]);
+                chartObj.chart0.data.push(msg.people[0].pose_keypoints_2d[0]);
                 chartObj.chart0.date.push(new Date(msg.date).toLocaleTimeString());
                 var temp = chartObj.chart0;
                 chartObj.chart0=temp;
