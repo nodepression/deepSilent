@@ -48,6 +48,7 @@ function fileDisplay(filePath,mySendfile){
                       var isFile = stats.isFile();//是文件
                       var isDir = stats.isDirectory();//是文件夹
                       if(isFile){
+                          console.log(filedir)
                         data = yaml.parse(fs.readFileSync(filedir).toString());
                         mySendfile(data);
                       }
