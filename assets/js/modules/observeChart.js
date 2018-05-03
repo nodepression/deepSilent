@@ -29,7 +29,11 @@
 var client = io();
             client.on('message', function (msg) {
                 // var json = JSON.parse(msg.data);
-                console.log(msg);
+                // console.log(msg);
+                chartObj.chart0.data.push(msg.data[0]);
+                chartObj.chart0.date.push(new Date(msg.date).toLocaleTimeString());
+                var temp = chartObj.chart0;
+                chartObj.chart0=temp;
             });
 
 /**只是简单的监听变量变化，
@@ -68,7 +72,7 @@ function showChart0() {
         },
         xAxis: {
             text:'时间节点',
-            data: chartObj.chart0.time
+            data: chartObj.chart0.date
         },
         tooltip: {
             trigger: 'axis',
@@ -106,6 +110,6 @@ function showChart0() {
   }
 //   chartObj.chart0=[0, 0, 0, 0, 0];
   chartObj.chart0={
-      data:[0,0,0],
-    time:[new Date().getTime()-300,new Date().getTime()-200,new Date().getTime()-100]
+      data:[220],
+    date:[new Date().toLocaleTimeString()]
 };
