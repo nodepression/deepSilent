@@ -23,8 +23,8 @@
     for(var i =0;i<bar.length;i++){
 
       bar[i].addEventListener('click',(function(i){
-        console.log(i);
-        if(i==1||i==2||i==6){
+        // console.log(i);
+        if(i==1||i==2){
 
         }else{
           
@@ -101,10 +101,14 @@ function switchPages(lastIndex,nextIndex) {
 
         $dom.animateCss('bounceInUp');
         $('#dowebok').fullpage.destroy('all');
-        $dom.html(eval('dom'+nextIndex.toString()));
+        // if(nextIndex!=6){
+          $dom.html(eval('dom'+nextIndex.toString()));
+          buildFullpage(nextIndex);
+        // }
+        
 
 
-        buildFullpage();
+        
         if(pageIndex==0){
 
           function videoPlay() {
@@ -135,6 +139,10 @@ function switchPages(lastIndex,nextIndex) {
               setSpeed();
             })
   
+          }else if(pageIndex===6){//实时更新
+            $('header').css('display','block');
+            // $('#dowebok').load('test.html');
+            bindRealTime();
           }
         }
 
@@ -176,15 +184,18 @@ $(function(){
  *
  * *********************/
 
-function buildFullpage() {
+function buildFullpage(ind) {
   window.score1=null;
   //注册打分工具
-  $('.starrr').starrr({
-    change: function(e, value){
-      console.log('111')
-      window.score1=value;
-    }
-  })
+  if(ind!=6){
+    $('.starrr').starrr({
+      change: function(e, value){
+        console.log('111')
+        window.score1=value;
+      }
+    })
+  }
+ 
   
   //注册page
   $('#dowebok').fullpage({

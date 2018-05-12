@@ -26,16 +26,7 @@
 //     console.log("web close   ",);
 // }
 
-var client = io();
-            client.on('message', function (msg) {
-                // var json = JSON.parse(msg.data);
-                // console.log(msg);
-                chartObj.chart0.data0.push(msg.people[0].pose_keypoints_2d[0]);
-                chartObj.chart0.data1.push(msg.people[0].pose_keypoints_2d[1]);
-                chartObj.chart0.date.push(new Date(msg.date).toLocaleTimeString());
-                var temp = chartObj.chart0;
-                chartObj.chart0=temp;
-            });
+
 
 /**只是简单的监听变量变化，
  * 没有递归，
@@ -123,8 +114,4 @@ function showChart0() {
     // console.log(chartObj.chart0)
   }
 //   chartObj.chart0=[0, 0, 0, 0, 0];
-  chartObj.chart0={
-      data0:[220],
-      data1:[22],
-    date:[new Date().toLocaleTimeString()]
-};
+  

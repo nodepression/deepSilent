@@ -25,7 +25,7 @@ const dom0 = ` <div id="dowebok">
 const dom5=` <div id="dowebok">
             <div class="section">
             <div class="top-btn">
-                    <div class="am-dropdown" id="chose-btn" data-am-dropdown>
+                       <div class="am-dropdown" id="chose-btn" data-am-dropdown>
                         <button class="am-btn am-btn-default am-dropdown-toggle" data-am-dropdown-toggle>选择视频 <span class="am-icon-caret-down"></span></button>
                         <ul class="am-dropdown-content" id="dropList">
 
@@ -276,3 +276,96 @@ const dom4 = `<div id="dowebok">
             </div>
                
         </div>`
+
+
+const dom6=`<div id="dowebok">
+<div class="section">
+<div class="top-btn">
+    <div class="am-dropdown" id="chose-btn" data-am-dropdown>
+        <button class="am-btn am-btn-default am-dropdown-toggle" data-am-dropdown-toggle>选择视频
+            <span class="am-icon-caret-down"></span>
+        </button>
+        <ul class="am-dropdown-content" id="dropList">
+
+        </ul>
+    </div>
+    <button type="button" class="am-btn am-btn-default" id="upvideo">上传视频</button>
+    <input type="file" id="videoFile0" style="display:none">
+    <button type="button" class="am-btn am-btn-default" id="analyse">开始分析</button>
+    <button type="button" class="am-btn am-btn-default">
+        <a id="down_button0">下载</a>
+    </button>
+    <button type="button" class="am-btn am-btn-default" style="display:none;">
+        <a id="down_button1">下载</a>
+    </button>
+    <button type="button" class="am-btn am-btn-default" style="display:none;">
+        <a id="down_button2">下载</a>
+    </button>
+    <button type="button" class="am-btn am-btn-default" style="display:none;">
+        <a id="down_button3">下载</a>
+    </button>
+</div>
+
+<div class="am-g two-boxes two-charts">
+    <div class="am-u-sm-6 video-box">
+        <div class="am-panel am-panel-primary v-box">
+            <div class="am-panel-hd">视频区域</div>
+            <div class="am-panel-bd" style="padding:0">
+                <video id="player" autoplay src="assets/video/test.mp4" controls="controls">视频区</video>
+            </div>
+        </div>
+    </div>
+    <div class="am-u-sm-6 video-box">
+        <div class="am-panel am-panel-primary v-box">
+            <div class="am-panel-hd">折线图</div>
+            <div class="am-panel-bd" id="chart0" style="height:100%">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+    <div class="am-g two-boxes">
+        <div class="am-u-sm-6 video-box" style="height: 40vh">
+            <div class="am-panel am-panel-primary v-box">
+                <div class="am-panel-hd">图片帧</div>
+                <div class="am-panel-bd" id="pic-v" style="padding:0">
+                    <canvas id="ctx" style="width: 100%"></canvas>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="am-u-sm-6 video-box" style="height: 40vh">
+            <div class="am-panel am-panel-primary v-box flex-box" id="_table">
+                <div class="am-panel-hd">表格</div>
+                <div class="am-panel-bd tc" style="height:100%">
+                    <div id="table-chart">
+                        <table class="am-table am-table-bordered am-table-radius am-table-striped">
+                            <thead>
+                                <tr>
+                                    <th>时间</th>
+                                    <th>事件描述</th>
+                                    <th>可能性</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>`

@@ -203,3 +203,32 @@ function bindPage6(){
         }
     });
 }
+
+
+
+/**
+ * 实时页面绑定
+*/
+function bindRealTime(){
+    /**图片*/
+    loadImg(0);
+
+    /**
+     * socket
+     */
+    chartObj.chart0={
+        data0:[],
+        data1:[],
+      date:[new Date().toLocaleTimeString()]
+  };
+    var client = io();
+            client.on('message', function (msg) {
+                // var json = JSON.parse(msg.data);
+                // console.log(msg);
+                chartObj.chart0.data0.push(msg.people[0].pose_keypoints_2d[0]);
+                chartObj.chart0.data1.push(msg.people[0].pose_keypoints_2d[1]);
+                chartObj.chart0.date.push(new Date(msg.date).toLocaleTimeString());
+                var temp = chartObj.chart0;
+                chartObj.chart0=temp;
+            });
+}
