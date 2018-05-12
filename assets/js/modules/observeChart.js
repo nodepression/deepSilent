@@ -30,7 +30,8 @@ var client = io();
             client.on('message', function (msg) {
                 // var json = JSON.parse(msg.data);
                 // console.log(msg);
-                chartObj.chart0.data.push(msg.people[0].pose_keypoints_2d[0]);
+                chartObj.chart0.data0.push(msg.people[0].pose_keypoints_2d[0]);
+                chartObj.chart0.data1.push(msg.people[0].pose_keypoints_2d[1]);
                 chartObj.chart0.date.push(new Date(msg.date).toLocaleTimeString());
                 var temp = chartObj.chart0;
                 chartObj.chart0=temp;
@@ -54,7 +55,7 @@ function watchObj(obj,key,fun){
             },
             set:function(value){
                 key=value;
-                console.log('set ',value)
+                // console.log('set ',value)
                  fun();
             }
         
@@ -71,8 +72,13 @@ function showChart0() {
             text: '人群流量变化  '
         },
         xAxis: {
+            type: 'category',
+            boundaryGap: false,
             text:'时间节点',
             data: chartObj.chart0.date
+        },
+        legend: {
+            data:['人数','置信度']
         },
         tooltip: {
             trigger: 'axis',
@@ -94,8 +100,16 @@ function showChart0() {
             type: 'value'
         },
         series: [{
-            data: chartObj.chart0.data,
-            type: 'line',
+            name:'人数',
+            type:'line',
+            stack: '总量',
+            data: chartObj.chart0.data0,
+            // smooth: true
+        },{
+            name:'置信度',
+            type:'line',
+            stack: '总量',
+            data: chartObj.chart0.data1,
             // smooth: true
         }]
     };
@@ -110,6 +124,7 @@ function showChart0() {
   }
 //   chartObj.chart0=[0, 0, 0, 0, 0];
   chartObj.chart0={
-      data:[220],
+      data0:[220],
+      data1:[22],
     date:[new Date().toLocaleTimeString()]
 };
