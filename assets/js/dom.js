@@ -317,14 +317,14 @@ const dom6=`<div id="dowebok">
             <div class="am-form-group">
                 <label for="doc-ipt-3" class="am-u-sm-4 am-form-label">姓名</label>
                 <div class="am-u-sm-6 am-u-end">
-                    <input type="text" id="doc-ipt-3" placeholder="输入你的姓名">
+                    <input type="text" id="doc-ipt-0" placeholder="输入你的姓名">
                 </div>
             </div>
 
             <div class="am-form-group">
                 <label for="doc-ipt-3" class="am-u-sm-4 am-form-label">年龄</label>
                 <div class="am-u-sm-6 am-u-end">
-                    <input type="text" id="doc-ipt-3" placeholder="输入你的年龄">
+                    <input type="number" id="doc-ipt-1" placeholder="输入你的年龄">
                 </div>
             </div>
 
@@ -333,8 +333,8 @@ const dom6=`<div id="dowebok">
                 <label for="doc-select-1" class="am-u-sm-4 am-form-label">性别</label>
                 <div class="am-u-sm-6 am-u-end">
                     <select id="doc-select-1">
-                        <option value="option1">男</option>
-                        <option value="option2">女</option>
+                        <option value="male">男</option>
+                        <option value="female">女</option>
                     </select>
                 </div>
             </div>

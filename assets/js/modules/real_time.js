@@ -122,13 +122,15 @@ function bindRealTime() {
                     // var $link = $(this.relatedTarget).prev('a');
                     // var msg = $link.length ? '你要删除的链接 ID 为 ' + $link.data('id') :
                     //     '确定了，但不知道要整哪样';
+                    
                     var msg = "保存成功";
                     //关闭摄像头
-                    stream.getTracks()[0].stop()
-                    stream.getTracks()[1].stop()
-                    alert(msg);
+                    
+                    sendPic();
+                    
+                    // alert(msg);
                 },
-                // closeOnConfirm: false,
+                closeOnConfirm: false,
                 onCancel: function () {
                     stream.getTracks()[0].stop()
                     stream.getTracks()[1].stop()
@@ -163,4 +165,43 @@ function bindRealTime() {
     //
 
 
+}
+
+
+
+
+function sendPic() {  
+   var imgData= document.getElementById('pic-canvas').toDataURL();
+   
+   var info ={
+       username:document.getElementById('doc-ipt-0').value,
+       age:document.getElementById('doc-ipt-1').value,
+       ginder:document.getElementById('doc-select-1').value
+   }
+   if(info.username.trim()==""||info.username.trim()==""){
+        // alert('请补全信息');
+        
+        new Toast().showMsg('请补全信息',1500)
+        console.log('请补全信息')
+        return;
+    }
+   console.log({imgData,info});
+   $.ajax({
+            url:'/saveInfo',
+            type:'POST',
+            data:{imgData,info},
+            dataType:"JSON",
+            success:function(data,state){
+                // alert('保存成功')
+                new Toast().showMsg('保存成功',1500)
+                $('#my-confirm').modal('toggle');
+                stream.getTracks()[0].stop()
+                    stream.getTracks()[1].stop()
+                console.log(data,state)
+            },
+            error:function(data,state){
+                new Toast().showMsg('网络异常',1500)
+                console.log(data,state)
+            }
+        })
 }
