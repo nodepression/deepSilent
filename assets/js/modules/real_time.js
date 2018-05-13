@@ -133,20 +133,18 @@ function bindRealTime() {
     $('#doc-modal-list').find('.am-icon-close').add('#err_content').
         on('click', function (e) {
             if ($(e.target).parents(".err_info").hasClass("err_info")) {
-                
+
                 $('#err_modal').modal({
                     relatedTarget: this,
-                    onConfirm: function (options) {
-                        // var $link = $(this.relatedTarget).prev('a');
-                        // var msg = $link.length ? '你要删除的链接 ID 为 ' + $link.data('id') :
-                        //     '确定了，但不知道要整哪样';
-                        var msg = "保存成功";
-                        alert(msg);
-                    },
-                    // closeOnConfirm: false,
-                    onCancel: function () {
-                        // alert('确认取消');
-                    }
+                    // onConfirm: function (options) {
+                    //     var msg = "保存成功";
+                    //     alert(msg);
+                    // },
+                    // // closeOnConfirm: false,
+                    // onCancel: function () {
+                    //     // alert('确认取消');
+                    // }
+                    
                 });
                 $('.am-dimmer').css('display', 'none')
             }
