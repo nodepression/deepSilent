@@ -377,6 +377,19 @@ const dom6=`<div id="dowebok">
             </div>
         </div>
 
+        
+
+        <div class="am-modal am-modal-confirm" tabindex="-1" id="err_modal" style="z-index: 1111111;">
+            <div class="am-modal-dialog">
+                <div class="am-panel am-panel-default am-panel-secondary" style="background-color: #e2f4fd">
+                    <div class="am-panel-bd ">错误图片  </div>
+                </div>
+
+                <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg" class="am-img-responsive" alt=""/>
+
+            </div>
+        </div>
+
 
         <div class="am-u-sm-6 video-box" style="height: 40vh">
             <div class="am-panel am-panel-primary v-box flex-box" id="_table">
@@ -391,14 +404,15 @@ const dom6=`<div id="dowebok">
                                     <th>可能性</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="err_content">
                                 <tr class="err_info">
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
                                 </tr>
-
                             </tbody>
+
+                            
                         </table>
                     </div>
                 </div>

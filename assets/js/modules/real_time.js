@@ -41,9 +41,9 @@ function startCamera() {
     var vid = document.getElementById('cam');
     if (hasUserMedia()) {
         navigator.getUserMedia({
-                video: true,
-                audio: true
-            },
+            video: true,
+            audio: true
+        },
             (stream) => {
                 vid.src = window.URL.createObjectURL(stream);
 
@@ -80,7 +80,7 @@ function bindRealTime() {
         data1: [],
         date: [new Date().toLocaleTimeString()]
     };
-     window.client = io();
+    window.client = io();
     client.on('message', function (msg) {
         // var json = JSON.parse(msg.data);
         // console.log(msg);
@@ -104,13 +104,13 @@ function bindRealTime() {
         }
     });
 
-
+    //精度调节
     var $radios = $('[name="options"]');
     $radios.on('change', function () {
         console.log('单选框当前选中的是：', $radios.filter(':checked').val());
     });
 
-    
+    //调用摄像头保存图片的modal框
     $('#doc-modal-list').find('.am-icon-close').add('#awaken_modal').
         on('click', function () {
             $('#my-confirm').modal({
@@ -126,9 +126,34 @@ function bindRealTime() {
                 onCancel: function () {
                     // alert('确认取消');
                 }
-             });
-             $('.am-dimmer').css('display','none')
-    });
+            });
+            $('.am-dimmer').css('display', 'none')
+        });
+
+    $('#doc-modal-list').find('.am-icon-close').add('#err_content').
+        on('click', function (e) {
+            if ($(e.target).parents(".err_info").hasClass("err_info")) {
+                
+                $('#err_modal').modal({
+                    relatedTarget: this,
+                    onConfirm: function (options) {
+                        // var $link = $(this.relatedTarget).prev('a');
+                        // var msg = $link.length ? '你要删除的链接 ID 为 ' + $link.data('id') :
+                        //     '确定了，但不知道要整哪样';
+                        var msg = "保存成功";
+                        alert(msg);
+                    },
+                    // closeOnConfirm: false,
+                    onCancel: function () {
+                        // alert('确认取消');
+                    }
+                });
+                $('.am-dimmer').css('display', 'none')
+            }
+
+        });
+
+    //
 
 
 }
