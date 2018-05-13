@@ -11,11 +11,11 @@ function loadImg(index) {
     // console.log(url)
     var wid = document.getElementById('pic-v').offsetWidth;
     // console.log(wid)
-    var hei = wid / 2;
+    var hei = document.getElementById('pic-v').offsetHeight;
     img.onload = () => {
         // console.log('render')
         if (document.getElementById('ctx')) {
-            ctx.drawImage(img, 0, 0, wid, hei);
+            ctx.drawImage(img, 0, 0, 300, 150);
             setTimeout(function () {
                 loadImg(index + 1)
             }, 200)
@@ -28,7 +28,33 @@ function loadImg(index) {
         return;
     }
 }
+function drawImg(url) { 
+    if (!document.getElementById('ctx')) {
+        return;
+    }
+    var ctx = document.getElementById('ctx').getContext('2d');
+    var img = new Image();
+    // var str = index.toString().padStart(12, '0');
+    
+    img.src = url;
+    // console.log(url)
+    var wid = document.getElementById('pic-v').offsetWidth;
+    // console.log(wid)
+    var hei = document.getElementById('pic-v').offsetHeight;
+    img.onload = () => {
+        // console.log('render')
+        if (document.getElementById('ctx')) {
+            ctx.drawImage(img, 0, 0, 300, 150);
+            
+        } else {
+            return;
+        }
 
+    }
+    img.onerror = () => {
+        return;
+    }
+ }
 // loadImg(0);
 
 function hasUserMedia() {
@@ -72,8 +98,14 @@ function depict() {
  * 实时页面绑定
  */
 function bindRealTime() {
-    /**图片*/
-    loadImg(0);
+    /**图片
+     * loadImg()方法有问题，无法在图片获取失败之后继续，
+     * 所以需要
+     * 通过socket发送图片链接url
+     * drawImg(url)
+     * 
+    */
+    // loadImg(0);
 
     /**
      * socket
@@ -93,9 +125,10 @@ function bindRealTime() {
         var temp = chartObj.chart0;
         chartObj.chart0 = temp;
 
+        //json中需要一个字段指定图片url,绘制图片
+        drawImg();
 
-
-        //table 数据
+        //table 数据,图片url放在data-pic中
         if (msg.type == 'table') {
             var model = $('tbody').html();
             model += `<tr data-pic="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg">
@@ -195,10 +228,15 @@ function sendPic() {
             dataType:"JSON",
             success:function(data,state){
                 // alert('保存成功')
-                new Toast().showMsg('保存成功',1500)
-                $('#my-confirm').modal('toggle');
-                stream.getTracks()[0].stop()
-                    stream.getTracks()[1].stop()
+                
+                    if(data.state=='ok'){
+                        new Toast().showMsg('保存成功',1500)
+                        $('#my-confirm').modal('toggle');
+                        stream.getTracks()[0].stop()
+                            stream.getTracks()[1].stop()
+                    }else{
+                        new Toast().showMsg('服务器错误',1500)
+                    }
                 console.log(data,state)
             },
             error:function(data,state){
