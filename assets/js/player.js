@@ -51,16 +51,13 @@ function bindPage3() {
 }
 
 
-function hasUserMedia() {
-    navigator.getUserMedia = navigator.getUserMedia || navigator.msGetUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-    return !!navigator.getUserMedia;
-}
+
 
 //bind 摄像头事件
 function bindPage4() {
-    $('#camera-btn').click(function () {
-        startCamera();
-    })
+    // $('#camera-btn').click(function () {
+    //     startCamera();
+    // })
 
     $('#score-btn').click(function(){
         if(window.score1===null){
@@ -71,21 +68,7 @@ function bindPage4() {
         
     })
 }
-function startCamera() {
-    var yourVideo = document.getElementById('camera');
-    if (hasUserMedia()) {
-        navigator.getUserMedia({ video: true, audio: true },
-            (stream) => {
-                yourVideo.src = window.URL.createObjectURL(stream);
 
-            },
-            (err) => {
-                console.log(err);
-            })
-    } else {
-        alert("没有userMedia API")
-    }
-}
 
 
 
