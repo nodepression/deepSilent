@@ -105,7 +105,7 @@ function bindRealTime() {
      * drawImg(url)
      * 
     */
-    // loadImg(0);
+    loadImg(0);
 
     /**
      * socket
