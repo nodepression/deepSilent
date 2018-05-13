@@ -98,7 +98,7 @@ function bindRealTime() {
         //table 数据
         if (msg.type == 'table') {
             var model = $('tbody').html();
-            model += `<tr>
+            model += `<tr data-pic="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg">
         <td>${msg.a} </td>
         <td>${msg.b} </td>
         <td>${msg.c}</td>
@@ -143,6 +143,8 @@ function bindRealTime() {
 
     $('#doc-modal-list').find('.am-icon-close').add('#err_content').
         on('click', function (e) {
+            // console.log(e.target.parentElement.dataset.pic)
+            document.getElementsByClassName('am-img-responsive')[0].src=e.target.parentElement.dataset.pic;
             if ($(e.target).parents(".err_info").hasClass("err_info")) {
 
                 $('#err_modal').modal({

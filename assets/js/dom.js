@@ -396,7 +396,7 @@ const dom6=`<div id="dowebok">
                     <div class="am-panel-bd ">错误图片  </div>
                 </div>
 
-                <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg" class="am-img-responsive" alt=""/>
+                <img src="" class="am-img-responsive" alt=""/>
 
             </div>
         </div>
@@ -416,7 +416,7 @@ const dom6=`<div id="dowebok">
                                 </tr>
                             </thead>
                             <tbody id="err_content">
-                                <tr class="err_info">
+                                <tr class="err_info" data-pic="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg">
                                     <td>1</td>
                                     <td>1</td>
                                     <td>1</td>
