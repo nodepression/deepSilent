@@ -56,8 +56,13 @@ function watchObj(obj,key,fun){
 watchObj(chartObj,'chart0',showChart0);
 
 function showChart0() {
-
-    var lineChart = echarts.init(document.getElementById('chart0'));
+    try {
+        var lineChart = echarts.init(document.getElementById('chart0'));
+    } catch (error) {
+        console.log('no chart');
+        return;
+    }
+    
     var option ={
         title: {
             text: '人群流量变化  '
