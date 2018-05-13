@@ -139,10 +139,20 @@ function switchPages(lastIndex,nextIndex) {
               setSpeed();
             })
   
-          }else if(pageIndex===6){//实时更新
+          }
+          
+          
+          if(pageIndex===6){//实时更新
             $('header').css('display','block');
             // $('#dowebok').load('test.html');
             bindRealTime();
+          }else{
+            try {
+              window.client.close();
+            } catch (error) {
+              console.log('socket not open')
+            }
+            
           }
         }
 

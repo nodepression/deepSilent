@@ -392,7 +392,7 @@ const dom6=`<div id="dowebok">
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr class="err_info">
                                     <td> </td>
                                     <td> </td>
                                     <td> </td>

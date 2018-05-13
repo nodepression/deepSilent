@@ -80,7 +80,7 @@ function bindRealTime() {
         data1: [],
         date: [new Date().toLocaleTimeString()]
     };
-    var client = io();
+     window.client = io();
     client.on('message', function (msg) {
         // var json = JSON.parse(msg.data);
         // console.log(msg);
