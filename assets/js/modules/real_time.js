@@ -104,4 +104,31 @@ function bindRealTime() {
         }
     });
 
+
+    var $radios = $('[name="options"]');
+    $radios.on('change', function () {
+        console.log('单选框当前选中的是：', $radios.filter(':checked').val());
+    });
+
+    
+    $('#doc-modal-list').find('.am-icon-close').add('#awaken_modal').
+        on('click', function () {
+            $('#my-confirm').modal({
+                relatedTarget: this,
+                onConfirm: function (options) {
+                    // var $link = $(this.relatedTarget).prev('a');
+                    // var msg = $link.length ? '你要删除的链接 ID 为 ' + $link.data('id') :
+                    //     '确定了，但不知道要整哪样';
+                    var msg = "保存成功";
+                    alert(msg);
+                },
+                // closeOnConfirm: false,
+                onCancel: function () {
+                    // alert('确认取消');
+                }
+             });
+             $('.am-dimmer').css('display','none')
+    });
+
+
 }
