@@ -281,29 +281,68 @@ const dom4 = `<div id="dowebok">
 const dom6=`<div id="dowebok">
 <div class="section">
 <div class="top-btn">
-    <div class="am-dropdown" id="chose-btn" data-am-dropdown>
-        <button class="am-btn am-btn-default am-dropdown-toggle" data-am-dropdown-toggle>选择视频
-            <span class="am-icon-caret-down"></span>
-        </button>
-        <ul class="am-dropdown-content" id="dropList">
+    <button type="button" class="am-btn am-btn-default" id="awaken_modal">添加人物</button>
+    <button type="button" class="am-btn am-btn-default" id="precision_adjust">精度调节</button>
 
-        </ul>
+    <div class="am-btn-group doc-js-btn-1" data-am-button>
+                <label class="am-btn am-btn-secondary am-btn-xs">
+                    <input type="radio" name="options" value="l" id="option1"> 低
+                </label>
+                <label class="am-btn am-btn-secondary am-btn-xs">
+                    <input type="radio" name="options" value="m" id="option2" checked> 中
+                </label>
+                <label class="am-btn am-btn-secondary am-btn-xs">
+                    <input type="radio" name="options" value="h" id="option3"> 高
+                </label>
     </div>
-    <button type="button" class="am-btn am-btn-default" id="upvideo">上传视频</button>
-    <input type="file" id="videoFile0" style="display:none">
-    <button type="button" class="am-btn am-btn-default" id="analyse">开始分析</button>
-    <button type="button" class="am-btn am-btn-default">
-        <a id="down_button0">下载</a>
-    </button>
-    <button type="button" class="am-btn am-btn-default" style="display:none;">
-        <a id="down_button1">下载</a>
-    </button>
-    <button type="button" class="am-btn am-btn-default" style="display:none;">
-        <a id="down_button2">下载</a>
-    </button>
-    <button type="button" class="am-btn am-btn-default" style="display:none;">
-        <a id="down_button3">下载</a>
-    </button>
+
+    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+    <div class="am-modal-dialog">
+        <div class="am-panel am-panel-default am-panel-secondary" style="background-color: #e2f4fd">
+            <div class="am-panel-bd ">添加人物</div>
+        </div>
+        <form class="am-form am-form-horizontal">
+
+            <div class="am-form-group">
+                <label for="doc-ipt-3" class="am-u-sm-4 am-form-label">姓名</label>
+                <div class="am-u-sm-6 am-u-end">
+                    <input type="text" id="doc-ipt-3" placeholder="输入你的姓名">
+                </div>
+            </div>
+
+            <div class="am-form-group">
+                <label for="doc-ipt-3" class="am-u-sm-4 am-form-label">年龄</label>
+                <div class="am-u-sm-6 am-u-end">
+                    <input type="text" id="doc-ipt-3" placeholder="输入你的年龄">
+                </div>
+            </div>
+
+            <div class="am-form-group">
+
+                <label for="doc-select-1" class="am-u-sm-4 am-form-label">性别</label>
+                <div class="am-u-sm-6 am-u-end">
+                    <select id="doc-select-1">
+                        <option value="option1">男</option>
+                        <option value="option2">女</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="am-form-group">
+
+            </div>
+
+        </form>
+
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" style="text-align: left ;padding-left: 30px" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" style="text-align: right;padding-right: 30px" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+    </div>
+   
+
+    
 </div>
 
 <div class="am-g two-boxes two-charts">
