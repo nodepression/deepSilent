@@ -37,6 +37,7 @@ function hasUserMedia() {
     return !!navigator.getUserMedia;
 }
 //摄像头获取
+var stream = null;
 function startCamera() {
     var vid = document.getElementById('cam');
     if (hasUserMedia()) {
@@ -44,9 +45,9 @@ function startCamera() {
                 video: true,
                 audio: true
             },
-            (stream) => {
-                vid.src = window.URL.createObjectURL(stream);
-
+            (vstream) => {
+                vid.src = window.URL.createObjectURL(vstream);
+                stream = vstream;
             },
             (err) => {
                 console.log(err);
@@ -59,7 +60,9 @@ function startCamera() {
 function depict() {
     var v = document.getElementById('cam');
     var c = document.getElementById('pic-canvas').getContext('2d');
-    c.drawImage(v, 0, 0, 300, 150)
+    var wid = document.getElementById('cam').offsetWidth;
+    var heit = document.getElementById('cam').offsetHeight;
+    c.drawImage(v, 0, 0,wid,heit)
 }
 
 
@@ -120,14 +123,20 @@ function bindRealTime() {
                     // var msg = $link.length ? '你要删除的链接 ID 为 ' + $link.data('id') :
                     //     '确定了，但不知道要整哪样';
                     var msg = "保存成功";
+                    //关闭摄像头
+                    stream.getTracks()[0].stop()
+                    stream.getTracks()[1].stop()
                     alert(msg);
                 },
                 // closeOnConfirm: false,
                 onCancel: function () {
+                    stream.getTracks()[0].stop()
+                    stream.getTracks()[1].stop()
                     // alert('确认取消');
                 }
              });
-             $('.am-dimmer').css('display','none')
+             $('.am-dimmer').css('display','none');
+             startCamera();
     });
 
 

@@ -302,7 +302,18 @@ const dom6=`<div id="dowebok">
             <div class="am-panel-bd ">添加人物</div>
         </div>
         <form class="am-form am-form-horizontal">
-
+            <div class="am-g am-form-group">
+                <div class="am-u-sm-6">
+                    <video id="cam" autoplay src style="width:80%"></video>
+                    <div>摄像头</div>
+                </div>
+                <div class="am-u-sm-6">
+                    <canvas id="pic-canvas"></canvas>
+                </div>
+                  
+            </div>
+            
+            <button type="button" class="am-btn am-btn-default am-btn-sm" style="margin-bottom:1rem" onclick="depict()">拍摄</button>
             <div class="am-form-group">
                 <label for="doc-ipt-3" class="am-u-sm-4 am-form-label">姓名</label>
                 <div class="am-u-sm-6 am-u-end">
