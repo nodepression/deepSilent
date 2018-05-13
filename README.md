@@ -1,5 +1,4 @@
 # deep_silent
-get webrtc imgs to deep_learning  
 
 
 <!-- ## update 02/23 -->
@@ -27,4 +26,6 @@ get webrtc imgs to deep_learning
 <!-- ### need to establish https connection  -->
 
 ### 新需求  
-直接打开index.html即可  
+* 在项目文件夹类执行npm install
+* node index
+* http://localhost:3000/

@@ -175,23 +175,23 @@ function bindRealTime() {
 function sendPic() {  
    var imgData= document.getElementById('pic-canvas').toDataURL();
    
-   var info ={
-       username:document.getElementById('doc-ipt-0').value,
-       age:document.getElementById('doc-ipt-1').value,
-       ginder:document.getElementById('doc-select-1').value
-   }
-   if(info.username.trim()==""||info.username.trim()==""){
+
+      var username=document.getElementById('doc-ipt-0').value;
+      var age=document.getElementById('doc-ipt-1').value;
+      var gender=document.getElementById('doc-select-1').value;
+ 
+   if(username.trim()==""||username.trim()==""){
         // alert('请补全信息');
         
         new Toast().showMsg('请补全信息',1500)
         console.log('请补全信息')
         return;
     }
-   console.log({imgData,info});
+   console.log({imgData,username,age,gender});
    $.ajax({
             url:'/saveInfo',
             type:'POST',
-            data:{imgData,info},
+            data:{imgData,username,age,gender},
             dataType:"JSON",
             success:function(data,state){
                 // alert('保存成功')

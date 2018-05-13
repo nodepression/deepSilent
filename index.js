@@ -5,12 +5,40 @@ var server = require('socket.io')(http);
 // var yaml = require('yamljs'); //解析yml文件
 var fs = require('fs');
 var path = require('path');
+var bodyParser = require('body-parser')
+
 
 app.use(express.static('./'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+var log = console.log.bind(console);
+
 
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
+
+
+//保存前端发送的base64图片
+app.post('/saveInfo', function (req, res) {
+    //接收前台POST过来的base64
+    var imgData = req.body.imgData;
+    //过滤data:URL
+    var base64Data = imgData.replace(/^data:image\/\w+;base64,/, "");
+    var dataBuffer = new Buffer(base64Data, 'base64');
+    var filename = "./out/"+req.body.username+".png";
+    //根据username命名文件
+    fs.writeFile(filename, dataBuffer, function (err) {
+        if (err) { 
+            res.send({"state":"false",err});
+        } else {
+            log(filename+" : 保存成功");
+            res.send({"state":"ok"});
+        }
+    });
+});
+
 
 var data = null;//需要实时传送的数据
 var filePath = path.resolve('./assets/output/json');//数据保存的文件夹路径
