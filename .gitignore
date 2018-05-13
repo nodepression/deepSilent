@@ -6,3 +6,4 @@ node_modules/
 .history/
 .Ds_Store
 /assets/output/img
+/out/*.png

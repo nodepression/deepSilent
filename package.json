@@ -18,11 +18,13 @@
   },
   "homepage": "https://github.com/wengqt/deep_silent#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "websocket": "^1.0.25",
-    "ws": "^4.0.0",
     "js-yaml": "^3.11.0",
     "socket.io": "^2.1.0",
-    "yamljs": "^0.3.0"
+    "websocket": "^1.0.25",
+    "ws": "^4.0.0",
+    "yamljs": "^0.3.0",
+    "chokidar": "^2.0.3"
   }
 }
