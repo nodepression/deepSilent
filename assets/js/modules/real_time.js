@@ -79,22 +79,29 @@ function hasUserMedia() {
 //摄像头获取
 var stream = null;
 function startCamera() {
+    // var vid = document.getElementById('cam');
+    // if (hasUserMedia()) {
+    //     navigator.getUserMedia({
+    //             video: true,
+    //             // audio: true
+    //         },
+    //         (vstream) => {
+    //             vid.src = window.URL.createObjectURL(vstream);
+    //             stream = vstream;
+    //         },
+    //         (err) => {
+    //             console.log(err);
+    //         })
+    // } else {
+    //     alert("没有userMedia API")
+    // }
     var vid = document.getElementById('cam');
-    if (hasUserMedia()) {
-        navigator.getUserMedia({
-                video: true,
-                // audio: true
-            },
-            (vstream) => {
-                vid.src = window.URL.createObjectURL(vstream);
-                stream = vstream;
-            },
-            (err) => {
-                console.log(err);
-            })
-    } else {
-        alert("没有userMedia API")
-    }
+    vid.src = 'http://127.0.0.1:8080/?action=stream';
+}
+
+function stopCam(){
+    var vid = document.getElementById('cam');
+    vid.src = '';
 }
 
 function depict() {
@@ -149,7 +156,8 @@ function bindRealTime() {
                 },
                 closeOnConfirm: false,
                 onCancel: function () {
-                    stream.getTracks()[0].stop()
+                    stopCam();
+                    // stream.getTracks()[0].stop()
                     // stream.getTracks()[1].stop()
                     // alert('确认取消');
                 }
@@ -212,13 +220,15 @@ function startF() {
 
     client.on('keyImg',function (msg) { 
         //table 数据,图片url放在data-pic中
-        var str =msg.split('_');
-
+        // console.log(msg)
+        
+        var path =msg.substr(msg.indexOf('keyImg')+7);
+        var str = path.split('_');
             var model = $('tbody').html();
-            model += `<tr data-pic="http://localhost:3000/out/keyImg/${msg}">
+            model += `<tr class="err_info" data-pic="http://localhost:3000/assets/output/keyImg/${path}" onclick="">
         <td>${str[0]} </td>
         <td>${str[1]} </td>
-        <td>${str[2]}</td>
+        <td>${str[2].substr(0,str[2].lastIndexOf('.'))}</td>
             </tr>`
             $('tbody').html(model);
 
@@ -284,7 +294,8 @@ function sendPic() {
                     if(data.state=='ok'){
                         new Toast().showMsg('保存成功',1500)
                         $('#my-confirm').modal('toggle');
-                        stream.getTracks()[0].stop()
+                        stopCam();
+                        // stream.getTracks()[0].stop()
                             // stream.getTracks()[1].stop()
                     }else{
                         new Toast().showMsg('服务器错误',1500)
