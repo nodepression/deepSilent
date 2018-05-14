@@ -282,7 +282,10 @@ const dom6=`<div id="dowebok">
 <div class="section">
 <div class="top-btn">
     <button type="button" class="am-btn am-btn-default" id="awaken_modal">添加人物</button>
+    <button type="button" class="am-btn am-btn-default" id="start">开始</button>
+    <button type="button" class="am-btn am-btn-default" id="off" style="display:none">结束</button>
     <button type="button" class="am-btn am-btn-default" id="precision_adjust">精度调节</button>
+    
 
     <div class="am-btn-group doc-js-btn-1" data-am-button>
                 <label class="am-btn am-btn-secondary am-btn-xs">
@@ -308,7 +311,7 @@ const dom6=`<div id="dowebok">
                     <div>摄像头</div>
                 </div>
                 <div class="am-u-sm-6">
-                    <canvas id="pic-canvas"></canvas>
+                    <canvas id="pic-canvas" style="width:80%"></canvas>
                 </div>
                   
             </div>

@@ -1,4 +1,5 @@
 //图片加载
+window.start=false;
 function loadImg(index) {
     if (!document.getElementById('ctx')) {
         return;
@@ -14,8 +15,10 @@ function loadImg(index) {
     var hei = document.getElementById('pic-v').offsetHeight;
     img.onload = () => {
         // console.log('render')
-        if (document.getElementById('ctx')) {
-            ctx.drawImage(img, 0, 0, 300, 150);
+        if (document.getElementById('ctx')&&start) {
+            document.getElementById('ctx').width=640;
+            document.getElementById('ctx').height=360;
+            ctx.drawImage(img, 0, 0,640,360);
             setTimeout(function () {
                 loadImg(index + 1)
             }, 200)
@@ -24,9 +27,20 @@ function loadImg(index) {
         }
 
     }
-    img.onerror = () => {
-        return;
-    }
+    try {
+        
+        img.onerror = function (err) {
+            // setTimeout(function () {
+            //     loadImg(index)
+            // }, 200)
+          throw err
+        }
+      } catch (err) {
+        
+      }
+    // img.onerror = () => {
+    //     return;
+    // }
 }
 function drawImg(url) { 
     if (!document.getElementById('ctx')) {
@@ -43,7 +57,7 @@ function drawImg(url) {
     var hei = document.getElementById('pic-v').offsetHeight;
     img.onload = () => {
         // console.log('render')
-        if (document.getElementById('ctx')) {
+        if (document.getElementById('ctx')&&start) {
             ctx.drawImage(img, 0, 0, 300, 150);
             
         } else {
@@ -69,7 +83,7 @@ function startCamera() {
     if (hasUserMedia()) {
         navigator.getUserMedia({
                 video: true,
-                audio: true
+                // audio: true
             },
             (vstream) => {
                 vid.src = window.URL.createObjectURL(vstream);
@@ -88,16 +102,78 @@ function depict() {
     var c = document.getElementById('pic-canvas').getContext('2d');
     var wid = document.getElementById('cam').offsetWidth;
     var heit = document.getElementById('cam').offsetHeight;
-    c.drawImage(v, 0, 0,wid,heit)
+    
+    document.getElementById('pic-canvas').width=1280;
+    document.getElementById('pic-canvas').height=1280*heit/wid;
+    c.drawImage(v, 0, 0,1280,1280*heit/wid);
 }
-
-
-
 
 /**
  * 实时页面绑定
  */
 function bindRealTime() {
+    window.radio='l'  
+    document.getElementById('start').onclick=function(){
+        start=true;
+        handleStart();
+        startF();
+    }
+    document.getElementById('off').onclick=function(){
+        start=false;
+        handleStart();
+        off();
+    }
+    //精度调节
+    var $radios = $('[name="options"]');
+    $radios.on('change', function () {
+        console.log('单选框当前选中的是：', $radios.filter(':checked').val());
+        radio= $radios.filter(':checked').val();
+    });
+
+    //调用摄像头保存图片的modal框
+    $('#doc-modal-list').find('.am-icon-close').add('#awaken_modal').
+        on('click', function () {
+            $('#my-confirm').modal({
+                relatedTarget: this,
+                onConfirm: function (options) {
+                    // var $link = $(this.relatedTarget).prev('a');
+                    // var msg = $link.length ? '你要删除的链接 ID 为 ' + $link.data('id') :
+                    //     '确定了，但不知道要整哪样';
+                    
+                    // var msg = "保存成功";
+                    //关闭摄像头
+                    
+                    sendPic();
+                    
+                    // alert(msg);
+                },
+                closeOnConfirm: false,
+                onCancel: function () {
+                    stream.getTracks()[0].stop()
+                    // stream.getTracks()[1].stop()
+                    // alert('确认取消');
+                }
+            });
+            $('.am-dimmer').css('display', 'none')
+            startCamera();
+        });
+}
+
+function off() {
+    document.getElementById('start').style.display='inline-block';
+    document.getElementById('off').style.display='none';
+    
+    
+    client.close();
+  }
+
+
+function startF() {
+    
+    
+    document.getElementById('start').style.display='none'
+    document.getElementById('off').style.display='inline-block'
+
     /**图片
      * loadImg()方法有问题，无法在图片获取失败之后继续，
      * 所以需要
@@ -105,6 +181,7 @@ function bindRealTime() {
      * drawImg(url)
      * 
     */
+
     loadImg(0);
 
     /**
@@ -126,53 +203,28 @@ function bindRealTime() {
         chartObj.chart0 = temp;
 
         //json中需要一个字段指定图片url,绘制图片
-        drawImg();
+        // drawImg();
 
+        
+
+
+    });
+
+    client.on('keyImg',function (msg) { 
         //table 数据,图片url放在data-pic中
-        if (msg.type == 'table') {
+        var str =msg.split('_');
+
             var model = $('tbody').html();
-            model += `<tr data-pic="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg">
-        <td>${msg.a} </td>
-        <td>${msg.b} </td>
-        <td>${msg.c}</td>
+            model += `<tr data-pic="http://localhost:3000/out/keyImg/${msg}">
+        <td>${str[0]} </td>
+        <td>${str[1]} </td>
+        <td>${str[2]}</td>
             </tr>`
             $('tbody').html(model);
-        }
-    });
 
-    //精度调节
-    var $radios = $('[name="options"]');
-    $radios.on('change', function () {
-        console.log('单选框当前选中的是：', $radios.filter(':checked').val());
-    });
+     })
 
-    //调用摄像头保存图片的modal框
-    $('#doc-modal-list').find('.am-icon-close').add('#awaken_modal').
-        on('click', function () {
-            $('#my-confirm').modal({
-                relatedTarget: this,
-                onConfirm: function (options) {
-                    // var $link = $(this.relatedTarget).prev('a');
-                    // var msg = $link.length ? '你要删除的链接 ID 为 ' + $link.data('id') :
-                    //     '确定了，但不知道要整哪样';
-                    
-                    var msg = "保存成功";
-                    //关闭摄像头
-                    
-                    sendPic();
-                    
-                    // alert(msg);
-                },
-                closeOnConfirm: false,
-                onCancel: function () {
-                    stream.getTracks()[0].stop()
-                    stream.getTracks()[1].stop()
-                    // alert('确认取消');
-                }
-            });
-            $('.am-dimmer').css('display', 'none')
-            startCamera();
-        });
+    
 
     $('#doc-modal-list').find('.am-icon-close').add('#err_content').
         on('click', function (e) {
@@ -233,7 +285,7 @@ function sendPic() {
                         new Toast().showMsg('保存成功',1500)
                         $('#my-confirm').modal('toggle');
                         stream.getTracks()[0].stop()
-                            stream.getTracks()[1].stop()
+                            // stream.getTracks()[1].stop()
                     }else{
                         new Toast().showMsg('服务器错误',1500)
                     }
@@ -244,4 +296,38 @@ function sendPic() {
                 console.log(data,state)
             }
         })
+}
+
+
+
+function handleStart(){
+    var send={
+        start,//true OR false
+        rate:radio //l m h
+    }
+    $.ajax({
+            url:'/cmd',
+            type:'POST',
+            data:send,
+            dataType:"JSON",
+            success:function(data,state){
+                // alert('保存成功')
+                
+                    if(data.state=='statr'){
+                        new Toast().showMsg('启动成功',1500)
+                        // startF()
+                            // stream.getTracks()[1].stop()
+                    }else if(data.state=='off'){
+                        new Toast().showMsg('启动成功',1500)
+                    //    off();
+                    }else{
+                        new Toast().showMsg('服务器错误',1500)
+                    }
+                console.log(data,state)
+            },
+            error:function(data,state){
+                new Toast().showMsg('网络异常',1500)
+                console.log(data,state)
+            }
+    })
 }
