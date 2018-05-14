@@ -1,5 +1,5 @@
 //图片加载
-window.start=false;
+window.start = false;
 function loadImg(index) {
     if (!document.getElementById('ctx')) {
         return;
@@ -15,10 +15,10 @@ function loadImg(index) {
     var hei = document.getElementById('pic-v').offsetHeight;
     img.onload = () => {
         // console.log('render')
-        if (document.getElementById('ctx')&&start) {
-            document.getElementById('ctx').width=640;
-            document.getElementById('ctx').height=360;
-            ctx.drawImage(img, 0, 0,640,360);
+        if (document.getElementById('ctx') && start) {
+            document.getElementById('ctx').width = 640;
+            document.getElementById('ctx').height = 360;
+            ctx.drawImage(img, 0, 0, 640, 360);
             setTimeout(function () {
                 loadImg(index + 1)
             }, 200)
@@ -28,28 +28,28 @@ function loadImg(index) {
 
     }
     try {
-        
+
         img.onerror = function (err) {
             setTimeout(function () {
                 loadImg(index)
             }, 500)
-          throw err
+            throw err
         }
-      } catch (err) {
-        
-      }
+    } catch (err) {
+
+    }
     // img.onerror = () => {
     //     return;
     // }
 }
-function drawImg(url) { 
+function drawImg(url) {
     if (!document.getElementById('ctx')) {
         return;
     }
     var ctx = document.getElementById('ctx').getContext('2d');
     var img = new Image();
     // var str = index.toString().padStart(12, '0');
-    
+
     img.src = url;
     // console.log(url)
     var wid = document.getElementById('pic-v').offsetWidth;
@@ -57,9 +57,9 @@ function drawImg(url) {
     var hei = document.getElementById('pic-v').offsetHeight;
     img.onload = () => {
         // console.log('render')
-        if (document.getElementById('ctx')&&start) {
+        if (document.getElementById('ctx') && start) {
             ctx.drawImage(img, 0, 0, 300, 150);
-            
+
         } else {
             return;
         }
@@ -68,7 +68,7 @@ function drawImg(url) {
     img.onerror = () => {
         return;
     }
- }
+}
 // loadImg(0);
 
 function hasUserMedia() {
@@ -99,7 +99,7 @@ function startCamera() {
     vid.src = 'http://127.0.0.1:8080/?action=stream';
 }
 
-function stopCam(){
+function stopCam() {
     var vid = document.getElementById('cam');
     vid.src = '';
 }
@@ -109,32 +109,32 @@ function depict() {
     var c = document.getElementById('pic-canvas').getContext('2d');
     var wid = document.getElementById('cam').offsetWidth;
     var heit = document.getElementById('cam').offsetHeight;
-    
-    document.getElementById('pic-canvas').width=1280;
-    document.getElementById('pic-canvas').height=1280*heit/wid;
-    c.drawImage(v, 0, 0,1280,1280*heit/wid);
+
+    document.getElementById('pic-canvas').width = 1280;
+    document.getElementById('pic-canvas').height = 1280 * heit / wid;
+    c.drawImage(v, 0, 0, 1280, 1280 * heit / wid);
 }
 
 /**
  * 实时页面绑定
  */
 function bindRealTime() {
-    window.radio='l'  
-    document.getElementById('start').onclick=function(){
-        start=true;
+    window.radio = 'l'
+    document.getElementById('start').onclick = function () {
+        start = true;
         handleStart();
-        startF();
+        // startF();
     }
-    document.getElementById('off').onclick=function(){
-        start=false;
+    document.getElementById('off').onclick = function () {
+        start = false;
         handleStart();
-        off();
+        // off();
     }
     //精度调节
     var $radios = $('[name="options"]');
     $radios.on('change', function () {
         console.log('单选框当前选中的是：', $radios.filter(':checked').val());
-        radio= $radios.filter(':checked').val();
+        radio = $radios.filter(':checked').val();
     });
 
     //调用摄像头保存图片的modal框
@@ -146,12 +146,12 @@ function bindRealTime() {
                     // var $link = $(this.relatedTarget).prev('a');
                     // var msg = $link.length ? '你要删除的链接 ID 为 ' + $link.data('id') :
                     //     '确定了，但不知道要整哪样';
-                    
+
                     // var msg = "保存成功";
                     //关闭摄像头
-                    
+
                     sendPic();
-                    
+
                     // alert(msg);
                 },
                 closeOnConfirm: false,
@@ -168,19 +168,19 @@ function bindRealTime() {
 }
 
 function off() {
-    document.getElementById('start').style.display='inline-block';
-    document.getElementById('off').style.display='none';
-    
-    
+    document.getElementById('start').style.display = 'inline-block';
+    document.getElementById('off').style.display = 'none';
+
+
     client.close();
-  }
+}
 
 
 function startF() {
-    
-    
-    document.getElementById('start').style.display='none'
-    document.getElementById('off').style.display='inline-block'
+
+
+    document.getElementById('start').style.display = 'none'
+    document.getElementById('off').style.display = 'inline-block'
 
     /**图片
      * loadImg()方法有问题，无法在图片获取失败之后继续，
@@ -213,33 +213,33 @@ function startF() {
         //json中需要一个字段指定图片url,绘制图片
         // drawImg();
 
-        
+
 
 
     });
 
-    client.on('keyImg',function (msg) { 
+    client.on('keyImg', function (msg) {
         //table 数据,图片url放在data-pic中
         // console.log(msg)
-        
-        var path =msg.substr(msg.indexOf('keyImg')+7);
+
+        var path = msg.substr(msg.indexOf('keyImg') + 7);
         var str = path.split('_');
-            var model = $('tbody').html();
-            model += `<tr class="err_info" data-pic="http://localhost:3000/assets/output/keyImg/${path}" onclick="">
+        var model = $('tbody').html();
+        model += `<tr class="err_info" data-pic="http://localhost:3000/assets/output/keyImg/${path}" onclick="">
         <td>${str[0]} </td>
         <td>${str[1]} </td>
-        <td>${str[2].substr(0,str[2].lastIndexOf('.'))}</td>
+        <td>${str[2].substr(0, str[2].lastIndexOf('.'))}</td>
             </tr>`
-            $('tbody').html(model);
+        $('tbody').html(model);
 
-     })
+    })
 
-    
+
 
     $('#doc-modal-list').find('.am-icon-close').add('#err_content').
         on('click', function (e) {
             // console.log(e.target.parentElement.dataset.pic)
-            document.getElementsByClassName('am-img-responsive')[0].src=e.target.parentElement.dataset.pic;
+            document.getElementsByClassName('am-img-responsive')[0].src = e.target.parentElement.dataset.pic;
             if ($(e.target).parents(".err_info").hasClass("err_info")) {
 
                 $('#err_modal').modal({
@@ -252,7 +252,7 @@ function startF() {
                     // onCancel: function () {
                     //     // alert('确认取消');
                     // }
-                    
+
                 });
                 $('.am-dimmer').css('display', 'none')
             }
@@ -267,78 +267,78 @@ function startF() {
 
 
 
-function sendPic() {  
-   var imgData= document.getElementById('pic-canvas').toDataURL();
-   
+function sendPic() {
+    var imgData = document.getElementById('pic-canvas').toDataURL();
 
-      var username=document.getElementById('doc-ipt-0').value;
-      var age=document.getElementById('doc-ipt-1').value;
-      var gender=document.getElementById('doc-select-1').value;
- 
-   if(username.trim()==""||username.trim()==""){
+
+    var username = document.getElementById('doc-ipt-0').value;
+    var age = document.getElementById('doc-ipt-1').value;
+    var gender = document.getElementById('doc-select-1').value;
+
+    if (username.trim() == "" || username.trim() == "") {
         // alert('请补全信息');
-        
-        new Toast().showMsg('请补全信息',1500)
+
+        new Toast().showMsg('请补全信息', 1500)
         console.log('请补全信息')
         return;
     }
-   console.log({imgData,username,age,gender});
-   $.ajax({
-            url:'/saveInfo',
-            type:'POST',
-            data:{imgData,username,age,gender},
-            dataType:"JSON",
-            success:function(data,state){
-                // alert('保存成功')
-                
-                    if(data.state=='ok'){
-                        new Toast().showMsg('保存成功',1500)
-                        $('#my-confirm').modal('toggle');
-                        stopCam();
-                        // stream.getTracks()[0].stop()
-                            // stream.getTracks()[1].stop()
-                    }else{
-                        new Toast().showMsg('服务器错误',1500)
-                    }
-                console.log(data,state)
-            },
-            error:function(data,state){
-                new Toast().showMsg('网络异常',1500)
-                console.log(data,state)
+    console.log({ imgData, username, age, gender });
+    $.ajax({
+        url: '/saveInfo',
+        type: 'POST',
+        data: { imgData, username, age, gender },
+        dataType: "JSON",
+        success: function (data, state) {
+            // alert('保存成功')
+
+            if (data.state == 'ok') {
+                new Toast().showMsg('保存成功', 1500)
+                $('#my-confirm').modal('toggle');
+                stopCam();
+                // stream.getTracks()[0].stop()
+                // stream.getTracks()[1].stop()
+            } else {
+                new Toast().showMsg('服务器错误', 1500)
             }
-        })
+            console.log(data, state)
+        },
+        error: function (data, state) {
+            new Toast().showMsg('网络异常', 1500)
+            console.log(data, state)
+        }
+    })
 }
 
 
 
-function handleStart(){
-    var send={
+function handleStart() {
+    var send = {
         start,//true OR false
-        rate:radio //l m h
+        rate: radio //l m h
     }
     $.ajax({
-            url:'/cmd',
-            type:'POST',
-            data:send,
-            dataType:"JSON",
-            success:function(data,state){
-                // alert('保存成功')
-                
-                    if(data.state=='start'){
-                        new Toast().showMsg('启动成功',1500)
-                        // startF()
-                            // stream.getTracks()[1].stop()
-                    }else if(data.state=='off'){
-                        new Toast().showMsg('启动成功',1500)
-                    //    off();
-                    }else{
-                        new Toast().showMsg('服务器错误',1500)
-                    }
-                console.log(data,state)
-            },
-            error:function(data,state){
-                new Toast().showMsg('网络异常',1500)
-                console.log(data,state)
+        url: '/cmd',
+        type: 'POST',
+        data: send,
+        dataType: "JSON",
+        success: function (data, state) {
+            // alert('保存成功')
+
+            if (data.state == 'start') {
+                new Toast().showMsg('启动成功', 1500)
+                startF()
+                // stream.getTracks()[1].stop()
+            } else if (data.state == 'off') {
+                new Toast().showMsg('启动成功', 1500)
+                off();
+            } else {
+                new Toast().showMsg('服务器错误', 1500)
             }
+            console.log(data, state)
+        },
+        error: function (data, state) {
+            new Toast().showMsg('网络异常', 1500)
+            console.log(data, state)
+        }
     })
 }
