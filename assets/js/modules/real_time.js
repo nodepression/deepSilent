@@ -30,9 +30,9 @@ function loadImg(index) {
     try {
         
         img.onerror = function (err) {
-            // setTimeout(function () {
-            //     loadImg(index)
-            // }, 200)
+            setTimeout(function () {
+                loadImg(index)
+            }, 500)
           throw err
         }
       } catch (err) {
