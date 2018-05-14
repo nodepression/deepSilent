@@ -27,24 +27,40 @@
         res.sendFile(__dirname + '/index.html');
     });
 
-    //保存前端发送的base64图片
+    //保存前端发送的图片和json
     app.post('/saveInfo', function (req, res) {
-        //接收前台POST过来的base64
-        var imgData = req.body.imgData;
-        //过滤data:URL
-        var base64Data = imgData.replace(/^data:image\/\w+;base64,/, "");
+        var imgData = req.body.imgData;//接收前台POST过来的base64
+        var base64Data = imgData.replace(/^data:image\/\w+;base64,/, "");//过滤data:URL
         var dataBuffer = new Buffer(base64Data, 'base64');
-        var filename = "./out/" + req.body.username + ".png";
-        //根据username命名文件
-        fs.writeFile(filename, dataBuffer, function (err) {
+        var img_url = "./out/img/" + req.body.username + ".png"; //根据username命名文件
+        fs.writeFile(img_url, dataBuffer, function (err) { //写入图片
             if (err) {
                 res.send({ "state": "false", err });
             } else {
-                log(filename + " : 保存成功");
+                log(img_url + " : 保存成功");
                 res.send({ "state": "ok" });
             }
         });
+
+        var jsonUrl = "./out/json/" + req.body.username + ".json"; 
+        var person = {};
+        person.name = req.body.username;
+        person.age  = req.body.age;
+        person.gender  = req.body.gender;
+        person.img = req.body.username + ".png";
+        fs.writeFile(jsonUrl,JSON.stringify(person),function(err){
+            if (err) {
+                log({ "state": "false", err });
+            } else {
+                log(jsonUrl + " : 保存成功");
+            }
+        })
+
+
+
     });
+
+
 
 
     server.on('connection', function (socket) {
@@ -53,6 +69,8 @@
             console.log("一个连接断开");
         });
     });
+
+
 
 
     function watch_json_folder(filePath) {  //根据文件路径读取文件，返回文件列表
