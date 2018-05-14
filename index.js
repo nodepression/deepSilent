@@ -5,7 +5,7 @@ var server = require('socket.io')(http);
 // var yaml = require('yamljs'); //解析yml文件
 var fs = require('fs');
 var path = require('path');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 
 app.use(express.static('./'));

@@ -5,5 +5,5 @@ node_modules/
 /assets/video/
 .history/
 .Ds_Store
-/assets/output/img
-/out/*.png
+/assets/output/
+/out/

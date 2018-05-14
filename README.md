@@ -25,7 +25,7 @@
 <!-- ## what to do next:   -->
 <!-- ### need to establish https connection  -->
 
-### 新需求  
+### 运行方式
 * 在项目文件夹类执行npm install
-* node index
+* node server_real_time.js
 * http://localhost:3000/
