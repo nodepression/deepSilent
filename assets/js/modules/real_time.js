@@ -324,7 +324,7 @@ function handleStart(){
             success:function(data,state){
                 // alert('保存成功')
                 
-                    if(data.state=='statr'){
+                    if(data.state=='start'){
                         new Toast().showMsg('启动成功',1500)
                         // startF()
                             // stream.getTracks()[1].stop()

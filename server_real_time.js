@@ -8,6 +8,7 @@
     var nodePath = require('path');
     var chokidar = require('chokidar'); //监听文件变化
     var bodyParser = require('body-parser');
+    var { exec } = require('child_process');
 
 
     app.use(express.static('./'));
@@ -42,13 +43,13 @@
             }
         });
 
-        var jsonUrl = "./out/json/" + req.body.username + ".json"; 
+        var jsonUrl = "./out/json/" + req.body.username + ".json";
         var person = {};
         person.name = req.body.username;
-        person.age  = req.body.age;
-        person.gender  = req.body.gender;
+        person.age = req.body.age;
+        person.gender = req.body.gender;
         person.img = req.body.username + ".png";
-        fs.writeFile(jsonUrl,JSON.stringify(person),function(err){
+        fs.writeFile(jsonUrl, JSON.stringify(person), function (err) {
             if (err) {
                 log({ "state": "false", err });
             } else {
@@ -57,10 +58,37 @@
         })
 
 
-
     });
 
 
+    app.post('/cmd', function (req, res) {
+        var start = req.body.start;
+        if (start) {
+            exec("python -V", (err, stdout, stderr) => {
+                if (err) {
+                    res.send({state:"false"})
+                    console.error(err);
+                    return;
+                }
+                else{
+                    res.send({state:"true"})
+                }
+            });
+        }
+        else {
+            exec("python -h", (err, stdout, stderr) => {
+                if (err) {
+                    res.send({state:"false"})
+                    console.error(err);
+                    return;
+                }
+                else{
+                    res.send({state:"true"})
+                }
+            });
+        }
+
+    })
 
 
     server.on('connection', function (socket) {
@@ -129,13 +157,13 @@
             const re = /(.png)$/;  //判断png文件的正则表达式
             if (re.test(path)) { //只读取png文件
 
-                    if (server) { //保持连接状态的话就向客户端发送新添加的信息。
-                        server.emit('keyImg', path);
-                    }
-                    else {
-                        log("没有客户端连接,此时生成的信息将不能传输到客户端");
-                    }
-                
+                if (server) { //保持连接状态的话就向客户端发送新添加的信息。
+                    server.emit('keyImg', path);
+                }
+                else {
+                    log("没有客户端连接,此时生成的信息将不能传输到客户端");
+                }
+
             }
 
             else { //当传入其他文件时给出提示信息
