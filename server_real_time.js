@@ -64,26 +64,26 @@
     app.post('/cmd', function (req, res) {
         var start = req.body.start;
         if (start) {
-            exec("python -V", (err, stdout, stderr) => {
+            exec("cd ./", (err, stdout, stderr) => {
                 if (err) {
                     res.send({state:"false"})
                     console.error(err);
                     return;
                 }
                 else{
-                    res.send({state:"true"})
+                    res.send({state:"start"})
                 }
             });
         }
         else {
-            exec("python -h", (err, stdout, stderr) => {
+            exec("cd ./", (err, stdout, stderr) => {
                 if (err) {
                     res.send({state:"false"})
                     console.error(err);
                     return;
                 }
                 else{
-                    res.send({state:"true"})
+                    res.send({state:"off"})
                 }
             });
         }
