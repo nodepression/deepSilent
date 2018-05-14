@@ -81,7 +81,7 @@
         });
 
         watcher.on('add', function (path) {
-            // log(`File ${path} has been added`);
+            log(`File ${path} has been added`);
             const re = /(.json)$/;  //判断json文件的正则表达式
             if (re.test(path)) { //只读取json文件
 
