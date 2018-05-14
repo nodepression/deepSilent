@@ -5,7 +5,7 @@
     var http = require('http').Server(app);
     var server = require('socket.io')(http);
     var fs = require('fs');
-    var path = require('path');
+    var nodePath = require('path');
     var chokidar = require('chokidar'); //监听文件变化
     var bodyParser = require('body-parser');
 
@@ -16,10 +16,11 @@
 
 
 
-    
+
     var log = console.log.bind(console);
     var jsonData = null;//需要实时传送的数据
-    var filePath = path.resolve('./assets/output/json');//需要实时更新的数据保存的文件夹路径
+    var json_path = nodePath.resolve('./assets/output/json');//需要实时更新的json数据保存的文件夹路径
+    var keyImg_path = nodePath.resolve('./assets/output/keyImg');//需要监听的关键图片(表格里的数据)文件夹;
 
 
     app.get('/', function (req, res) {
@@ -54,7 +55,7 @@
     });
 
 
-    function watch_a_folder(filePath) {  //根据文件路径读取文件，返回文件列表
+    function watch_json_folder(filePath) {  //根据文件路径读取文件，返回文件列表
 
         var watcher = chokidar.watch(filePath, {
             ignored: /(^|[\/\\])\../,
@@ -62,7 +63,7 @@
         });
 
         watcher.on('add', function (path) {
-            log(`File ${path} has been added`);
+            // log(`File ${path} has been added`);
             const re = /(.json)$/;  //判断json文件的正则表达式
             if (re.test(path)) { //只读取json文件
 
@@ -73,7 +74,9 @@
                 }
 
                 if (jsonData) {
+                    var img_url = path.split(".")[0] + ".png"; //json对应的图片地址
                     jsonData.date = Date.now(); //返回时间戳
+                    jsonData.imgUrl = img_url;  //返回对应图片地址
 
                     if (server) { //保持连接状态的话就向客户端发送新添加的信息。
                         server.emit('message', jsonData);
@@ -96,13 +99,44 @@
     }
 
 
+    function watch_keyImg_folder(filePath) {  //监听保存key img的文件夹,有新图片生成则把图片路径传给客户端
+
+        var watcher = chokidar.watch(filePath, {
+            ignored: /(^|[\/\\])\../,
+            persistent: true
+        });
+
+        watcher.on('add', function (path) {
+            log(`File ${path} has been added`);
+            const re = /(.png)$/;  //判断png文件的正则表达式
+            if (re.test(path)) { //只读取png文件
+
+                    if (server) { //保持连接状态的话就向客户端发送新添加的信息。
+                        server.emit('keyImg', path);
+                    }
+                    else {
+                        log("没有客户端连接,此时生成的信息将不能传输到客户端");
+                    }
+                
+            }
+
+            else { //当传入其他文件时给出提示信息
+                log("what you add is not a png format file");
+            }
+
+        })
+    }
+
+
     http.listen(3000, function () {
-        console.log('listening on *:3001');
+        console.log('listening on *:3000');
     });
 
+    watch_json_folder(json_path);//监听json文件夹
+    watch_keyImg_folder(keyImg_path);//监听img文件夹
 
 
-    watch_a_folder(filePath);//监听目的文件夹
+
 
 })();
 
