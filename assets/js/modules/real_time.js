@@ -222,7 +222,7 @@ function startF() {
         chartObj.chart0 = temp;
 
         //json中需要一个字段指定图片url,绘制图片
-        var path =msg.imgUrl.substr(msg.imgUrl.indexOf('json')+5);
+        var path =msg.imgUrl;
         var str = 'http://localhost:3000/assets/output/img/'+path;
         console.log(str)
         drawImg(str);
