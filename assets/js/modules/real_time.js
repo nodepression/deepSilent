@@ -209,7 +209,8 @@ function startF() {
     chartObj.chart0 = {
         data0: [],
         data1: [],
-        date: [new Date().toLocaleTimeString()]
+        data2: [],
+        date: []
     };
     window.client = io();
     client.on('message', function (msg) {
@@ -217,6 +218,7 @@ function startF() {
         console.log(msg);
         chartObj.chart0.data0.push(msg.people[0].pose_keypoints_2d[0]);
         chartObj.chart0.data1.push(msg.people[0].pose_keypoints_2d[1]);
+        chartObj.chart0.data2.push(msg.people[0].pose_keypoints_2d[3]);
         chartObj.chart0.date.push(new Date(msg.date).toLocaleTimeString());
         var temp = chartObj.chart0;
         chartObj.chart0 = temp;

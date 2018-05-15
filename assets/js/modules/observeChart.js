@@ -74,7 +74,7 @@ function showChart0() {
             data: chartObj.chart0.date
         },
         legend: {
-            data:['人数','置信度']
+            data:['人数','置信度','aaa']
         },
         tooltip: {
             trigger: 'axis',
@@ -106,6 +106,12 @@ function showChart0() {
             type:'line',
             stack: '总量',
             data: chartObj.chart0.data1,
+            // smooth: true
+        },{
+            name:'aaa',
+            type:'line',
+            stack: '总量',
+            data: chartObj.chart0.data2,
             // smooth: true
         }]
     };
