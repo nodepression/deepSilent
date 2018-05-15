@@ -10,9 +10,9 @@ function loadImg(index) {
     var url = 'http://localhost:3000/assets/output/img/' + str + '_rendered.png';
     img.src = url;
     // console.log(url)
-    var wid = document.getElementById('pic-v').offsetWidth;
+    // var wid = document.getElementById('pic-v').offsetWidth;
     // console.log(wid)
-    var hei = document.getElementById('pic-v').offsetHeight;
+    // var hei = document.getElementById('pic-v').offsetHeight;
     img.onload = () => {
         // console.log('render')
         if (document.getElementById('ctx') && start) {
@@ -38,36 +38,36 @@ function loadImg(index) {
     } catch (err) {
 
     }
-    // img.onerror = () => {
-    //     return;
-    // }
+    img.onerror = () => {
+        return;
+    }
 }
 function drawImg(url) { 
     if (!document.getElementById('ctx')) {
         return;
     }
-    var ctx = document.getElementById('ctx').getContext('2d');
-    var img = new Image();
+    // var ctx = document.getElementById('ctx').getContext('2d');
+    var img = document.getElementById('ctx');
     // var str = index.toString().padStart(12, '0');
     
     img.src = url;
     // console.log(url)
-    var wid = document.getElementById('pic-v').offsetWidth;
+    // var wid = document.getElementById('pic-v').offsetWidth;
     // console.log(wid)
-    var hei = document.getElementById('pic-v').offsetHeight;
-    img.onload = () => {
-        // console.log('render')
-        if (document.getElementById('ctx')&&start) {
-            document.getElementById('ctx').width=640;
-            document.getElementById('ctx').height=360;
-            ctx.drawImage(img, 0, 0,640,360);
+    // var hei = document.getElementById('pic-v').offsetHeight;
+    // img.onload = () => {
+    //     // console.log('render')
+    //     if (document.getElementById('ctx')&&start) {
+    //         // document.getElementById('ctx').width=640;
+    //         // document.getElementById('ctx').height=360;
+    //         // ctx.drawImage(img, 0, 0,640,360);
            
             
-        } else {
-            return;
-        }
+    //     } else {
+    //         return;
+    //     }
 
-    }
+    // }
     try {
 
         img.onerror = function (err) {
@@ -332,6 +332,7 @@ function handleStart() {
         start,//true OR false
         rate: radio //l m h
     }
+    console.log(send)
     $.ajax({
         url: '/cmd',
         type: 'POST',
@@ -345,7 +346,7 @@ function handleStart() {
                 startF()
                 // stream.getTracks()[1].stop()
             } else if (data.state == 'off') {
-                new Toast().showMsg('启动成功', 1500)
+                new Toast().showMsg('关闭成功', 1500)
                 off();
             } else {
                 new Toast().showMsg('服务器错误', 1500)

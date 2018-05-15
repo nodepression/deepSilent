@@ -386,7 +386,7 @@ const dom6=`<div id="dowebok">
             <div class="am-panel am-panel-primary v-box">
                 <div class="am-panel-hd">图片帧</div>
                 <div class="am-panel-bd" id="pic-v" style="padding:0">
-                    <canvas id="ctx" style="width: 100%"></canvas>
+                    <img id="ctx" style="width: 100%"></img>
                 </div>
             </div>
         </div>
