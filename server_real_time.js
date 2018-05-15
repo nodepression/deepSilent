@@ -63,7 +63,7 @@
 
     app.post('/cmd', function (req, res) {
         var start = req.body.start;
-        if (start) {
+        if (start=="true") {
             exec("cd ./", (err, stdout, stderr) => {
                 if (err) {
                     res.send({ state: "false" })
