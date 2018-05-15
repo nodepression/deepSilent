@@ -51,25 +51,30 @@ function drawImg(url) {
     // var ctx = document.getElementById('ctx').getContext('2d');
     var img = document.getElementById('ctx');
     // var str = index.toString().padStart(12, '0');
+    if(img.complete){
+            console.log('render')
+            setTimeout(function(){
+                imgLoading=false;
+                console.log('imgLoading false')
+            },300)
+        
+    }else{
+        img.onload = () => {
+            console.log('render')
+            setTimeout(function(){
+                imgLoading=false;
+            },300);
+            img.onload=null;
+        }
+    }
     
+
     img.src = url;
     // console.log(url)
     // var wid = document.getElementById('pic-v').offsetWidth;
     // console.log(wid)
     // var hei = document.getElementById('pic-v').offsetHeight;
-    img.onload = () => {
-        // console.log('render')
-        imgLoading=false;
-        // if (document.getElementById('ctx')&&start) {
-        //    imgLoading=false;
-           
-            
-        // } else {
-        //     imgLoading=false;
-        //     return;
-        // }
-
-    }
+   
     try {
 
         img.onerror = function (err) {
@@ -227,9 +232,9 @@ function startF() {
 
         //json中需要一个字段指定图片url,绘制图片
         var path =msg.imgUrl;
-        var str = 'http://localhost:3000/assets/output/img/'+path;
+        var str = './assets/output/img/'+path;
         console.log(str);
-        if(!imgLoading){
+        if(imgLoading==false){
             drawImg(str);
         }
         
