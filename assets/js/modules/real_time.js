@@ -1,5 +1,6 @@
 //图片加载
 window.start = false;
+window.imgLoading=false;
 function loadImg(index) {
     if (!document.getElementById('ctx')) {
         return;
@@ -46,6 +47,7 @@ function drawImg(url) {
     if (!document.getElementById('ctx')) {
         return;
     }
+    imgLoading=true;
     // var ctx = document.getElementById('ctx').getContext('2d');
     var img = document.getElementById('ctx');
     // var str = index.toString().padStart(12, '0');
@@ -55,19 +57,19 @@ function drawImg(url) {
     // var wid = document.getElementById('pic-v').offsetWidth;
     // console.log(wid)
     // var hei = document.getElementById('pic-v').offsetHeight;
-    // img.onload = () => {
-    //     // console.log('render')
-    //     if (document.getElementById('ctx')&&start) {
-    //         // document.getElementById('ctx').width=640;
-    //         // document.getElementById('ctx').height=360;
-    //         // ctx.drawImage(img, 0, 0,640,360);
+    img.onload = () => {
+        // console.log('render')
+        imgLoading=false;
+        // if (document.getElementById('ctx')&&start) {
+        //    imgLoading=false;
            
             
-    //     } else {
-    //         return;
-    //     }
+        // } else {
+        //     imgLoading=false;
+        //     return;
+        // }
 
-    // }
+    }
     try {
 
         img.onerror = function (err) {
@@ -226,8 +228,11 @@ function startF() {
         //json中需要一个字段指定图片url,绘制图片
         var path =msg.imgUrl;
         var str = 'http://localhost:3000/assets/output/img/'+path;
-        console.log(str)
-        drawImg(str);
+        console.log(str);
+        if(!imgLoading){
+            drawImg(str);
+        }
+        
 
 
 
@@ -342,10 +347,12 @@ function handleStart() {
             // alert('保存成功')
 
             if (data.state == 'start') {
+                imgLoading=false;
                 new Toast().showMsg('启动成功', 1500)
                 startF()
                 // stream.getTracks()[1].stop()
             } else if (data.state == 'off') {
+                imgLoading=false;
                 new Toast().showMsg('关闭成功', 1500)
                 off();
             } else {
