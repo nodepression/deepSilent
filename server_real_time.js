@@ -66,24 +66,24 @@
         if (start) {
             exec("cd ./", (err, stdout, stderr) => {
                 if (err) {
-                    res.send({state:"false"})
+                    res.send({ state: "false" })
                     console.error(err);
                     return;
                 }
-                else{
-                    res.send({state:"start"})
+                else {
+                    res.send({ state: "start" })
                 }
             });
         }
         else {
             exec("cd ./", (err, stdout, stderr) => {
                 if (err) {
-                    res.send({state:"false"})
+                    res.send({ state: "false" })
                     console.error(err);
                     return;
                 }
-                else{
-                    res.send({state:"off"})
+                else {
+                    res.send({ state: "off" })
                 }
             });
         }
@@ -120,7 +120,7 @@
                 }
 
                 if (jsonData) {
-                    var img_url = path.split(".")[0] + ".png"; //json对应的图片地址
+                    var img_url = nodePath.basename(path).split("_")[0] + "_rendered.png"; //json对应的图片名
                     jsonData.date = Date.now(); //返回时间戳
                     jsonData.imgUrl = img_url;  //返回对应图片地址
 
