@@ -133,12 +133,12 @@ function switchPages(lastIndex,nextIndex) {
                                 }
                                 document.getElementById('nav-bar').children[0].children[3].click();
                                 $.ajax({
-                                  url: '/login',
+                                  url: '/sign_in',
                                   type: 'POST',
                                   data: send,
                                   dataType: "JSON",
                                   success: function (data, state) {
-                                      if(data.state==200){
+                                      if(data.status==200){
                                         new Toast().showMsg('登录成功', 1500);
                                         document.getElementById('nav-bar').children[0].children[3].click();
                                         $('#log-modalm').modal('toggle');
@@ -163,14 +163,14 @@ function switchPages(lastIndex,nextIndex) {
                               }
                               document.getElementById('nav-bar').children[0].children[3].click();
                               $.ajax({
-                                url: '/regist',
+                                url: '/sign_up',
                                 type: 'POST',
                                 data: send,
                                 dataType: "JSON",
                                 success: function (data, state) {
-                                    if(data.state==200){
+                                    if(data.status==200){
                                       new Toast().showMsg('注册成功', 1500);
-                                    }else if(data.state==300){
+                                    }else if(data.status==300){
                                       new Toast().showMsg('用户名已被注册', 1500);
                                     }
                                 },
