@@ -13,7 +13,7 @@ module.exports = function () {
         port: config.port,
         database: config.database,
     });
-    connection.connect(function(err) {
+    connection.connect(function (err) {
         if (err) {
             console.error('error connecting: ' + err.stack);
             return;
@@ -32,16 +32,18 @@ module.exports = function () {
     router.post('/sign_in', function (req, res) {
         var config = req.body;
         console.info(config);
-        var sql="select * from user where username = ? and password = ?)";
-        var sql_value_arr = [config.username,config.password];
+        var sql = 'select * from user where username = ? and password = ? ';
+        var sql_value_arr = [config.username, config.password];
 
-        connection.query(sql,sql_value_arr, function (err, result) {
+        connection.query(sql, sql_value_arr, function (err, result) {
             if (err) {
-                console.log('[SELECT ERROR] - ', err.message); 
-            } else {
-                var myData = { "status": "200", "state": "ok"};
-                console.log(result);
+                console.log('[SELECT ERROR] - ', err.message);
+            } else if (result.length == 1) {
+                var myData = { "status": "200", "state": "ok" };
+                console.log("登陆成功");
                 res.json(myData);
+            } else {
+                console.log("输入有误");
             }
         });
     });
@@ -49,15 +51,17 @@ module.exports = function () {
     router.post('/sign_up', function (req, res) {
         var config = req.body;
         console.info(config);
-        var sql="insert into user(username,password) values(?,?)";
-        var sql_value_arr = [config.username,config.password];
+        var sql = "insert into user(username,password) values(?,?)";
+        var sql_value_arr = [config.username, config.password];
 
-        connection.query(sql,sql_value_arr, function (err, result) {
+        connection.query(sql, sql_value_arr, function (err, result) {
+            var myData;
             if (err) {
-                console.log('[SELECT ERROR] - ', err.message); 
+                // myData = { "status": "200", "state": "ok"};
+                console.log('[SELECT ERROR] - ', err.message);
             } else {
-                var myData = { "status": "200", "state": "ok"};
-                console.log(result,插入成功);
+                myData = { "status": "200", "state": "ok" };
+                console.log("注册成功");
                 res.json(myData);
             }
         });
