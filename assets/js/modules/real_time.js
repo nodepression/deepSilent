@@ -48,25 +48,22 @@ function drawImg(url) {
         return;
     }
     imgLoading=true;
-    // var ctx = document.getElementById('ctx').getContext('2d');
-    var img = document.getElementById('ctx');
+    var ctx = document.getElementById('ctx').getContext('2d');
+    var img = new Image();
     // var str = index.toString().padStart(12, '0');
-    if(img.complete){
-            console.log('render')
-            setTimeout(function(){
-                imgLoading=false;
-                console.log('imgLoading false')
-            },300)
+ 
         
-    }else{
+
         img.onload = () => {
             console.log('render')
             setTimeout(function(){
                 imgLoading=false;
+                ctx.drawImage(img, 0, 0, 640, 360);
             },300);
             img.onload=null;
+            console.log('imgLoading false')
         }
-    }
+
     
 
     img.src = url;

@@ -350,7 +350,7 @@ const dom6=`<div id="dowebok">
         <form class="am-form am-form-horizontal">
             <div class="am-g am-form-group">
                 <div class="am-u-sm-6">
-                    <img id="cam" autoplay src style="width:80%"></video>
+                    <canvas id="cam" autoplay src style="width:80%"></video>
                     <div>摄像头</div>
                 </div>
                 <div class="am-u-sm-6">
@@ -429,7 +429,7 @@ const dom6=`<div id="dowebok">
             <div class="am-panel am-panel-primary v-box">
                 <div class="am-panel-hd">图片帧</div>
                 <div class="am-panel-bd" id="pic-v" style="padding:0">
-                    <img id="ctx" style="width: 100%"></img>
+                    <canvas id="ctx" width="640" height="360"  style="width: 100%"></canvas>
                 </div>
             </div>
         </div>
