@@ -91,7 +91,16 @@ module.exports = function () {
         connection.query(sql, sql_value_arr, function (err, result) {
             var myData;
             if (err) {
-                console.log('[SELECT ERROR] - ', err.message);
+                if(err.errno==1062)
+                {
+                    myData = { "status": "300", "state": "ok" };
+                    res.json(myData);
+                    console.log("用户名已存在！")
+                }
+                else{
+                    console.log('[SELECT ERROR] - ', err.message);
+                }
+               
             } else {
                 myData = { "status": "200", "state": "ok" };
                 res.cookie("username", config.username, { maxAge: 6000 * 10000 });
