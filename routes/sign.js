@@ -80,5 +80,26 @@ module.exports = function () {
         });
     });
 
+    router.post('/change', function (req, res) {
+        var config = req.body;
+        console.info(config);
+        var sql = 'update user set username = ? and password = ? where username = ? '
+        var sql_value_arr = [req.cookies.username,config.username, config.password];
+
+        connection.query(sql, sql_value_arr, function (err, result) {
+            var myData;
+            if (err) {
+                console.log('[SELECT ERROR] - ', err.message);
+            } else {
+                myData = { "status": "200", "state": "ok" };
+                res.cookie("username", config.username, {maxAge: 6000 * 1000});
+                console.log("更正成功,并重新设置cookie");
+                res.json(myData);
+            }
+        });
+    });
+
+    
+
     return router;
 }    
