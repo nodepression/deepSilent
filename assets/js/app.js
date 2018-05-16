@@ -118,9 +118,78 @@ function switchPages(lastIndex,nextIndex) {
           }
           videoPlay();
           $('header').css('display','none');
-          $('#know-btn').click(function(){
-            document.getElementById('nav-bar').children[0].children[3].click();
-          })
+          $('#doc-modal-list').find('.am-icon-close').add('#know-btn').
+                on('click', function (e) {
+                        $('#log-modal').modal({
+                            relatedTarget: this,
+                            onConfirm: function (options) {
+                                var send={
+                                  username:document.getElementById('username').value,
+                                  password:document.getElementById('pw').value
+                                }
+                                if(send.username.trim()==''||send.password.trim()==''){
+                                  new Toast().showMsg('请补全输入框',1500);
+                                  return;
+                                }
+                                document.getElementById('nav-bar').children[0].children[3].click();
+                                $.ajax({
+                                  url: '/login',
+                                  type: 'POST',
+                                  data: send,
+                                  dataType: "JSON",
+                                  success: function (data, state) {
+                                      if(data.state==200){
+                                        new Toast().showMsg('登录成功', 1500);
+                                        document.getElementById('nav-bar').children[0].children[3].click();
+                                        $('#log-modalm').modal('toggle');
+                                      }
+                                  },
+                                  error: function (data, state) {
+                                      new Toast().showMsg('网络异常', 1500)
+                                      console.log(data, state)
+                                  }
+                              })
+                            },
+                            closeOnConfirm: false,
+                            closeOnCancel:false,
+                            onCancel: function () {
+                              var send={
+                                username:document.getElementById('username').value,
+                                password:document.getElementById('pw').value
+                              }
+                              if(send.username.trim()==''||send.password.trim()==''){
+                                new Toast().showMsg('请补全输入框',1500);
+                                return;
+                              }
+                              document.getElementById('nav-bar').children[0].children[3].click();
+                              $.ajax({
+                                url: '/regist',
+                                type: 'POST',
+                                data: send,
+                                dataType: "JSON",
+                                success: function (data, state) {
+                                    if(data.state==200){
+                                      new Toast().showMsg('注册成功', 1500);
+                                    }else if(data.state==300){
+                                      new Toast().showMsg('用户名已被注册', 1500);
+                                    }
+                                },
+                                error: function (data, state) {
+                                    new Toast().showMsg('网络异常', 1500)
+                                    console.log(data, state)
+                                }
+                            })
+                            }
+
+                        });
+                        $('.am-dimmer').css('display', 'none')
+                    
+
+                });
+          // $('#know-btn').click(function(){
+            
+          //   // document.getElementById('nav-bar').children[0].children[3].click();
+          // })
 
           }else if(pageIndex===5){
             $('header').css('display','block');
@@ -167,15 +236,7 @@ $(function(){
   //注册全屏幕滑动
 
   buildFullpage();
-  function videoPlay() {
-    $('#video1').each(function (i, e) {
-      $('#video1').get(i).play();
-    });
-  }
-  videoPlay();
-  $('#know-btn').click(function(){
-    document.getElementById('nav-bar').children[0].children[3].click();
-  })
+  switchPages(1,0);
   
 });
 

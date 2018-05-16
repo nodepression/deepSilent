@@ -17,6 +17,49 @@ const dom0 = ` <div id="dowebok">
                     <source src="assets/video/test.mp4" type="video/mp4">
                 </video>
                 <div class="btn-box" id="know-btn"> <div class="btn-inner" >了解一下</div> </div>
+                <div class="am-modal am-modal-confirm" tabindex="-1" id="log-modal">
+                    <div class="am-modal-dialog">
+                        <div class="am-panel am-panel-default am-panel-secondary" style="background-color: #e2f4fd">
+                            <div class="am-panel-bd ">请登录</div>
+                        </div>
+                        <form class="am-form am-form-horizontal">
+                            <div class="am-form-group">
+                                <label for="doc-ipt-3" class="am-u-sm-4 am-form-label">用户名</label>
+                                <div class="am-u-sm-6 am-u-end">
+                                    <input type="text" id="username" placeholder="输入你的用户名">
+                                </div>
+                            </div>
+                
+                            <div class="am-form-group">
+                                <label for="doc-ipt-3" class="am-u-sm-4 am-form-label">密码</label>
+                                <div class="am-u-sm-6 am-u-end">
+                                    <input type="password" id="pw" placeholder="输入你的密码">
+                                </div>
+                            </div>
+                
+                            <!-- <div class="am-form-group">
+                
+                                <label for="doc-select-1" class="am-u-sm-4 am-form-label">性别</label>
+                                <div class="am-u-sm-6 am-u-end">
+                                    <select id="doc-select-1">
+                                        <option value="male">男</option>
+                                        <option value="female">女</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                
+                            <div class="am-form-group">
+                
+                            </div>
+                
+                        </form>
+                
+                        <div class="am-modal-footer">
+                            <span class="am-modal-btn" style="text-align: left ;padding-left: 30px" data-am-modal-cancel>注册</span>
+                            <span class="am-modal-btn" style="text-align: right;padding-right: 30px" data-am-modal-confirm>登录</span>
+                        </div>
+                    </div>
+                    </div>
             </div>
         </div>`
 
