@@ -10,6 +10,7 @@
     var bodyParser = require('body-parser');
     var { exec } = require('child_process');
     var mysql = require('mysql');
+    var cookieParser = require('cookie-parser');
 
 
 
@@ -23,6 +24,7 @@
     app.use(express.static('./'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(cookieParser());
 
     app.use('/', index);//对所有路径应用这个路由
     app.use('/', sign);//对登陆注册应用这个路由

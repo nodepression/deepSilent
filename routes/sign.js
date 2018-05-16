@@ -18,7 +18,8 @@ module.exports = function () {
             console.error('error connecting: ' + err.stack);
             return;
         }
-        console.log('connected as id ' + connection.threadId);
+        // console.log('connected as id ' + connection.threadId);
+        console.log("数据库连接成功");
     });
 
 
@@ -40,8 +41,14 @@ module.exports = function () {
                 console.log('[SELECT ERROR] - ', err.message);
             } else if (result.length == 1) {
                 var myData = { "status": "200", "state": "ok" };
-                console.log("登陆成功");
-                res.json(myData);
+                if (req.cookies.username  == result[0].username ) {
+                    console.log("cookie还在有效期");
+                    res.json(myData);
+                } else {
+                    res.cookie("username", result[0].username, {maxAge: 6000 * 1000});
+                    console.log("登陆成功,并设置cookie");
+                    res.json(myData);
+                }
             } else {
                 console.log("输入有误");
             }
@@ -57,11 +64,17 @@ module.exports = function () {
         connection.query(sql, sql_value_arr, function (err, result) {
             var myData;
             if (err) {
-                // myData = { "status": "200", "state": "ok"};
-                console.log('[SELECT ERROR] - ', err.message);
+                if (err.errno == 1062) {
+                    myData = { "status": "300", "state": "ok" };
+                    res.json(myData);
+                    console.log("用户名已存在！")
+                } else {
+                    console.log('[SELECT ERROR] - ', err.message);
+                }
             } else {
                 myData = { "status": "200", "state": "ok" };
-                console.log("注册成功");
+                res.cookie("username", config.username, {maxAge: 6000 * 1000});
+                console.log("注册成功,并设置cookie");
                 res.json(myData);
             }
         });
