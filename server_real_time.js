@@ -9,12 +9,21 @@
     var chokidar = require('chokidar'); //监听文件变化
     var bodyParser = require('body-parser');
     var { exec } = require('child_process');
+    var mysql = require('mysql');
 
+
+
+     //自己定义的router
+    var index   = require('./routes/index.js')();
+
+
+    
 
     app.use(express.static('./'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
 
+    app.use('/', index);//对所有路径应用这个路由
 
 
 
@@ -24,9 +33,6 @@
     var keyImg_path = nodePath.resolve('./assets/output/keyImg');//需要监听的关键图片(表格里的数据)文件夹;
 
 
-    app.get('/', function (req, res) {
-        res.sendFile(__dirname + '/index.html');
-    });
 
     //保存前端发送的图片和json
     app.post('/saveInfo', function (req, res) {
