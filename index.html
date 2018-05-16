@@ -41,6 +41,7 @@
 
 
     <script src="./jquery-3.3.1.min.js"></script>
+    <script src="assets/js/jquery.cookie.js"></script>
     <script src="assets/jquery.fullPage.min.js"></script>
     <script src="assets/starrr.js"></script>
     <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
@@ -55,7 +56,14 @@
     <header class="my-nav" id="nav-bar" style="display:none">
         <ul class="_nav" >
             <li class="active" style="font-size:3rem;">Try-catch</li>
-            <li style="visibility:hidden;">占位</li>
+            <div class="am-dropdown" data-am-dropdown style="position: relative;color:white;cursor: pointer;">
+            <li class="am-dropdown-toggle" id="user"> </span></li>
+            <ul class="am-dropdown-content">
+                <li><a href="#" id="setting">设置</a></li>
+                <li class="am-divider"></li>
+                <li><a href="javascript:exit()">退出</a></li>
+              </ul>
+            </div>
             <li style="visibility:hidden;">占位</li>
             <li>治安识别</li>
             <li>姿态标记</li>
@@ -90,24 +98,10 @@
                                     <input type="password" id="pw" placeholder="输入你的密码">
                                 </div>
                             </div>
-                
-                            <!-- <div class="am-form-group">
-                
-                                <label for="doc-select-1" class="am-u-sm-4 am-form-label">性别</label>
-                                <div class="am-u-sm-6 am-u-end">
-                                    <select id="doc-select-1">
-                                        <option value="male">男</option>
-                                        <option value="female">女</option>
-                                    </select>
-                                </div>
-                            </div> -->
-                
                             <div class="am-form-group">
                 
                             </div>
-                
                         </form>
-                
                         <div class="am-modal-footer">
                             <span class="am-modal-btn" style="text-align: left ;padding-left: 30px" data-am-modal-cancel>注册</span>
                             <span class="am-modal-btn" style="text-align: right;padding-right: 30px" data-am-modal-confirm>登录</span>

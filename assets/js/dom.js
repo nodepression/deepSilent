@@ -479,3 +479,39 @@ const dom6=`<div id="dowebok">
 
     </div>
 </div>`
+
+
+const appendix =` <div class="am-modal am-modal-confirm" tabindex="-1" id="setting-modal">
+<div class="am-modal-dialog">
+    <div class="am-panel am-panel-default am-panel-secondary" style="background-color: #e2f4fd">
+        <div class="am-panel-bd ">设置</div>
+    </div>
+    <form class="am-form am-form-horizontal">
+        <div class="am-form-group">
+            <label for="doc-ipt-3" class="am-u-sm-4 am-form-label">用户名</label>
+            <div class="am-u-sm-6 am-u-end">
+                <input type="text" id="newusername" placeholder="输入你的用户名(选填)">
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <label for="doc-ipt-3" class="am-u-sm-4 am-form-label">密码</label>
+            <div class="am-u-sm-6 am-u-end">
+                <input type="password" id="newpw" placeholder="输入你的密码(必填)">
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="doc-ipt-3" class="am-u-sm-4 am-form-label">确认密码</label>
+            <div class="am-u-sm-6 am-u-end">
+                <input type="password" id="newpw1" placeholder="确认你的密码(必填)">
+            </div>
+        </div>
+        <div class="am-form-group">
+
+        </div>
+    </form>
+    <div class="am-modal-footer">
+        <button type="button" class="am-btn am-btn-default am-btn-sm" style="margin-bottom:1rem" data-am-modal-confirm >确认</button>
+    </div>
+</div>
+</div>`

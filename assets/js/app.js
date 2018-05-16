@@ -73,7 +73,10 @@
   });
 
 })(jQuery);
-
+function exit() { 
+  $.removeCookie('username');
+  document.getElementById('nav-bar').children[0].children[0].click();
+}
 
 /***
  * **
@@ -102,10 +105,15 @@ function switchPages(lastIndex,nextIndex) {
         $dom.animateCss('bounceInUp');
         $('#dowebok').fullpage.destroy('all');
         // if(nextIndex!=6){
-          $dom.html(eval('dom'+nextIndex.toString()));
+          $dom.html(eval('dom'+nextIndex.toString())+appendix);
           buildFullpage(nextIndex);
         // }
         
+        
+       
+
+
+                
 
 
         
@@ -120,71 +128,79 @@ function switchPages(lastIndex,nextIndex) {
           $('header').css('display','none');
           $('#doc-modal-list').find('.am-icon-close').add('#know-btn').
                 on('click', function (e) {
-                        $('#log-modal').modal({
-                            relatedTarget: this,
-                            onConfirm: function (options) {
-                                var send={
-                                  username:document.getElementById('username').value,
-                                  password:document.getElementById('pw').value
+                  if(!$.cookie('username')){
+                    $('#log-modal').modal({
+                      relatedTarget: this,
+                      onConfirm: function (options) {
+                          var send={
+                            username:document.getElementById('username').value,
+                            password:document.getElementById('pw').value
+                          }
+                          if(send.username.trim()==''||send.password.trim()==''){
+                            new Toast().showMsg('请补全输入框',1500);
+                            return;
+                          }
+
+                          // document.getElementById('nav-bar').children[0].children[3].click();
+                          $.ajax({
+                            url: '/sign_in',
+                            type: 'POST',
+                            data: send,
+                            dataType: "JSON",
+                            success: function (data, state) {
+                                if(data.status==200){
+                                  new Toast().showMsg('登录成功', 1500);
+                                  document.getElementById('user').innerHTML='hi,'+$.cookie('username')+'  <span class="am-icon-caret-down">'
+                                  document.getElementById('nav-bar').children[0].children[3].click();
+                                  $('#log-modalm').modal('toggle');
+                                  
                                 }
-                                if(send.username.trim()==''||send.password.trim()==''){
-                                  new Toast().showMsg('请补全输入框',1500);
-                                  return;
-                                }
-                                document.getElementById('nav-bar').children[0].children[3].click();
-                                $.ajax({
-                                  url: '/sign_in',
-                                  type: 'POST',
-                                  data: send,
-                                  dataType: "JSON",
-                                  success: function (data, state) {
-                                      if(data.status==200){
-                                        new Toast().showMsg('登录成功', 1500);
-                                        document.getElementById('nav-bar').children[0].children[3].click();
-                                        $('#log-modalm').modal('toggle');
-                                      }
-                                  },
-                                  error: function (data, state) {
-                                      new Toast().showMsg('网络异常', 1500)
-                                      console.log(data, state)
-                                  }
-                              })
                             },
-                            closeOnConfirm: false,
-                            closeOnCancel:false,
-                            onCancel: function () {
-                              var send={
-                                username:document.getElementById('username').value,
-                                password:document.getElementById('pw').value
-                              }
-                              if(send.username.trim()==''||send.password.trim()==''){
-                                new Toast().showMsg('请补全输入框',1500);
-                                return;
-                              }
-                              document.getElementById('nav-bar').children[0].children[3].click();
-                              $.ajax({
-                                url: '/sign_up',
-                                type: 'POST',
-                                data: send,
-                                dataType: "JSON",
-                                success: function (data, state) {
-                                    if(data.status==200){
-                                      new Toast().showMsg('注册成功', 1500);
-                                    }else if(data.status==300){
-                                      new Toast().showMsg('用户名已被注册', 1500);
-                                    }
-                                },
-                                error: function (data, state) {
-                                    new Toast().showMsg('网络异常', 1500)
-                                    console.log(data, state)
-                                }
-                            })
+                            error: function (data, state) {
+                                new Toast().showMsg('网络异常', 1500)
+                                console.log(data, state)
                             }
+                        })
+                      },
+                      closeOnConfirm: false,
+                      closeOnCancel:false,
+                      onCancel: function () {
+                        var send={
+                          username:document.getElementById('username').value,
+                          password:document.getElementById('pw').value
+                        }
+                        if(send.username.trim()==''||send.password.trim()==''){
+                          new Toast().showMsg('请补全输入框',1500);
+                          return;
+                        }
+                        
+                        $.ajax({
+                          url: '/sign_up',
+                          type: 'POST',
+                          data: send,
+                          dataType: "JSON",
+                          success: function (data, state) {
+                              if(data.status==200){
+                                new Toast().showMsg('注册成功', 1500);
+                                document.getElementById('nav-bar').children[0].children[3].click();
+                              }else if(data.status==300){
+                                new Toast().showMsg('用户名已被注册', 1500);
+                              }
+                          },
+                          error: function (data, state) {
+                              new Toast().showMsg('网络异常', 1500)
+                              console.log(data, state)
+                          }
+                      })
+                      }
 
-                        });
-                        $('.am-dimmer').css('display', 'none')
-                    
-
+                  });
+                  $('.am-dimmer').css('display', 'none')
+                  }else{
+                    document.getElementById('nav-bar').children[0].children[3].click();
+                    document.getElementById('user').innerHTML='hi,'+$.cookie('username')+'  <span class="am-icon-caret-down">'
+                                  
+                  }
                 });
           // $('#know-btn').click(function(){
             
@@ -237,7 +253,82 @@ $(function(){
 
   buildFullpage();
   switchPages(1,0);
-  
+  $('#setting').on('click', function (e) {
+
+    $('#setting-modal').modal({
+      relatedTarget: this,
+      onConfirm: function (options) {
+
+          var send={
+            username:document.getElementById('newusername').value.trim()==''?$.cookie('username'):document.getElementById('newusername').value,
+            password:document.getElementById('newpw').value
+          }
+          if(send.password.trim()==''){
+            new Toast().showMsg('请补全输入框',1500);
+            return;
+          }
+          if(send.password!=document.getElementById('newpw1').value){
+            new Toast().showMsg('两次密码有误',1500);
+            return;
+          }
+
+          // document.getElementById('nav-bar').children[0].children[3].click();
+          $.ajax({
+            url: '/change',
+            type: 'POST',
+            data: send,
+            dataType: "JSON",
+            success: function (data, state) {
+                if(data.status==200){
+                  new Toast().showMsg('修改成功', 1500);
+                  $('#log-modalm').modal('toggle');
+                  
+                }else{
+                  new Toast().showMsg('修改失败', 1500);
+                }
+            },
+            error: function (data, state) {
+                new Toast().showMsg('网络异常', 1500)
+                console.log(data, state)
+            }
+        })
+      },
+      closeOnConfirm: false,
+      closeOnCancel:false,
+      onCancel: function () {
+        var send={
+          username:document.getElementById('username').value,
+          password:document.getElementById('pw').value
+        }
+        if(send.username.trim()==''||send.password.trim()==''){
+          new Toast().showMsg('请补全输入框',1500);
+          return;
+        }
+        
+        $.ajax({
+          url: '/sign_up',
+          type: 'POST',
+          data: send,
+          dataType: "JSON",
+          success: function (data, state) {
+              if(data.status==200){
+                new Toast().showMsg('注册成功', 1500);
+                document.getElementById('nav-bar').children[0].children[3].click();
+              }else if(data.status==300){
+                new Toast().showMsg('用户名已被注册', 1500);
+              }
+          },
+          error: function (data, state) {
+              new Toast().showMsg('网络异常', 1500)
+              console.log(data, state)
+          }
+      })
+      }
+
+  });
+  $('.am-dimmer').css('display', 'none')
+
+});
 });
 
 
