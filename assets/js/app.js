@@ -152,7 +152,7 @@ function switchPages(lastIndex,nextIndex) {
                                   new Toast().showMsg('登录成功', 1500);
                                   document.getElementById('user').innerHTML='hi,'+$.cookie('username')+'  <span class="am-icon-caret-down">'
                                   document.getElementById('nav-bar').children[0].children[3].click();
-                                  $('#log-modalm').modal('toggle');
+                                  // $('#log-modal').modal('toggle');
                                   
                                 }
                             },
@@ -281,7 +281,9 @@ $(function(){
             success: function (data, state) {
                 if(data.status==200){
                   new Toast().showMsg('修改成功', 1500);
-                  $('#log-modalm').modal('toggle');
+                  document.getElementById('user').innerHTML='hi,'+$.cookie('username')+'  <span class="am-icon-caret-down">'
+                                  
+                  $('#setting-modal').modal('toggle');
                   
                 }else{
                   new Toast().showMsg('修改失败', 1500);
