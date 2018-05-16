@@ -41,11 +41,11 @@ module.exports = function () {
                 console.log('[SELECT ERROR] - ', err.message);
             } else if (result.length == 1) {
                 var myData = { "status": "200", "state": "ok" };
-                if (req.cookies.username  == result[0].username ) {
+                if (req.cookies.username == result[0].username) {
                     console.log("cookie还在有效期");
                     res.json(myData);
                 } else {
-                    res.cookie("username", result[0].username, {maxAge: 6000 * 1000});
+                    res.cookie("username", result[0].username, { maxAge: 6000 * 10000 });
                     console.log("登陆成功,并设置cookie");
                     res.json(myData);
                 }
@@ -73,7 +73,7 @@ module.exports = function () {
                 }
             } else {
                 myData = { "status": "200", "state": "ok" };
-                res.cookie("username", config.username, {maxAge: 6000 * 1000});
+                res.cookie("username", config.username, { maxAge: 6000 * 10000 });
                 console.log("注册成功,并设置cookie");
                 res.json(myData);
             }
@@ -83,8 +83,10 @@ module.exports = function () {
     router.post('/change', function (req, res) {
         var config = req.body;
         console.info(config);
-        var sql = 'update user set username = ? and password = ? where username = ? '
-        var sql_value_arr = [req.cookies.username,config.username, config.password];
+        var sql = 'update user set password = ?,username = ? where username = ? '
+        var sql_value_arr = [config.password,config.username,req.cookies.username];
+        // var sql = 'update user set password = ? where username = ? '
+        // var sql_value_arr = [config.password, req.cookies.username];
 
         connection.query(sql, sql_value_arr, function (err, result) {
             var myData;
@@ -92,14 +94,15 @@ module.exports = function () {
                 console.log('[SELECT ERROR] - ', err.message);
             } else {
                 myData = { "status": "200", "state": "ok" };
-                res.cookie("username", config.username, {maxAge: 6000 * 1000});
+                res.cookie("username", config.username, { maxAge: 6000 * 10000 });
+                console.log(result);
                 console.log("更正成功,并重新设置cookie");
                 res.json(myData);
             }
         });
     });
 
-    
+
 
     return router;
 }    
