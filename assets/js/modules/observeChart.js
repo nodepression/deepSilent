@@ -92,25 +92,29 @@ function showChart0() {
                 end: chart0.end
             },
         ],
-        yAxis: {
+        yAxis: [{
+            name: '数值',
             type: 'value'
-        },
+        },{
+            name: '人数',
+            type: 'value',
+        }],
         series: [{
             name:'人数',
             type:'line',
-            stack: '总量',
+            yAxisIndex: 1,
             data: chartObj.chart0.data0,
             // smooth: true
         },{
             name:'置信度',
             type:'line',
-            stack: '总量',
+            yAxisIndex: 0,
             data: chartObj.chart0.data1,
             // smooth: true
         },{
             name:'aaa',
             type:'line',
-            stack: '总量',
+            yAxisIndex: 0,
             data: chartObj.chart0.data2,
             // smooth: true
         }]
