@@ -7,3 +7,4 @@ node_modules/
 .Ds_Store
 /assets/output/
 /out/
+example.http
