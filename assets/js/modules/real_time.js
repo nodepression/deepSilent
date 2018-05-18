@@ -94,29 +94,32 @@ function hasUserMedia() {
 //摄像头获取
 var stream = null;
 function startCamera() {
-    // var vid = document.getElementById('cam');
-    // if (hasUserMedia()) {
-    //     navigator.getUserMedia({
-    //             video: true,
-    //             // audio: true
-    //         },
-    //         (vstream) => {
-    //             vid.src = window.URL.createObjectURL(vstream);
-    //             stream = vstream;
-    //         },
-    //         (err) => {
-    //             console.log(err);
-    //         })
-    // } else {
-    //     alert("没有userMedia API")
-    // }
     var vid = document.getElementById('cam');
-    vid.src = 'http://127.0.0.1:8080/?action=stream';
+    if (hasUserMedia()) {
+        navigator.getUserMedia({
+                video: true,
+                // audio: true
+            },
+            (vstream) => {
+                vid.src = window.URL.createObjectURL(vstream);
+                stream = vstream;
+            },
+            (err) => {
+                console.log(err);
+            })
+    } else {
+        alert("没有userMedia API")
+    }
+    // var vid = document.getElementById('cam');
+    // vid.crossOrigin = "Anonymous";
+    // // vid.src = 'http://127.0.0.1:8080/?action=stream';
+    // vid.src = 'http://192.168.1.106:8080/?action=stream';
 }
 
 function stopCam() {
-    var vid = document.getElementById('cam');
-    vid.src = '';
+    // var vid = document.getElementById('cam');
+    stream.getTracks()[0].stop()
+    // vid.src = '';
 }
 
 function depict() {
@@ -125,9 +128,10 @@ function depict() {
     var wid = document.getElementById('cam').offsetWidth;
     var heit = document.getElementById('cam').offsetHeight;
 
-    document.getElementById('pic-canvas').width = 1280;
-    document.getElementById('pic-canvas').height = 1280 * heit / wid;
-    c.drawImage(v, 0, 0, 1280, 1280 * heit / wid);
+    document.getElementById('pic-canvas').width = 640;
+    document.getElementById('pic-canvas').height = 640 * heit / wid;
+    c.drawImage(v, 0, 0, 640, 640 * heit / wid);
+    // console.log(document.getElementById('pic-canvas').toDataURL())
 }
 
 /**
