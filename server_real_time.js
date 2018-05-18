@@ -18,13 +18,15 @@
     var index = require('./routes/index.js')();
     var sign = require('./routes/sign.js')();
 
-
-
-
+    
     app.use(express.static('./'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(cookieParser());
+
+    app.use(bodyParser.json({limit:"50mb"}));
+    app.use(bodyParser.urlencoded({limit:'50mb',extended:true}));
+
 
     app.use('/', index);//对所有路径应用这个路由
     app.use('/', sign);//对登陆注册应用这个路由
