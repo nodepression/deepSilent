@@ -184,6 +184,9 @@ function bindRealTime() {
             $('.am-dimmer').css('display', 'none')
             startCamera();
         });
+        $('#my-confirm').on('closed.modal.amui', function() {
+            stopCam();
+          });
 }
 
 function off() {
@@ -287,7 +290,7 @@ function startF() {
         });
 
     //
-
+        
 
 }
 
