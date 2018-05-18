@@ -8,18 +8,18 @@
     var nodePath = require('path');
     var chokidar = require('chokidar'); //监听文件变化
     var bodyParser = require('body-parser');
-    var { exec } = require('child_process');
+    var child_process = require('child_process');
     var mysql = require('mysql');
     var cookieParser = require('cookie-parser');
 
 
 
-     //自己定义的router
-    var index   = require('./routes/index.js')();
-    var sign  = require('./routes/sign.js')();
+    //自己定义的router
+    var index = require('./routes/index.js')();
+    var sign = require('./routes/sign.js')();
 
 
-    
+
 
     app.use(express.static('./'));
     app.use(bodyParser.json());
@@ -33,6 +33,7 @@
 
     var log = console.log.bind(console);
     var jsonData = null;//需要实时传送的数据
+    var child = null; //点击开始后创建的子进程
     var json_path = nodePath.resolve('./assets/output/json');//需要实时更新的json数据保存的文件夹路径
     var keyImg_path = nodePath.resolve('./assets/output/keyImg');//需要监听的关键图片(表格里的数据)文件夹;
 
@@ -70,32 +71,44 @@
 
     });
 
+    
+    //创建子进程
+    function createChild() {
+        log("python服务已经启动");
+        child = child_process.spawn('python', ['-m', 'http.server', '8080']);
 
+        child.stdout.on('data', (data) => {
+            console.log(`stdout: ${data}`);
+        });
+        child.stderr.on('data', (data) => {
+            // res.send({ state: "false" });
+            console.log(`stderr: ${data}`);
+        });
+    }
+    //关闭子进程
+    function closeChild(child) { 
+        log("python服务已经关闭");
+        child.kill();
+    }
     app.post('/cmd', function (req, res) {
         var start = req.body.start;
-        if (start=="true") {
-            exec("cd ./", (err, stdout, stderr) => {
-                if (err) {
-                    res.send({ state: "false" })
-                    console.error(err);
-                    return;
-                }
-                else {
-                    res.send({ state: "start" })
-                }
-            });
+        if (start == "true") {
+            try {
+                createChild();
+            } catch (error) {
+                res.send({ state: "false",});
+                log("启动python服务失败",error);
+            }
+            res.send({ state: "start" });
         }
         else {
-            exec("cd ./", (err, stdout, stderr) => {
-                if (err) {
-                    res.send({ state: "false" })
-                    console.error(err);
-                    return;
-                }
-                else {
-                    res.send({ state: "off" })
-                }
-            });
+            try {
+                closeChild(child);
+            } catch (error) {
+                res.send({ state: "false",});
+                log("关闭python服务失败",error);
+            }
+            res.send({ state: "off" });
         }
 
     })
@@ -143,15 +156,46 @@
                 }
 
             }
-
-
+            
             else { //当传入其他文件时给出提示信息
-                log("what you add is not a json format file");
+                log("what you added is not a json format file");
                 // data = fs.readFileSync(path);
             }
 
+        });
 
-        })
+        watcher.on('change', function (path) {
+            log(`File ${path} has been changed`);
+            const re = /(.json)$/;  //判断json文件的正则表达式
+            if (re.test(path)) { //只读取json文件
+
+                try {
+                    jsonData = JSON.parse(fs.readFileSync(path)); //读取json文件
+                } catch (error) {
+                    log("加入的json文件有误");
+                }
+
+                if (jsonData) {
+                    var img_url = nodePath.basename(path).split("_")[0] + "_rendered.png"; //json对应的图片名
+                    jsonData.date = Date.now(); //返回时间戳
+                    jsonData.imgUrl = img_url;  //返回对应图片地址
+
+                    if (server) { //保持连接状态的话就向客户端发送新添加的信息。
+                        server.emit('message', jsonData);
+                    }
+                    else {
+                        log("没有客户端连接,此时生成的信息将不能传输到客户端");
+                    }
+                }
+
+            }
+            
+            else { //当传入其他文件时给出提示信息
+                log("what you changed is not a json format file");
+            }
+
+        });
+
     }
 
 
@@ -177,10 +221,30 @@
             }
 
             else { //当传入其他文件时给出提示信息
-                log("what you add is not a png format file");
+                log("what you added is not a png format file");
             }
 
-        })
+        });
+
+        watcher.on('change', function (path) {
+            log(`File ${path} has been changed`);
+            const re = /(.png)$/;  //判断png文件的正则表达式
+            if (re.test(path)) { //只读取png文件
+
+                if (server) { //保持连接状态的话就向客户端发送新添加的信息。
+                    server.emit('keyImg', path);
+                }
+                else {
+                    log("没有客户端连接,此时生成的信息将不能传输到客户端");
+                }
+
+            }
+
+            else { //当传入其他文件时给出提示信息
+                log("what you changed is not a png format file");
+            }
+
+        });
     }
 
 
