@@ -112,23 +112,21 @@
         if (start == "true") {
             try {
                 createChild();
+                res.send({ state: "start" });
             } catch (error) {
                 res.send({ state: "false",});
                 log("启动python服务失败",error);
-                return;
             }
-            res.send({ state: "start" });
         }
         else {
             try {
                 closeChild();
-                // closeChild(child);
+                res.send({ state: "off" });
             } catch (error) {
                 res.send({ state: "false",});
                 log("关闭python服务失败",error);
                 return;
             }
-            res.send({ state: "off" });
         }
 
     })
