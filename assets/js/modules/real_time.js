@@ -364,11 +364,9 @@ function handleStart() {
             if (data.state == 'start') {
                 imgLoading=false;
                 new Toast().showMsg('启动成功', 1500);
-                if(window.reloadState==true){
+                
                     startF();
-                }else{
-                    window.location.href='http://localhost:3000/?reload'
-                }
+                
                 
                 // stream.getTracks()[1].stop()
             } else if (data.state == 'off') {
