@@ -252,7 +252,14 @@ $(function(){
   //注册全屏幕滑动
 
   buildFullpage();
-  switchPages(1,0);
+  if(window.location.href.indexOf('?reload')>0){
+    switchPages(0,6);
+    window.reloadState=true;
+    document.getElementById('start').click();
+  }else{
+    switchPages(1,0);
+  }
+  
   $('#setting').on('click', function (e) {
 
     $('#setting-modal').modal({
