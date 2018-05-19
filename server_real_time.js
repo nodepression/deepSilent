@@ -89,10 +89,24 @@
         });
     }
     //关闭子进程
-    function closeChild(child) { 
+    // function closeChild(child) { 
+    //     log("python服务已经关闭");
+    //     child.kill();
+    // }
+
+    function closeChild() {
         log("python服务已经关闭");
-        child.kill();
+        closeChild = child_process.spawn('python', ['-V']);
+
+        closeChild.stdout.on('data', (data) => {
+            console.log(`stdout: ${data}`);
+        });
+        closeChild.stderr.on('data', (data) => {
+            // res.send({ state: "false" });
+            console.log(`stderr: ${data}`);
+        });
     }
+
     app.post('/cmd', function (req, res) {
         var start = req.body.start;
         if (start == "true") {
@@ -106,7 +120,8 @@
         }
         else {
             try {
-                closeChild(child);
+                closeChild();
+                // closeChild(child);
             } catch (error) {
                 res.send({ state: "false",});
                 log("关闭python服务失败",error);
