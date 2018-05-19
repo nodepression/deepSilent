@@ -350,7 +350,7 @@ const dom6=`<div id="dowebok">
         <form class="am-form am-form-horizontal">
             <div class="am-g am-form-group">
                 <div class="am-u-sm-6">
-                    <video id="cam" autoplay src style="width:80%" ></video>
+                    <img id="cam" autoplay src style="width:80%" crossorigin="Anonymous" ></img>
                     <div>摄像头</div>
                 </div>
                 <div class="am-u-sm-6">
