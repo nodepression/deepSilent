@@ -234,6 +234,8 @@ function switchPages(lastIndex,nextIndex) {
           }else{
             try {
               window.client.close();
+              start = false;
+              handleStart();
             } catch (error) {
               console.log('socket not open')
             }
@@ -252,7 +254,11 @@ $(function(){
   //注册全屏幕滑动
 
   buildFullpage();
-  switchPages(1,0);
+
+  
+    switchPages(1,0);
+ 
+  
   $('#setting').on('click', function (e) {
 
     $('#setting-modal').modal({
