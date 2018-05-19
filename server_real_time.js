@@ -96,12 +96,12 @@
 
     function closeChild() {
         log("python服务已经关闭");
-        closeChild = child_process.spawn('python', ['-V']);
+        close_child = child_process.spawn('python', ['-V']);
 
-        closeChild.stdout.on('data', (data) => {
+        close_child.stdout.on('data', (data) => {
             console.log(`stdout: ${data}`);
         });
-        closeChild.stderr.on('data', (data) => {
+        close_child.stderr.on('data', (data) => {
             // res.send({ state: "false" });
             console.log(`stderr: ${data}`);
         });
@@ -115,6 +115,7 @@
             } catch (error) {
                 res.send({ state: "false",});
                 log("启动python服务失败",error);
+                return;
             }
             res.send({ state: "start" });
         }
@@ -125,6 +126,7 @@
             } catch (error) {
                 res.send({ state: "false",});
                 log("关闭python服务失败",error);
+                return;
             }
             res.send({ state: "off" });
         }
