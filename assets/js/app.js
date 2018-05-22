@@ -234,8 +234,12 @@ function switchPages(lastIndex,nextIndex) {
           }else{
             try {
               window.client.close();
-              start = false;
-              handleStart();
+              if(start ==true){
+                start=false;
+                handleStart();
+              }
+              
+              
             } catch (error) {
               console.log('socket not open')
             }
