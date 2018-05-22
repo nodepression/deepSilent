@@ -76,8 +76,10 @@
 
     
     //创建子进程
-    function createChild() {
+    function createChild(rate) {
         log("python服务已经启动");
+        log("精度为",rate);
+        // child = child_process.spawn('python', ['cmd1', 'cmd3', 'cmd2','-' + rate]);
         child = child_process.spawn('python', ['-m', 'http.server', '8080']);
 
         child.stdout.on('data', (data) => {
@@ -99,7 +101,13 @@
         close_child = child_process.spawn('python', ['-V']);
 
         close_child.stdout.on('data', (data) => {
+            //var finalBuffer = new Buffer(JSON.parse(JSON.stringify(data)));
+            // console.log("stdout", JSON.parse(finalBuffer.toString()));
+            // console.log(`stdout: ${data}`);
+            // var string1 = `${data}`;
+            // log(JSON.parse(string1));
             console.log(`stdout: ${data}`);
+            
         });
         close_child.stderr.on('data', (data) => {
             // res.send({ state: "false" });
@@ -109,9 +117,17 @@
 
     app.post('/cmd', function (req, res) {
         var start = req.body.start;
+        var rate = req.body.rate;
+        if(rate=='l'){
+            rate = 1;
+        }else if(rate=='m'){
+            rate = 2;
+        }else{
+            rate = 3;
+        }
         if (start == "true") {
             try {
-                createChild();
+                createChild(rate);
                 res.send({ state: "start" });
             } catch (error) {
                 res.send({ state: "false",});
