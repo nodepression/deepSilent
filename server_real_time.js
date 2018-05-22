@@ -79,7 +79,7 @@
     function createChild(rate) {
         log("python服务已经启动");
         log("精度为",rate);
-        // child = child_process.spawn('python', ['cmd1', 'cmd3', 'cmd2','-' + rate]);
+        //child = child_process.spawn('bash', ['/home/intel/facereco_multiprocessing/start.sh','-'+ rate]);
         child = child_process.spawn('python', ['-m', 'http.server', '8080']);
 
         child.stdout.on('data', (data) => {
@@ -98,14 +98,10 @@
 
     function closeChild() {
         log("python服务已经关闭");
+        //close_child = child_process.spawn('bash', ['/home/intel/facereco_multiprocessing/stop.sh']);
         close_child = child_process.spawn('python', ['-V']);
 
         close_child.stdout.on('data', (data) => {
-            //var finalBuffer = new Buffer(JSON.parse(JSON.stringify(data)));
-            // console.log("stdout", JSON.parse(finalBuffer.toString()));
-            // console.log(`stdout: ${data}`);
-            // var string1 = `${data}`;
-            // log(JSON.parse(string1));
             console.log(`stdout: ${data}`);
             
         });
@@ -141,7 +137,6 @@
             } catch (error) {
                 res.send({ state: "false",});
                 log("关闭python服务失败",error);
-                return;
             }
         }
 
