@@ -272,28 +272,27 @@ function startF() {
 
 
 
-    $('#doc-modal-list').find('.am-icon-close').add('#err_content').
-        on('click', function (e) {
-            // console.log(e.target.parentElement.dataset.pic)
-            document.getElementsByClassName('am-img-responsive')[0].src = e.target.parentElement.dataset.pic;
-            if ($(e.target).parents(".err_info").hasClass("err_info")) {
+    document.getElementById('err_content').onclick=function (e) {
+        // console.log(e.target.parentElement.dataset.pic)
+        document.getElementsByClassName('am-img-responsive')[0].src = e.target.parentElement.dataset.pic;
+        if ($(e.target).parents(".err_info").hasClass("err_info")) {
 
-                $('#err_modal').modal({
-                    relatedTarget: this,
-                    // onConfirm: function (options) {
-                    //     var msg = "保存成功";
-                    //     alert(msg);
-                    // },
-                    // // closeOnConfirm: false,
-                    // onCancel: function () {
-                    //     // alert('确认取消');
-                    // }
+            $('#err_modal').modal({
+                relatedTarget: this,
+                // onConfirm: function (options) {
+                //     var msg = "保存成功";
+                //     alert(msg);
+                // },
+                // // closeOnConfirm: false,
+                // onCancel: function () {
+                //     // alert('确认取消');
+                // }
 
-                });
-                $('.am-dimmer').css('display', 'none')
-            }
-
-        });
+            });
+            $('.am-dimmer').css('display', 'none')
+        }
+      }
+        
 
     //
         
