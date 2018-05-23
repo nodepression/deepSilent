@@ -148,12 +148,15 @@ function switchPages(lastIndex,nextIndex) {
                             data: send,
                             dataType: "JSON",
                             success: function (data, state) {
+                              console.log(data,state)
                                 if(data.status==200){
                                   new Toast().showMsg('登录成功', 1500);
                                   document.getElementById('user').innerHTML='hi,'+$.cookie('username')+'  <span class="am-icon-caret-down">'
                                   document.getElementById('nav-bar').children[0].children[3].click();
                                   // $('#log-modal').modal('toggle');
                                   
+                                }else{
+                                  new Toast().showMsg('用户名或密码错误', 1500);
                                 }
                             },
                             error: function (data, state) {
