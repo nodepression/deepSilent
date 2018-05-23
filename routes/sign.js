@@ -21,8 +21,8 @@ module.exports = function () {
     //     next();
     // });
 
-
-    pool.getConnection(function (err, connection) {  //使用连接池
+    //使用连接池
+    pool.getConnection(function (err, connection) {  
         if (err) {
             console.log('与MySQL数据库建立连接失败！');
             console.log('错误信息为：' + err);
@@ -30,6 +30,7 @@ module.exports = function () {
             console.log('成功创建连接池！');
         }
     })
+
     //登陆
     router.post('/sign_in', function (req, res) {
         var config = req.body;
@@ -64,10 +65,13 @@ module.exports = function () {
                         console.log("账号或密码输入有误");
                     }
                 });
+
+                connection.release(); // 释放连接
             }
         })
     });
 
+    //注册
     router.post('/sign_up', function (req, res) {
         var config = req.body;
         console.info(config);
@@ -96,10 +100,13 @@ module.exports = function () {
                         res.json(myData);
                     }
                 });
+                
+                connection.release(); // 释放连接
             }
         })
     });
 
+    //修改用户名或密码
     router.post('/change', function (req, res) {
         var config = req.body;
         console.info(config);
@@ -133,6 +140,8 @@ module.exports = function () {
                         res.json(myData);
                     }
                 });
+
+                connection.release(); // 释放连接
             }
         })
     });
