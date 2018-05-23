@@ -76,8 +76,10 @@
 
     
     //创建子进程
-    function createChild() {
+    function createChild(rate) {
         log("python服务已经启动");
+        log("精度为",rate);
+        //child = child_process.spawn('bash', ['/home/intel/facereco_multiprocessing/start.sh','-'+ rate]);
         child = child_process.spawn('python', ['-m', 'http.server', '8080']);
 
         child.stdout.on('data', (data) => {
@@ -96,10 +98,12 @@
 
     function closeChild() {
         log("python服务已经关闭");
+        //close_child = child_process.spawn('bash', ['/home/intel/facereco_multiprocessing/stop.sh']);
         close_child = child_process.spawn('python', ['-V']);
 
         close_child.stdout.on('data', (data) => {
             console.log(`stdout: ${data}`);
+            
         });
         close_child.stderr.on('data', (data) => {
             // res.send({ state: "false" });
@@ -109,9 +113,17 @@
 
     app.post('/cmd', function (req, res) {
         var start = req.body.start;
+        var rate = req.body.rate;
+        if(rate=='l'){
+            rate = 1;
+        }else if(rate=='m'){
+            rate = 2;
+        }else{
+            rate = 3;
+        }
         if (start == "true") {
             try {
-                createChild();
+                createChild(rate);
                 res.send({ state: "start" });
             } catch (error) {
                 res.send({ state: "false",});
@@ -125,7 +137,6 @@
             } catch (error) {
                 res.send({ state: "false",});
                 log("关闭python服务失败",error);
-                return;
             }
         }
 
