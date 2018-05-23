@@ -79,8 +79,8 @@
     function createChild(rate) {
         log("python服务已经启动");
         log("精度为",rate);
-        //child = child_process.spawn('bash', ['/home/intel/facereco_multiprocessing/start.sh','-'+ rate]);
-        child = child_process.spawn('python', ['-m', 'http.server', '8080']);
+        child = child_process.spawn('bash', ['/home/intel/facereco_multiprocessing/start.sh','-'+ rate]);
+        // child = child_process.spawn('python', ['-m', 'http.server', '8080']);
 
         child.stdout.on('data', (data) => {
             console.log(`stdout: ${data}`);
@@ -98,8 +98,8 @@
 
     function closeChild() {
         log("python服务已经关闭");
-        //close_child = child_process.spawn('bash', ['/home/intel/facereco_multiprocessing/stop.sh']);
-        close_child = child_process.spawn('python', ['-V']);
+        close_child = child_process.spawn('bash', ['/home/intel/facereco_multiprocessing/stop.sh']);
+        // close_child = child_process.spawn('python', ['-V']);
 
         close_child.stdout.on('data', (data) => {
             console.log(`stdout: ${data}`);
